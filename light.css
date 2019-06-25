@@ -1,0 +1,342 @@
+@font-face {
+    font-family:"F25_Executive";
+    src: url("fonts/f25_executive-webfont.woff2") format("woff2"),
+         url("fonts/f25_executive-webfont.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+
+*{
+	font-family: "Lucida Grande" sans-serif;
+}
+
+button{
+	font-family : inherit;
+}
+
+body{
+	background-color: hsla(170, 35%, 25%, 1);
+	overflow: hidden;
+
+}
+
+#maincontainer{
+	position:absolute;
+	top:80px;
+	right:5px;
+	left:5px;
+	bottom:5px;
+}
+
+
+/*CSS FOR TOP-BAR (CREATE CUSTOMER, PRODUCT, ORDER, ETC.. BAR) */
+
+#top-bar{
+  background-image: linear-gradient(rgb(73,77,83), rgb(51,53,57));
+  border-top: 1px solid rgb(54, 57, 61);
+  border-bottom: 1px solid rgb(28,28,28);
+  height: 40px;
+  width:100%;
+
+
+}
+
+#top-bar::after{ /*this is for the border underneath the bottom border of the top bar*/
+  content: " ";
+  position:absolute;
+  z-index: -1;
+  top:2px;
+  left:0px;
+  right:0px;
+  bottom:2px;
+  /* border: 2px solid rgb(50, 52, 56); */
+  /* border: 20px solid rgb(50, 52, 56); */
+}
+
+#top-bar button{
+  font-size: 22px;
+  margin-top: 4px;
+  background-color: transparent;
+  border: none;
+}
+#unicorn:active{
+  /* margin-left:3px;
+  padding-bottom: 5px; */
+
+}
+
+button:focus{
+  outline:0;
+}
+
+#top-bar button:active{
+    /* vertical-align: top; */
+    padding-top:8px;
+}
+
+#top-bar img:hover{
+  -webkit-filter: drop-shadow(0 0 0.5rem #afeeee);
+  filter: drop-shadow(0 0 0.5rem #afeeee);
+}
+
+#unicorn:hover{
+  -webkit-filter: drop-shadow(0 0 0.5rem #afeeee);
+  filter: drop-shadow(0 0 0.5rem #afeeee);
+}
+
+/*CSS FOR FLEX DISPLAY OF LEFT BOX AND RIGHT BOX BELOW TOP-BAR*/
+
+#bigBox{
+	display:flex;
+	width:100%;
+	height: calc(100% - 40px);
+}
+
+#leftBox{
+	flex:auto;
+}
+
+#rightBox{
+	flex:auto;
+	width: calc(100% - 250px);
+
+}
+
+/*CSS FOR LEFT BOX*/
+
+
+#leftBox{
+  background-color: rgb(232, 233, 238);
+  border-right: 1px solid rgb(98, 101, 104);
+}
+
+
+#leftBox{
+	float: left;
+	color:#000;
+
+}
+
+#leftBox li{
+	list-style: none;
+	color:#000;
+	padding: 5px 2px;
+}
+
+/*CSS FOR RIGHT BOX*/
+
+/*CSS FOR SEARCH BAR*/
+
+#searchbar{
+	height: 32px;
+	background-image:linear-gradient(rgb(78, 83, 89), rgb(54, 59, 65));
+	border-bottom: 1px solid black;
+
+}
+
+#showitems{
+	margin-left:5px;
+	margin-top:3px;
+}
+
+#searchbar div{
+	display:inline-block;
+	padding-top:3px;
+}
+
+#rightsearchbar{
+	float:right;
+}
+
+#selectdb{
+	float:left;
+}
+
+
+#searchForm{
+	display:inline;
+	margin-right: 20px;
+}
+
+/*CSS FOR SMART FIND*/
+
+#smartFind{
+
+}
+
+/* Style the button that is used to open and close the collapsible content */
+.collapsible {
+  background-color: rgb(226, 230, 234);
+	font-size: small;
+	height: 20px;
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  /* padding: 18px; */
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  /* font-size: 15px; */
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .collapsible:hover {
+  background-color: #ccc;
+}
+
+/* Style the collapsible content. Note: hidden by default */
+.content {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  background-color: #f1f1f1;
+}
+
+/*CSS FOR CONTAINER (TABLE DISPLAYING QUERIES)*/
+
+#container{
+	background-color: #f0f0f0;
+	cursor: default;
+	height:calc(100% - 53px);
+  overflow:auto;
+
+}
+
+table{
+	vertical-align: bottom;
+	white-space: nowrap;
+	text-align: left;
+	border-collapse: collapse;
+	border-spacing: 0px;
+	width:100%;
+
+	table-layout: fixed;
+}
+
+table th{
+	font-size: x-small;
+	border: solid #606060 1px;
+}
+
+#tableheader{
+  /* position:fixed; */
+}
+
+#main-bar th{
+	font-size:small;
+	/* border-bottom:none; */
+}
+
+#main-bar button{
+	text-align:right;
+	height:100%;
+	width:100%;
+	background-color: #f0f0f0;
+	border:none;
+	color:#808080;
+}
+
+#main-bar button:hover{
+	cursor:pointer;
+}
+
+
+.header{
+	float:left;
+	color:black;
+	font-weight: bold;
+}
+
+#table{
+
+}
+
+/* #table td {
+	border: 1px solid #606060;
+	padding: 0;
+	margin: 0px;
+
+	overflow: auto;
+
+  }
+
+
+#table div {
+	resize: horizontal;
+	overflow: hidden;
+	margin: 0px;
+	padding: 0px;
+	border: 1px solid black;
+	display:block;
+
+  }
+
+#table td div {
+	border: 0;
+	width: auto;
+	height: auto;
+
+	min-width: 40px;
+  } */
+
+
+
+button:focus {outline:0;}
+
+/* #table th:first-child{
+	background-color: black;
+} */
+
+.row{
+	font-size: small;
+	height: 20px;
+	/* max-width:100%; */
+	/*width: 12.5%;*/
+
+}
+
+.row td{
+	border: solid #606060 1px;
+	overflow:hidden;
+}
+
+#table tr:first-child td{
+	border-top:none;
+}
+
+#table tr:nth-child(odd){
+  background-color: #f0f0f0;
+}
+
+#table tr:nth-child(even){
+	background-color: white;
+}
+
+/* .col1{
+
+	width:50px;
+
+}
+
+.col2{
+	width:75px;
+}
+.col3{
+	width:47px;
+}
+.col4{
+	width:67px;
+}
+.col5{
+	width:52px;
+}
+.col6{
+	width:76px;
+}
+.col7{
+	width:67px;
+}
+.col8{
+	width:50px;
+} */

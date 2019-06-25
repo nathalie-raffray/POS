@@ -1,0 +1,615 @@
+
+#maincontainer{
+	width:100%;
+	height:100%;
+	position:absolute;
+	overflow-y: hidden;
+	overflow-x: hidden;
+	cursor: default;
+	background: rgba(226,226,226,1);
+	font-family: "Lucida Grande";
+
+}
+
+#maincontainer ul li{
+	list-style-type: none;
+	text-align:left;
+	cursor: default;
+}
+
+button:focus {outline:0;}
+
+#coloredBox, #productBox, #containerBox{
+	border-radius: 20px;
+}
+
+/*#twoTopBoxes{
+	width:98%;
+	height:20%;
+	position:relative;
+}*/
+
+/* STYLING FOR COLORED CONTAINER */
+
+#coloredBox{
+	background-image: linear-gradient(rgb(170,35,35), rgb(120,35,35));
+	width:31%;
+	height:25%;
+	text-align:right;
+	position:relative;
+	border: 1px solid #808080;
+	color: white;
+	margin-right: 2%;
+	float:left;
+}
+
+#codeDisplay, #dateCM{
+	position:absolute;
+	right:8%;
+}
+
+#codeDisplay{
+	top:8%;
+	font-size: 3vw;
+	font-weight: bold;
+}
+
+#dateCM{
+	bottom:8%;
+	font-size: 0.55em;
+}
+
+/* STYLING FOR PRODUCT CONTAINER (main box on right) */
+
+#productBox{
+	list-style: none;
+	font-size: 0.60em;
+	width: 64%;
+	height:25%;
+	background-color: white;
+	position:relative;
+	border: 1px solid #808080;
+
+	overflow:auto;
+
+}
+
+#titleBox{
+	position: relative;
+	width:100%;
+	height: 15px;
+	background-color: #ddd;
+	border-bottom: 1px solid #808080;
+	overflow: hidden;
+}
+
+#productBoxTitle{
+	font-weight:bold;
+	position:absolute;
+	left: 10px;
+	top: 4px;
+}
+
+/*@media(min-width: 768px)
+{
+	#twoTopBoxes{
+	display:flex;
+	}
+}*/
+
+/*#twoTopBoxes{
+	display:flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+#coloredBox, #productBox{
+	
+	flex:1;
+}
+
+#coloredBox{
+	order:1;
+}*/
+
+/*#productBox{
+	
+	display:flex;
+	flex-direction: column;
+}
+
+#titleBox{
+	flex:1;
+}
+
+#productSubBox{
+	flex: 6;
+}
+*/
+
+#productSubBox{
+
+	position:relative;
+
+}
+
+#productSubBox ul{
+	position:absolute;
+	color: #696969;
+	margin:auto;
+	padding-left: 5%;
+
+}
+
+#productSubBox li{
+	white-space: nowrap;
+}
+
+.pcd{ /*Product Code and Description in Subbox*/
+
+}
+
+.greyBox{
+
+}
+
+textarea{ /* STYLING FOR ALL GREY TEXT AREAS */
+	font-family: "Lucida Grande";
+	font-size: 0.95em;
+	color: #696969;
+	background-color: #e8e8e8;
+	resize: none;	/*To remove the sizable triangle of text area */
+	overflow:auto; /*To remove scrollbars of the text area*/
+	border: none;
+	padding: 2px;
+	height: 1.4em;
+}
+
+
+#description, #productCode{
+	position:absolute;
+	margin-left: 10%;
+}
+
+#description{
+	position:absolute;
+	height: 60%;
+	width:200%;
+
+}
+
+/* STYLING FOR INFO/INVENTORY/SUPPLIER CONTAINER */
+
+#containerBox{
+	border: 1px solid #808080;
+	margin-top: 2%;
+	margin-right: 5%;
+	font-size: 0.55em;
+	overflow: hidden;
+	height:60%;
+	width: 97%;
+
+}
+
+.select{
+	height: 11px;
+	background-color: #ddd;
+	border-bottom: 1px solid #808080;
+}
+
+.choice{
+	margin-right: 2%;
+	margin-left: 2%;
+	padding-left: 2%;
+	padding-right: 2%;
+	/*font-weight:bold;
+*/	
+	
+
+}
+
+
+.select #info{
+	margin-left: 5%;
+	font-weight:bold;
+	background-color: #c0c0c0;
+	border-left: 1px solid #808080;
+	border-right: 1px solid #808080;
+}
+
+#whiteBox{
+	background-color: white;
+	height: 100%;
+	display:flex;
+	flex-direction: row;
+	
+
+}
+
+/* STYLING FOR INFO SECTION */
+
+#infoBox{
+	/*display:none;*/
+	width: 100%;
+
+}
+
+
+#infoBox1 #infoBox2 ul{	
+	width:100%;
+
+
+}
+
+#infoBox1 #infoBox2  li{
+	padding-bottom: 5px;
+	white-space: nowrap;
+
+}
+
+#infoBox1{
+	float:left;
+	margin-left: -20px;
+}
+
+#infoBox2{
+	float:left;
+	margin-left: -10px;
+}
+
+#genre{
+	font-size: 0.95em;
+	height: 1.4em;
+}
+
+/* STYLING FOR INVENTORY SECTION */
+
+#inventoryBox{
+	width:100%;
+	height:100%;
+	display:none;
+}
+
+/* STYLING FOR INVBOX1 */
+
+#invBox1{
+	height:50%;
+	display:flex;
+	justify-content: space-between;
+	overflow:auto;
+
+}
+
+/* STYLING FOR OVALS SECTION */
+
+#ovalsBox{
+	width: 55%;
+}
+
+#ovalsBox span{
+	display:block;
+	text-align:right;
+	margin-left: 4%;
+	padding-right: 6px;
+	margin-bottom: 2px;
+	background-color: #a9a9a9;
+	color:white;
+	border: 1px solid transparent;
+	border-radius: 20px;
+}
+
+#ovalsBox span:first-child{
+	margin-top: 4%;
+	padding-right: 0px;
+	text-align: center;
+	border-color: #808080;
+	color:black;
+	background-color: white;
+	/*margin-bottom: 10%;*/
+}
+
+/* STYLING FOR ADJUST/TRANSFER SECTION */
+
+#adjustTransferBox{
+	/*flex:1;*/
+	width:35%;
+	border-left: 1px dotted #808080;
+
+}
+
+#transferBox{
+	display:none;
+}
+
+#adjustBox{
+	/*display:none;*/
+}
+
+#adjustTransferBox div{
+	padding-left: 5%;
+}
+
+#atselect{
+	/*border: none;*/
+	background-color: #ddd;
+	border-left: 1px solid;
+}
+
+#adjust{
+	font-weight:bold;
+	background-color: #c0c0c0;
+	border-left: 1px solid #808080;
+	border-right: 1px solid #808080;
+
+}
+
+#adjust, #transfer{
+	margin-left: 0;
+	border-bottom: 1px solid #808080;
+}
+
+#adjustBox, #transferBox{
+	/*background-color: black;*/
+	height:92%;
+	/*padding-left: 20%;*/
+
+}
+
+.add{
+	/*color: transparent;*/
+	border-radius: 20px;
+	background-color: white;
+	/*height: 15px;
+	width: 10px;
+*/	margin-right: 5px;
+	/*width:20px;*/
+}
+
+.sub{
+	/*color: transparent;*/
+	border-radius: 20px;
+	background-color: white;
+	/*height: 15px;
+	width: 10px;*/
+}
+
+#adjustTransferBox input{
+	height: 9px;
+	width: 80px;
+}
+
+.submit{
+	margin-top: 3%;
+}
+
+#transferBox span{
+	display:block;
+	margin-top: 3%;
+}
+
+#adjustBox span{
+	display:block;
+	margin-top: 3%;
+}
+
+
+
+/* STYLING FOR HISTORY/RESERVED/COMING SELECTION */
+
+#hrc{
+	border-top: 1px solid #808080;
+
+}
+
+#history{
+	font-weight:bold;
+	background-color: #c0c0c0;
+	border-left: 1px solid #808080;
+	border-right: 1px solid #808080;
+}
+
+/* STYLING FOR HISTORY/RESERVED/COMING TABLES */
+
+#invBox2{
+	height:42%;
+	
+}
+
+#historyBox{
+	/*display:none;*/
+	height:100%;
+	/*width:100%;*/
+}
+
+#reservedBox{
+	display:none;
+	height:100%;
+}
+
+#comingBox{
+	display:none;
+	height:100%;
+}
+
+
+#invBox2 table{
+	border-collapse: collapse;
+	width:100%;
+}
+
+.invHeader th{
+	font-weight:normal;
+	color: #696969;
+	border-bottom: 1px solid #808080;
+	border-left: 1px solid #d0d0d0;
+	text-align:right;
+}
+
+.invRowBox {
+	height: 85%;
+	overflow: auto;
+}
+
+.invRowBox td{
+	/*border-left: 5px solid transparent;
+*/	border-bottom: 1px solid #d0d0d0;
+	border-right: 1px solid #d0d0d0;
+	text-align:right;
+}
+
+
+#histHeader th{
+	width: 12%;
+
+}
+
+#histRowBox td{
+	width: 12%;
+	
+}
+
+#reservedHeader th{
+	width: 20%;
+	/*background-color: black;*/
+}
+
+#reservedRowBox td{
+	width: 20%;
+}
+
+#comingHeader th{
+	width: 25%;
+}
+
+#comingRowBox td{
+	width: 25%;
+}
+
+/*#comingHeader th:last-child{
+	padding-right: 10px;
+}*/
+
+/* STYLING FOR SUPPLIER SECTION */
+
+#supplierBox{
+	width:100%;
+	display:none;
+}
+
+#supplierBox table{
+	border-collapse: collapse;
+}
+
+/* STYLING FOR SUPPLIER HEADER */
+
+#supHeaderTable{
+	margin-top: 5%;
+	margin-left: 5%;
+	width: 90%;
+
+}
+
+#supHeaderTable th{
+	text-align: left;
+	width: 15%;
+	color: #696969;
+	font-weight: normal;
+}
+
+/* STYLING FOR SUPPLIER ROWS */
+
+#supRowBox{
+	height: 30%;
+	margin-left: 5%;	
+	width:90%;
+	overflow: auto;
+	border: 1px solid black;
+}
+
+#supRowTable{
+	width:100%;
+}
+
+#supRowTable td{
+	width: 15%;
+}
+
+.supRow{
+	border-bottom: 1px solid #ddd;
+}
+
+
+
+
+/* STYLING FOR BOTTOM LEFT BUTTONS */
+
+#bottomOptions{
+	display: flex;
+	justify-content: flex-end;
+	
+	
+}
+
+#moreOptions{
+	flex-basis: 35px;
+	font-size: 12px;
+}
+
+#print, #delete, #save{
+	font-size: 12px;
+	
+}
+
+#print, #delete, #save, #moreOptions{
+	font-size: 12px;
+	font-family: "Lucida Grande";
+	border-radius: 5px;
+	width: 17%;
+	background-color: white;
+	border: 1px solid #808080;
+	margin-left:2%;
+	margin-top: 2%;
+	
+}
+#save{
+	margin-right: 5%;
+}
+
+#bottomOptions{
+	display: flex;
+	justify-content: flex-end;
+	margin-top: 1%;
+	
+}
+
+#bottomOptions button:active{
+	background-color: #668ad8;
+	border: solid 1px black;
+	-ms-transform: translateY(2px);
+    -webkit-transform: translateY(2px);
+    transform: translateY(2px);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
+}
+
+
+/*#moreOptions, #print, #delete, #save{
+	font-size: 13px;
+	margin-left: 15px;
+	width: 17%;
+	background-color: white;
+	border: 1px solid #808080;
+	font-family: "Lucida Grande";
+	border-radius: 5px;
+	color: black;
+	
+}
+
+#moreOptions{
+	width: 7%;
+}
+#save{
+	margin-right: 3%;
+}*/
+
+
+

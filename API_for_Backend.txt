@@ -1,0 +1,100 @@
+------------------
+Search for Products
+
+POST request to /searchProducts.php
+TYPE: JSON
+
+Sample Post:
+{
+  entered: 'black sabbath masters',
+  filter: 'Description',
+  searchIndex: '1-100',
+  offset: '1000',
+  count: '1000'
+}
+
+NOTE: offset and count will decide which rows will be
+      back to client. In MySQL code, offset:0 and count:1000
+      is denoted "SELECT .... LIMIT 0, 1000"
+
+POSSIBLE ERROR MESSAGES:
+    'None' : No errors
+
+Sample Response:
+{
+  error: 'None',
+  data: { {id: '20342',
+          type: '1',
+          description: 'Pink Floyd - Animals',
+          qty: '1',
+          scond: 'NM',
+          vcond: 'NM',
+          sell: '29.99',
+          fileunder: '',
+          class: 'Rock'
+          },
+
+          {id: '2442',
+          type: '0',
+          description: 'Augustus Pablo - Augustus Pablo',
+          qty: '1',
+          scond: 'NM',
+          vcond: 'NM',
+          sell: '24.99',
+          fileunder: '',
+          class: 'Reggae'
+          }
+
+      }
+}
+
+-----------------
+Smart Find for Products
+POST request to /searchProducts.php (smartFindProducts.php?)
+TYPE: JSON
+
+Sample Post:
+{
+  query: "SELECT id, type, description, sell, qty, class, fileunder, vcond, scond
+  FROM(SELECT id, type, description, sell, qty, class, fileunder, vcond, scond
+  FROM `ln`UNION ALL SELECT id, type, description, sell, qty, class, fileunder,
+  vcond, scond FROM `lp`UNION ALL SELECT id, type, description, sell, qty, class,
+  fileunder, vcond, scond FROM `cd` ) AS errything WHERE  id NOT  LIKE "%0009%"
+  AND ( description  LIKE "^bla%")"
+
+}
+
+NOTE: Note that the offset and count must be the same for every
+entry in the searchArray
+
+Sample Response:
+Same as the sample response listed above under 'Search For Products'
+
+
+-----------------
+Search for customers
+
+Sample Post:
+{
+  entered: '438926-7260',
+  filter: 'Phone Number',
+  searchIndex: '1-100',
+  offset: '0',
+  count: '1000'
+}
+
+NOTE: Phone number MUST contain 4-10 numbers. It may contain any extra symbols
+      (such as hyphens or extra spaces) but no letters of the alphabet.
+
+POSSIBLE ERROR MESSAGES:
+      'None' : No errors
+      'Error: phone number contains letters'
+      'Error: too many numbers'
+
+      (IM NOT SURE HOW THIS WILL WORK FOR INTL PHONE NUMBERS)
+
+Sample Response:
+{
+
+  error: 'None'
+}

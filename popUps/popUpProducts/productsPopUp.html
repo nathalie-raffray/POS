@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Product</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="styleProduct.css">
+
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+</head>
+<body id="maincontainer">
+
+	<!-- <div id="twoTopBoxes">
+
+	</div> -->
+
+	<div id="coloredBox">
+			<span id="codeDisplay"></span>
+			<span id="dateCM">
+				Created: <span id="dateCreated">01/01/2019</span>
+				<br>
+				Modified: <span id="dateModified">01/01/2019</span>
+			</span>
+		</div>
+
+		<div id="productBox">
+			<div id="titleBox">
+				<span id="productBoxTitle">Product</span>
+			</div>
+			<br>
+			<div id="productSubBox">
+				<ul>
+					<li>
+						 <span class="pcd">Product Code</span>
+						 <textarea class="grayBox" form="savedeleteform" name="code" id="productCode" required></textarea>
+					</li>
+					<br>
+					<li>
+						<span class="pcd">Description</span>
+						<textarea class="grayBox" form="savedeleteform" name="description" id="description" required></textarea>
+
+					</li>
+				</ul>
+			</div>
+
+
+		</div>
+
+
+	<div id="containerBox">
+		<div class="select">
+			<span class="choice" id="info">Info</span>
+			<span class="choice" id="inventory">Inventory</span>
+			<span class="choice" id="supplier">Supplier</span>
+		</div>
+
+		<div id="whiteBox">
+
+			<div id="infoBox">
+				<div id="infoBox1">
+					<ul>
+						<li>Label <br>
+						<textarea class="grayBox" form="savedeleteform" name="label" id="label"></textarea></li>
+						<li>UPC <br>
+						<textarea class="grayBox" form="savedeleteform" name="upc" id="upc"></textarea></li>
+						<li>Pressing Info <br>
+						<textarea class="grayBox" form="savedeleteform" name="pressInfo" id="pressInfo"></textarea></li>
+						<li>Country <br>
+						<textarea class="grayBox" form="savedeleteform" name="country" id="country"></textarea></li>
+						<li>Catalog No <br>
+						<textarea class="grayBox" form="savedeleteform" name="catalogueNo" id="catalogueNo"></textarea></li>
+						<li>Alt Catalog No <br>
+						<textarea class="grayBox" form="savedeleteform" name="altCatalogueNo" id="altCatalogueNo"></textarea></li>
+					</ul>
+				</div>
+
+				<div id="infoBox2">
+					<ul>
+						<li>Genre <br>
+						<select id="genre" form="savedeleteform" name="genre" name="genre">
+							<option value="Alternatif">Alternatif</option>
+							<option value="Punk">Punk</option>
+							<option value="Metal">Metal</option>
+							<option value="Instrumentale">Instrumentale</option>
+							<option value="Enfants">Enfants</option>
+							<option value="Rock">Rock</option>
+							<option value="Psych">Psych/Prog</option>
+							<option value="Jazz">Jazz</option>
+							<option value="Blues">Blues</option>
+							<option value="Classique">Classique</option>
+							<option value="Folk">Folk</option>
+							<option value="Country">Country</option>
+							<option value="Pop">Pop</option>
+							<option value="Experimentale">Experimentale</option>
+							<option value="Ambient">Ambient</option>
+							<option value="Electronique">Electronique</option>
+							<option value="SpokenWord">Spoken Word</option>
+							<option value="Humour">Humour</option>
+							<option value="Library">Library</option>
+							<option value="BandesSonores">Bandes Sonores</option>
+							<option value="Monde">Monde</option>
+							<option value="Disco">Disco</option>
+							<option value="Funk/Soul">Funk/Soul</option>
+							<option value="Reggae">Reggae</option>
+							<option value="Rap">Rap</option>
+							<option value=" ">(No Genre)</option>
+						</select></li>
+						<li>Number On The Wall <br>
+						<textarea class="grayBox" form="savedeleteform" name="numOnWall" id="numOnWall"></textarea></li>
+						<li>Vinyl Condition <br>
+						<textarea class="grayBox" form="savedeleteform" name="vinylCon" id="vinylCon"></textarea></li>
+						<li>Sleeve Condition <br>
+						<textarea class="grayBox" form="savedeleteform" name="sleeveCon" id="sleeveCon"></textarea></li>
+						<li>File Under <br>
+						<textarea class="grayBox" form="savedeleteform" name="fileUnder" id="fileUnder"></textarea>
+						</li>
+						<li>Informations Supplementaires <br>
+						<textarea class="grayBox" form="savedeleteform" name="extraInfo" id="extraInfo"></textarea></li>
+					</ul>
+				</div>
+			</div>
+
+
+			<div id="inventoryBox">
+				<div id="invBox1">
+					<div id="ovalsBox">
+						<span id="iTitle">Inventory</span>
+
+						<span id="iTotal">0 Total</span>
+
+						<span id="iFloor">0 Floor</span>
+
+						<span id="iBasement">0 Basement</span>
+
+						<span id="iReserved">0 Reserved</span>
+
+						<span id="iCustOrder">0 Coming For Customers</span>
+
+						<span id="iStockOrder">0 Coming For Stock</span>
+					</div>
+
+					<div id="adjustTransferBox">
+						<div class="select" id="atselect">
+							<span class="choice" id="adjust">Adjust</span>
+							<span class="choice" id="transfer">Transfer</span>
+						</div>
+
+						<div id="adjustBox">
+							<span id="adjustWhat">Adjust:
+							<select class="selectFrom" name="selectFrom">
+								<option value="floor">Floor</option>
+								<option value="basement">Basement</option>
+							</select></span>
+
+							<span>
+								Add: <button class="add">&#xFF0B</button>
+								Subtract: <button class="sub">&#x2212</button>
+							</span>
+
+							<span>
+								Quantity: <input type="number" min="0"name="adjustby">
+							</span>
+
+							<button class="submit">Submit</button>
+						</div>
+
+						<div id="transferBox">
+							<span id="from">Transfer From:
+							<select class="selectFrom" name="selectFrom">
+								<option value="floor">Floor</option>
+								<option value="basement">Basement</option>
+							</select></span>
+
+
+							<span id="to">Transfer To:
+							<select class="selectTo" name="selectTo">
+								<option value="floor">Floor</option>
+								<option value="basement">Basement</option>
+							</select></span>
+
+
+							<span>
+								Add: <button class="add"> &#xFF0B</button>
+								Subtract: <button class="sub">&#x2212</button>
+							</span>
+
+
+							<span>
+								Quantity: <input type="number" min="0"name="adjustby">
+							</span>
+
+
+							<button class="submit">Submit</button>
+						</div>
+
+
+					</div>
+
+				</div>
+				<div class="select" id="hrc">
+					<span class="choice" id="history">History</span>
+					<span class="choice" id="reserved">Reserved</span>
+					<span class="choice" id="coming">Coming</span>
+				</div>
+				<div id="invBox2">
+					<div id="historyBox">
+						<table id="histHeader" class="invHeader">
+							<tr>
+								<th>Source</th>
+								<th>Quantity</th>
+								<th>Date</th>
+								<th>Date Ordered</th>
+								<th>Supplier</th>
+								<th>T From</th>
+								<th>T To</th>
+								<th>Adjusted</th>
+							</tr>
+						</table>
+						<div id="histRowBox" class="invRowBox">
+							<table>
+								<tr>
+									<td>I-109879</td>
+									<td>-1</td>
+									<td>04/02/2019</td>
+									<td>-</td>
+									<td>-</td>
+									<td>-</td>
+									<td>-</td>
+									<td>-</td>
+								</tr>
+								<tr>
+									<td>T-407943</td>
+									<td>1</td>
+									<td>03/02/2019</td>
+									<td>-</td>
+									<td>-</td>
+									<td>Warehouse</td>
+									<td>Basement</td>
+									<td>-</td>
+								</tr>
+								<tr>
+									<td>PO-1098777</td>
+									<td>20</td>
+									<td>05/02/2017</td>
+									<td>03/01/2018</td>
+									<td>Fab</td>
+									<td>-</td>
+									<td>-</td>
+									<td>-</td>
+								</tr>
+								<tr>
+									<td>A-1098777</td>
+									<td>-1</td>
+									<td>05/02/2017</td>
+									<td>-</td>
+									<td></td>
+									<td>-</td>
+									<td>-</td>
+									<td>Floor</td>
+								</tr>
+								<tr>
+									<td>I-109880</td>
+									<td>-1</td>
+									<td>04/12/2019</td>
+									<td>-</td>
+									<td>-</td>
+									<td>-</td>
+									<td>-</td>
+									<td>-</td>
+								</tr>
+								<tr>
+									<td>I-109890</td>
+									<td>-2</td>
+									<td>27/02/2019</td>
+									<td>-</td>
+									<td>-</td>
+									<td>-</td>
+									<td>-</td>
+									<td>-</td>
+								</tr>
+									<tr>
+									<td>I-109890</td>
+									<td>-2</td>
+									<td>27/02/2019</td>
+									<td>-</td>
+									<td>-</td>
+									<td>-</td>
+									<td>-</td>
+									<td>-</td>
+								</tr>
+									<tr>
+									<td>I-109890</td>
+									<td>-2</td>
+									<td>27/02/2019</td>
+									<td>-</td>
+									<td>-</td>
+									<td>-</td>
+									<td>-</td>
+									<td>-</td>
+								</tr>
+									<tr>
+									<td>I-109890</td>
+									<td>-2</td>
+									<td>27/02/2019</td>
+									<td>-</td>
+									<td>-</td>
+									<td>-</td>
+									<td>-</td>
+									<td>-</td>
+								</tr>
+
+							</table>
+						</div>
+					</div>
+
+					<div id="reservedBox">
+						<table id="reservedHeader" class="invHeader">
+							<tr>
+								<th>Order</th>
+								<th>Date</th>
+								<th>Customer</th>
+								<th>Phone</th>
+								<th>Qty</th>
+							</tr>
+						</table>
+						<div id="reservedRowBox" class="invRowBox">
+							<table>
+								<tr>
+									<td>O-98997</td>
+									<td>5/27/2019</td>
+									<td>Luc Belliveau</td>
+									<td>514 287 3000</td>
+									<td>300</td>
+								</tr>
+									<tr>
+									<td>O-98997</td>
+									<td>5/27/2019</td>
+									<td>Luc Belliveau</td>
+									<td>514 287 3000</td>
+									<td>300</td>
+								</tr>
+									<tr>
+									<td>O-98997</td>
+									<td>5/27/2019</td>
+									<td>Luc Belliveau</td>
+									<td>514 287 3000</td>
+									<td>300</td>
+								</tr>
+									<tr>
+									<td>O-98997</td>
+									<td>5/27/2019</td>
+									<td>Luc Belliveau</td>
+									<td>514 287 3000</td>
+									<td>300</td>
+								</tr>
+									<tr>
+									<td>O-98997</td>
+									<td>5/27/2019</td>
+									<td>Luc Belliveau</td>
+									<td>514 287 3000</td>
+									<td>300</td>
+								</tr>
+									<tr>
+									<td>O-98997</td>
+									<td>5/27/2019</td>
+									<td>Luc Belliveau</td>
+									<td>514 287 3000</td>
+									<td>300</td>
+								</tr>
+									<tr>
+									<td>O-98997</td>
+									<td>5/27/2019</td>
+									<td>Luc Belliveau</td>
+									<td>514 287 3000</td>
+									<td>300</td>
+								</tr>
+									<tr>
+									<td>O-98997</td>
+									<td>5/27/2019</td>
+									<td>Luc Belliveau</td>
+									<td>514 287 3000</td>
+									<td>300</td>
+								</tr>
+									<tr>
+									<td>O-98997</td>
+									<td>5/27/2019</td>
+									<td>Luc Belliveau</td>
+									<td>514 287 3000</td>
+									<td>300</td>
+								</tr>
+									<tr>
+									<td>O-98997</td>
+									<td>5/27/2019</td>
+									<td>Luc Belliveau</td>
+									<td>514 287 3000</td>
+									<td>300</td>
+								</tr>
+									<tr>
+									<td>O-98997</td>
+									<td>5/27/2019</td>
+									<td>Luc Belliveau</td>
+									<td>514 287 3000</td>
+									<td>300</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+
+					<div id="comingBox">
+						<table id="comingHeader" class="invHeader">
+							<tr>
+								<th>Source</th>
+								<th>Supplier</th>
+								<th>Date</th>
+								<th>Qty</th>
+							</tr>
+						</table>
+						<div id="comingRowBox" class="invRowBox">
+							<table>
+								<tr>
+									<td>PO-98827</td>
+									<td>Mobile Fidelity</td>
+									<td>09/01/2018</td>
+									<td>10</td>
+								</tr>
+								<tr>
+									<td>PO-98827</td>
+									<td>Mobile Fidelity</td>
+									<td>09/01/2018</td>
+									<td>10</td>
+								</tr>
+								<tr>
+									<td>PO-98827</td>
+									<td>Mobile Fidelity</td>
+									<td>09/01/2018</td>
+									<td>10</td>
+								</tr>
+								<tr>
+									<td>PO-98827</td>
+									<td>Mobile Fidelity</td>
+									<td>09/01/2018</td>
+									<td>10</td>
+								</tr>
+								<tr>
+									<td>PO-98827</td>
+									<td>Mobile Fidelity</td>
+									<td>09/01/2018</td>
+									<td>10</td>
+								</tr>
+								<tr>
+									<td>PO-98827</td>
+									<td>Mobile Fidelity</td>
+									<td>09/01/2018</td>
+									<td>10</td>
+								</tr>
+								<tr>
+									<td>PO-98827</td>
+									<td>Mobile Fidelity</td>
+									<td>09/01/2018</td>
+									<td>10</td>
+								</tr>
+								<tr>
+									<td>PO-98827</td>
+									<td>Mobile Fidelity</td>
+									<td>09/01/2018</td>
+									<td>10</td>
+								</tr>
+								<tr>
+									<td>PO-98827</td>
+									<td>Mobile Fidelity</td>
+									<td>09/01/2018</td>
+									<td>10</td>
+								</tr>
+								<tr>
+									<td>PO-98827</td>
+									<td>Mobile Fidelity</td>
+									<td>09/01/2018</td>
+									<td>10</td>
+								</tr>
+								<tr>
+									<td>PO-98827</td>
+									<td>Mobile Fidelity</td>
+									<td>09/01/2018</td>
+									<td>10</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+
+				</div>
+
+
+			</div>
+
+			<div id="supplierBox">
+
+				<table id="supHeaderTable">
+						<tr>
+							<th>Supplier</th>
+							<th>Supplier Code</th>
+							<th>Raw Cost</th>
+							<th>Currency</th>
+							<th>Selling Price</th>
+							<th>Last Date Received</th>
+						</tr>
+
+				</table>
+				<div id="supRowBox">
+					<table id="supRowTable">
+						<tr class = "supRow">
+							<td>Fab</td>
+							<td>2309897</td>
+							<td>16.99</td>
+							<td>CDN</td>
+							<td>23.99</td>
+							<td>01/02/13</td>
+						</tr>
+						<tr class = "supRow">
+							<td>Fab</td>
+							<td>2309897</td>
+							<td>16.99</td>
+							<td>CDN</td>
+							<td>23.99</td>
+							<td>01/02/13</td>
+						</tr>
+						<tr class = "supRow">
+							<td>Fab</td>
+							<td>2309897</td>
+							<td>16.99</td>
+							<td>CDN</td>
+							<td>23.99</td>
+							<td>01/02/13</td>
+						</tr>
+						<tr class = "supRow">
+							<td>Fab</td>
+							<td>2309897</td>
+							<td>16.99</td>
+							<td>CDN</td>
+							<td>23.99</td>
+							<td>01/02/13</td>
+						</tr>
+						<tr class = "supRow">
+							<td>Fab</td>
+							<td>2309897</td>
+							<td>16.99</td>
+							<td>CDN</td>
+							<td>23.99</td>
+							<td>01/02/13</td>
+						</tr>
+						<tr class = "supRow">
+							<td>Fab</td>
+							<td>2309897</td>
+							<td>16.99</td>
+							<td>CDN</td>
+							<td>23.99</td>
+							<td>01/02/13</td>
+						</tr>
+						<tr class = "supRow">
+							<td>Fab</td>
+							<td>2309897</td>
+							<td>16.99</td>
+							<td>CDN</td>
+							<td>23.99</td>
+							<td>01/02/13</td>
+						</tr>
+						<tr class = "supRow">
+							<td>Fab</td>
+							<td>2309897</td>
+							<td>16.99</td>
+							<td>CDN</td>
+							<td>23.99</td>
+							<td>01/02/13</td>
+						</tr>
+
+					</table>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+
+	<div id="bottomOptions">
+		<select id="moreOptions" name="type">
+			<option value="" id="default">&#9881</option>
+			<option value="setProductInfo">Set All Products Info</option>
+			<option value="option2">Option 2</option>
+			<option value="option3">Option 3</option>
+			<option value="option4">Option 4</option>
+		</select>
+
+		<button id="print">Print Label</button>
+		<button id="delete">Delete</button>
+		<button class="submit" form="savedeleteform" name="save" id="save">Save</button>
+		<form action="save.php" method="post" id="savedeleteform">
+
+
+		</form>
+
+	</div>
+
+<script src="productPopUp.js"></script>
+</body>
+</html>

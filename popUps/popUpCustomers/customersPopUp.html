@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Customer</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="styleCustomer.css">
+
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+</head>
+<body id="maincontainer">
+
+	<div id="twoTopBoxes">
+
+		<div id="coloredBox">
+			<span id="codeDisplay">Guy-Bernard Joseph</span>
+			<span id="dateCM">
+				Created: <span id="dateCreated">01/01/2019</span>
+				<br>
+				Modified: <span id="dateModified">01/01/2019</span>
+			</span>
+		</div>
+
+		<div id="customerBox">
+			<div id="titleBox">
+				<span id="customerBoxTitle">Customer</span>
+			</div>
+			
+			<div id="customerSubBox">
+				<ul>
+					<li>
+						
+						 <span class="ncd">Name</span>
+						 <textarea class="grayBox" id="firstName" required>Guy-Bernard</textarea>
+						 <textarea class="grayBox" id="lastName" required>Joseph</textarea>
+					</li>
+					<br>
+					<li>
+						<span class="ncd">Company</span>
+						<textarea class="grayBox" id="company" required></textarea>
+					</li>
+					<br>
+					<li>
+						<span class="ncd">Discount</span>
+						<select id="discount">
+							<option value="5">5%</option>
+							<option value="10">10%</option>
+							<option value="12/15">12% New, 15% Used</option>
+							<option value="employee">Employee</option>
+						</select>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div id="containerBox">
+		<div class="select">
+			<span class="choice" id="info">Info</span>
+			<span class="choice" id="notes">Notes</span>
+		</div>
+
+		<div id="whiteBox">
+			<div id="infoBox">
+				<div id="infoBox1">
+					<ul>
+						<li>
+							<select class="phone">
+								<option value="home">home</option>
+								<option value="mobile">mobile</option>
+							</select>
+							<textarea class="grayBox" class="phoneNum">438 926 5500</textarea>
+							<button class="phoneSel" id="firstButton"> <span class="dot"></span> </button>
+						</li>
+						<li>
+							<select class="phone">
+								<option value="home">home</option>
+								<option value="mobile">mobile</option>
+							</select>
+							<textarea class="grayBox" class="phoneNum">450 987 6543</textarea>
+							<button class="phoneSel"> <span class="dot"></span> </button>
+						</li>
+						<li>
+							<select class="phone">
+								<option value="home">home</option>
+								<option value="mobile">mobile</option>
+							</select>
+							<textarea class="grayBox" class="phoneNum"></textarea>
+							<button class="phoneSel"> <span class="dot"></span> </button>
+						</li>
+						<li>
+							<select class="phone">
+								<option value="home">home</option>
+								<option value="mobile">mobile</option>
+							</select>
+							<textarea class="grayBox" class="phoneNum"></textarea>
+							<button class="phoneSel"> <span class="dot"></span> </button>
+						</li>
+						<li id="email">
+							<span class ="ew">Email</span>
+							<textarea class="grayBox"></textarea>
+						</li>
+						<li id="website">
+							<span class ="ew">Website</span>
+							<textarea class="grayBox"></textarea>
+						</li>
+					</ul>
+				</div>
+
+				<div id="infoBox2">
+					<span id="address">Shipping Address</span>
+					<ul>
+						<li>
+							Line 1:
+							<textarea  class="addressText" class="grayBox"></textarea>
+						</li>
+						<li>
+							Line 2:
+							<textarea  class="addressText" class="grayBox"></textarea>
+						</li>
+						<li>
+							<span id="city">
+								City:
+								<input type="text" list="cityList" name="city">
+								<datalist id="cityList">
+									<option value="Montreal">
+									<!-- <option value="Quebec">
+									<option value="Drummondville"> -->
+								</datalist>
+							</span>
+
+							<span id="province">
+								Province:
+								<input type="text" list="provinceList" name="province">
+								<datalist id="provinceList">
+									<option value="QC">
+									<!-- <option value="ON">
+									<option value="NS">
+									<option value="AB">
+									<option value="BC">
+									<option value="MB">
+									<option value="NB">
+									<option value="NL">
+									<option value="NT">
+									<option value="NU">
+									<option value="PE">
+									<option value="SK">
+									<option value="YT">
+	 -->							</datalist>
+							</span>											
+						</li>
+						<li>
+							<span id="country">
+								Country:
+								<input type="text" list="countries" name="country">
+								<datalist id="countries">
+									<option value="Canada">
+									<!-- <option value="USA"> -->
+								</datalist>
+							</span>
+
+							<span id="postalCode">
+								Postal Code:
+								<textarea class="grayBox"></textarea>
+							</span>
+						</li>
+					</ul>
+
+				</div>
+
+			</div>
+			
+
+			<div id="notesBox">
+				<textarea id="noteText"> </textarea>	
+			</div>
+		
+		</div>
+
+	</div>
+
+	<div id="bottomOptions">
+		<select id="moreOptions" name="type">
+			<option value="" id="default">&#9881</option> 
+			<option value="merge">Merge Customer</option>
+			<option value="option2">Option 2</option>
+			<option value="option3">Option 3</option>
+			<option value="option4">Option 4</option>
+		</select>
+
+		<button id="dup">Duplicates?</button>
+		<button id="delete">Delete</button>
+		<button id="save">Save</button>
+	</div>
+
+<script src="customersPopUp.js"></script>
+</body>
+</html>
