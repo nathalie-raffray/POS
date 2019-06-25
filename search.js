@@ -18,9 +18,163 @@ var count;
 var offset;
 var pageNumber;
 var search;
+// var orderby = ''; DECLARED IN SMARTFINDPRODUCTS
+// var ascdesc = '';
+
+//var queryOrSearch; //false if last call to server was done by smart find, true if done by search bar
+
+//var previousSearch;
+
+var arrowButtons = document.getElementsByClassName('headerbutton');
+//&#9650 - up arrow
+
+for(var i = 0; i < arrowButtons.length; i++)
+{
+  arrowButtons[i].addEventListener('mousedown', function(e){
+    this.style.backgroundColor = '#c0c0c0';
+  });
+  arrowButtons[i].addEventListener('click', function(e){
+
+    this.style.backgroundColor = '#f0f0f0';
+    if(this.children[1].innerHTML == ''){
+
+      var arrows = $('.updown');
+      for(var i = 0; i<arrows.length; i++){
+        arrows[i].innerHTML = '';
+      }
+      console.log(this.children[0].innerHTML);
+      this.children[1].innerHTML = '\u25bc'; //down arrow
+      ascdesc = 'DESC'
+    }
+    else if(this.children[1].innerHTML == '\u25bc'){ //down arrow
+      this.children[1].innerHTML = '\u25b2';    //up arrow
+      ascdesc = 'ASC'
+      //ADD FUNCTIONALITY HERE
+    }
+    else{
+      this.children[1].innerHTML = '\u25bc';    //down arrow
+      ascdesc = 'DESC';
+    }
+    orderby = orderColProducts(this.children[0].innerHTML);
+    reOrder();
+    //console.log(orderby);
+
+  });
+}
+///NEED TO MAKE QUERYORSEARCH, SEARCH, QUERY UNDEFINED
+function reOrder(){
+  if(queryOrSearch == true){
+    search.orderby = orderby;
+    search.ascdesc = ascdesc;
+    $.ajax({
+      type: 'POST',
+      url: 'backend/searchDB/searchProducts.php',
+      data: search,
+      success: function(response){
+        displayProductResults(response);
+       }
+    });
+  }else if(queryOrSearch == false){
+    var smartSearch = {
+      query: query,
+      orderby: orderby,
+      ascdesc: ascdesc
+    };
+    smartSearch.orderby = orderby;
+    smartSearch.ascdesc = ascdesc;
+    $.ajax({
+      type: 'POST',
+      url: 'backend/smartFind/smartFindProducts.php',
+      data: smartSearch,
+      success: function(response){
+        displayProductResults(response);
+       }
+    });
+  }
+
+  // search = {
+  //   entered: input,
+  //   filter: filterSearch,
+  //   searchIndex: searchIndex,
+  //   offset: 0,
+  //   count: 1000,
+  //   orderby: orderby,
+  //   ascdesc: ascdesc
+  // };
+
+
+}
+
+function orderColProducts(col){
+  switch(col){
+    case 'Code':
+      return 'id';
+    case 'Description':
+      return 'description';
+    case 'Price':
+      return 'sell';
+    case 'Inventory':
+      return 'inv_floor'; //here i could do ORDER BY total, inv_floor (but need to add total col)
+    case 'Genre':
+      return 'class';
+    case 'Filed Under':
+      return 'fileunder';
+    case 'Condition':
+      return 'vcond';
+    case 'Label':
+      return 'family';
+  }
+}
+
+function displayProductResults(response){
+  $('.row').remove();
+  console.log(response);
+  var table = document.getElementById('table');
+  var regex = RegExp('Allowed memory size of');
+//  console.log(table);
+  //console.log(regex.test(response));
+  response = JSON.parse(response);
+  if(regex.test(response)){
+    table.innerHTML = 'Please make your query more precise.';
+    return;
+  }
+
+  if(response.error == 'No results found.'){
+    table.innerHTML = response.error;
+
+  }
+  else if(response.error == 'Invalid Query.'){
+    console.log('INVALID QUERY');
+  }
+  else if(response.error == 'Please enter a valid product code.'){
+    table.innerHTML = response.error;
+  }
+  else if(response.error == 'None'){
+    //When receiving data from a web server, the data is always a string.
+    //Parse the data with JSON.parse(), and the data becomes a JavaScript object.
+    response.data = JSON.parse(response.data);
+    results = response.data;
+    //console.log(response);
+
+    //CHECK FOR ERRORS
+    console.log(results[0].id);
+
+    if(results.length > 50){
+      numRowsToCreate = 50;
+      rowsDisplayed += 50;
+    }else{
+      numRowsToCreate = results.length;
+      rowsDisplayed += results.length;
+    }
+    for(var i =0; i<numRowsToCreate; i++){
+     makeRow(results[i]);
+    }
+  }
+}
 
 document.getElementById('searchForm').addEventListener('submit', function(e){
   e.preventDefault();
+  queryOrSearch = true;
   //The preventDefault() method cancels the event if it is cancelable, meaning
   //that the default action that belongs to the event will not occur.
   //preventDefault useful for when:
@@ -29,7 +183,7 @@ document.getElementById('searchForm').addEventListener('submit', function(e){
   Clicking on a link, prevent the link from following the URL
   */
   input = document.getElementById('input-box').value;
-  filterSearch = document.getElementsByClassName('filter')[0].value;
+  filterSearch = document.getElementById('filter').value;
   searchIndex = document.getElementById('searchIndex').value;
   //var js;
   rowsDisplayed = 0;
@@ -44,7 +198,9 @@ document.getElementById('searchForm').addEventListener('submit', function(e){
       filter: filterSearch,
       searchIndex: searchIndex,
       offset: 0,
-      count: 1000
+      count: 1000,
+      orderby: orderby,
+      ascdesc: ascdesc
     };
 
     $.ajax({
@@ -52,55 +208,11 @@ document.getElementById('searchForm').addEventListener('submit', function(e){
       url: 'backend/searchDB/searchProducts.php',
       data: search,
       success: function(response){
-        $('.row').remove();
-        console.log(response);
-        var table = document.getElementById('table');
-        var regex = RegExp('Allowed memory size of');
-
-        console.log(regex.test(response));
-        if(regex.test(response)){
-          table.innerHTML = 'Please make your query more precise.';
-          return;
-        }
-
-        //When receiving data from a web server, the data is always a string.
-        //Parse the data with JSON.parse(), and the data becomes a JavaScript object.
-        response = JSON.parse(response);
-
-        if(response.error == 'No results found.'){
-          table.innerHTML = response.error;
-        }
-        else if(response.error == 'Invalid Query.'){
-          console.log('INVALID QUERY');
-        }
-        else if(response.error == 'Please enter a valid product code.'){
-          table.innerHTML = response.error;
-
-        }
-        else if(response.error == 'None'){
-          response.data = JSON.parse(response.data);
-          results = response.data;
-          //console.log(response);
-
-          //CHECK FOR ERRORS
-          console.log(results[0].id);
-
-          if(results.length > 50){
-            numRowsToCreate = 50;
-            rowsDisplayed += 50;
-          }else{
-            numRowsToCreate = results.length;
-            rowsDisplayed += results.length;
-          }
-          for(var i =0; i<numRowsToCreate; i++){
-           makeRow(results[i]);
-          }
-        }
-
-
+        displayProductResults(response);
        }
     });
 
+//// AJAX IN CLASSIC JAVASCRIPT
     // var xhr = new XMLHttpRequest();
     // xhr.open('GET', 'process.php?entered='+input+'&filter='+filter+'&searchIndex='+searchIndex+'&offset=0&count=1000', true);
     //
@@ -199,46 +311,4 @@ $('#container').scroll(function() {
   }
 });
 
-// function makeRow(row){
-//   var dataTable = document.getElementById('table');
-//   var newRow = document.createElement('tr');
-//   newRow.className = 'row';
-//
-//   // if row.id=1, then code=00000001
-//   var code = row.id;
-//
-//   for(var i=code.length; i<8; i++){
-//     code = '0' + code;
-//   }
-//
-//   if(row.type == 3){
-//     newRow.id = 'CD'+code;
-//   } else if(row.type == 1){
-//     newRow.id = 'LP'+code;
-//   }
-//
-//   var rowElementsHTML = [];
-//
-//   // SELECT id, type, description, sell, qty,
-//   //                    class, fileunder, vcond, scond, family
-//
-//   rowElementsHTML=[newRow.id,                   //product code
-//               row.description,  //description
-//               '$'+row.sell,             //price
-//               row.qty+' Available', //inventory
-//               row.class,             //genre
-//               row.fileunder,                    //file under
-//               row.vcond+'/'+row.scond, //condition
-//               row.family                  //label
-//             ];
-//
-//   for(var i=1; i<9; i++){
-//     var newRowElement = document.createElement('td');
-//     newRowElement.className = 'col' + i;
-//     newRowElement.innerHTML = rowElementsHTML[i-1];
-//
-//     newRow.appendChild(newRowElement);
-//   }
-//   dataTable.appendChild(newRow);
-//
-// }
+//////////makeRow(row) is added here/////////

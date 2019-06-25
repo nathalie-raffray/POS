@@ -31,7 +31,8 @@ Sample Response:
           vcond: 'NM',
           sell: '29.99',
           fileunder: '',
-          class: 'Rock'
+          class: 'Rock',
+          inv_floor: 0
           },
 
           {id: '2442',
@@ -42,7 +43,8 @@ Sample Response:
           vcond: 'NM',
           sell: '24.99',
           fileunder: '',
-          class: 'Reggae'
+          class: 'Reggae',
+          inv_floor: 2
           }
 
       }

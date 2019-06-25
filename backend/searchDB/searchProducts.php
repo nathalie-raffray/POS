@@ -10,11 +10,19 @@ if(isset($_POST['entered']) && isset($_POST['filter']) && isset($_POST['searchIn
   $count = $_POST['count'];
 
 
+  $orderClause = '';
+  if(isset($_POST['orderby']) && isset($_POST['ascdesc'])){
+    $orderby = $_POST['orderby'];
+    $ascdesc = $_POST['ascdesc'];
+  }
+  if($orderby != ''){
+    $orderClause = " ORDER BY {$orderby} {$ascdesc}";
+  }
+
   $sendBack = new \stdClass(); //this the class we will convert to JSON to send back to the client
   $sendBack->error = 'None';
 
   //$limitClause = " LIMIT {$offset}, {$count}"; NEED TO GET RID OF LIMIT
-  $orderClause = " ORDER BY ";
   $whereClause = ''; //this will hold the 'WHERE ....' part of the query
   $query = '';  //this will hold the whole mySQL query
 
@@ -58,16 +66,16 @@ if(isset($_POST['entered']) && isset($_POST['filter']) && isset($_POST['searchIn
             }
             //if LP/LN/CD arent specified we must look through each database
             $query = "SELECT id, type, description, sell, qty,
-                               class, fileunder, vcond, scond, family
+                               class, fileunder, vcond, scond, family, inv_floor
                       FROM `ln` ".$whereClause."
                       UNION ALL
                       SELECT id, type, description, sell, qty,
-                                         class, fileunder, vcond, scond, family
+                                         class, fileunder, vcond, scond, family, inv_floor
                                 FROM `lp` ".$whereClause."
                       UNION ALL
                       SELECT id, type, description, sell, qty,
-                                         class, fileunder, vcond, scond, family
-                                FROM `cd` ".$whereClause;
+                                         class, fileunder, vcond, scond, family, inv_floor
+                                FROM `cd` ".$whereClause.$orderClause;
 
           }
         }else if(strlen($search)==9 || strlen($search)==10){ //this is the case where a user has entered 9 or 10 digits
@@ -106,8 +114,8 @@ if(isset($_POST['entered']) && isset($_POST['filter']) && isset($_POST['searchIn
               //           FROM `{$table}` WHERE id>=".$min." AND id<".$max;
             }
             $query = "SELECT id, type, description, sell, qty,
-                               class, fileunder, vcond, scond, family
-                      FROM `{$table}` ".$whereClause;
+                               class, fileunder, vcond, scond, family, inv_floor
+                      FROM `{$table}` ".$whereClause.$orderClause;
           }
 
 
@@ -157,20 +165,20 @@ if(isset($_POST['entered']) && isset($_POST['filter']) && isset($_POST['searchIn
     case "Description":
       $searcharr = explode(' ', $search);
       $string='';
-      for($i=0; $i<sizeof($searcharr); $i++){
+      for($i=1; $i<sizeof($searcharr); $i++){
         $string = $string."AND description LIKE '%{$searcharr[$i]}%'";
       }
       $query = "SELECT id, type, description, sell, qty,
-                         class, fileunder, vcond, scond, family
+                         class, fileunder, vcond, scond, family, inv_floor
                 FROM `lp` WHERE description LIKE '%{$searcharr[0]}%' {$string}
                 UNION ALL
                 SELECT id, type, description, sell, qty,
-                                   class, fileunder, vcond, scond, family
+                                   class, fileunder, vcond, scond, family, inv_floor
                 FROM `cd`  WHERE description LIKE '%{$searcharr[0]}%' {$string}
-                -- ORDER BY qty DESC LIMIT {$offset}, {$count}
-                ";
+                ".$orderClause;
 
 
+      //echo $query;
        $result = mysqli_query($conn, $query);
        // $responseClient=array();
 
@@ -178,7 +186,6 @@ if(isset($_POST['entered']) && isset($_POST['filter']) && isset($_POST['searchIn
          $sendBack->error = 'Invalid Query.';
          $sendBack->data = '';
          echo json_encode($sendBack);
-         mysqli_free_result($result);
          mysqli_close($conn);
          break;
        }
@@ -195,7 +202,7 @@ if(isset($_POST['entered']) && isset($_POST['filter']) && isset($_POST['searchIn
 
        mysqli_free_result($result);
        mysqli_close($conn);
-    
+
        $sendBack = new \stdClass();
        $sendBack->error = 'None';
        $sendBack->data = json_encode($post);

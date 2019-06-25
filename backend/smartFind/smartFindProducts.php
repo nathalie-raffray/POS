@@ -3,9 +3,18 @@ require('../../config/config.php');
 require('../../config/db.php');
 
 if(isset($_POST['query'])){ //&& isset($_POST['offset'])&& isset($_POST['count'])
-
   //$query = mysqli_real_escape_string($conn, $_POST['query']);
+  $orderClause = '';
+  if(isset($_POST['orderby']) && isset($_POST['ascdesc'])){
+    $orderby = $_POST['orderby'];
+    $ascdesc = $_POST['ascdesc'];
+  }
+  if($orderby != ''){
+    $orderClause = " ORDER BY {$orderby} {$ascdesc}";
+  }
+
   $query = $_POST['query'];
+  $query = $query.$orderClause;
   $sendBack = new \stdClass(); //this the class we will convert to JSON to send back to the client
   $sendBack->error = 'None';
 

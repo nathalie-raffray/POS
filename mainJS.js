@@ -206,11 +206,12 @@ $(document.body).on({
 for(var i = 0; i < navButtons.length; i++)
 {
   navButtons[i].addEventListener('click', function(e){
+    var dbSelected = document.getElementById('db_Selected');
 
     switch(this.textContent){
 
       case 'Customers':
-
+        dbSelected.innerHTML = 'Customers';
         //CHANGE MAIN BAR
         containerHeaders[1].textContent = 'Customer Name';
         containerHeaders[2].textContent = 'Phone Number';
@@ -229,7 +230,7 @@ for(var i = 0; i < navButtons.length; i++)
         break;
 
       case 'Products':
-
+        dbSelected.innerHTML = 'Products';
         //CHANGE MAIN BAR
         containerHeaders[1].textContent = 'Description';
         containerHeaders[2].textContent = 'Price';
@@ -248,14 +249,17 @@ for(var i = 0; i < navButtons.length; i++)
         break;
 
       case 'Orders':
+        dbSelected.innerHTML = 'Orders';
         //console.log('o');
         break;
 
       case 'Order Requests':
+        dbSelected.innerHTML = 'Order_Requests';
        // console.log('or');
         break;
 
       case 'Invoices':
+        dbSelected.innerHTML = 'Invoices';
         //console.log('i');
         break;
 
@@ -266,30 +270,38 @@ for(var i = 0; i < navButtons.length; i++)
 
 
 //////////////////////////////////STUPID ARROWS////////////////////////////////////////////////////////
-var arrowButtons = document.getElementsByClassName('headerbutton');
-
-for(var i = 0; i < arrowButtons.length; i++)
-{
-  arrowButtons[i].addEventListener('mousedown', function(e){
-    this.style.backgroundColor = '#c0c0c0';
-  });
-  arrowButtons[i].addEventListener('click', function(e){
-
-    this.style.backgroundColor = '#f0f0f0';
-
-    if(this.children[1].textContent == '\u25bc'){ //down arrow
-      this.children[1].textContent = '\u25b2';    //up arrow
-      //ADD FUNCTIONALITY HERE
-    }
-    else{
-      this.children[1].textContent = '\u25bc';    //down arrow
-    }
-  });
-}
+// var arrowButtons = document.getElementsByClassName('headerbutton');
+//
+// for(var i = 0; i < arrowButtons.length; i++)
+// {
+//   arrowButtons[i].addEventListener('mousedown', function(e){
+//     this.style.backgroundColor = '#c0c0c0';
+//   });
+//   arrowButtons[i].addEventListener('click', function(e){
+//
+//     this.style.backgroundColor = '#f0f0f0';
+//
+//     if(this.children[1].textContent == '\u25bc'){ //down arrow
+//       this.children[1].textContent = '\u25b2';    //up arrow
+//       //ADD FUNCTIONALITY HERE
+//     }
+//     else{
+//       this.children[1].textContent = '\u25bc';    //down arrow
+//     }
+//   });
+// }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /////////////////////////////SMART FIND//////////////////////////////////////////////////////////////////
+// var default_smartFind;
+// var dbSelected = document.getElementById('db_Selected').innerHTML;
+// if(dbSelected == 'Products'){
+//   //console.log(document.getElementById('customHTML_sfProducts').children);
+//   default_smartFind = document.getElementById('customHTML_sfProducts').childNodes[1];
+//   console.log(default_smartFind);
+// }
+
 var coll = document.getElementsByClassName("collapsible");
 var i;
 
@@ -299,11 +311,37 @@ for (i = 0; i < coll.length; i++) {
     var content = this.nextElementSibling;
     if (content.style.display === "block") {
       content.style.display = "none";
+
+    //   var div = document.getElementById(`customHTML_sf${dbSelected}`);
+    //   console.log(div.childNodes);
+    // //  var myNode = document.getElementById("foo");
+    //   while (div.firstChild) {
+    //       div.removeChild(div.firstChild);
+    //   }
+    //   div.appendChild(default_smartFind);
+    //
+    //
+    //   console.log(div.childNodes);
+
+
     } else {
       content.style.display = "block";
     }
   });
 }
+
+///all thats commented out is the code to make smart find go to back to its default, once you click on it
+
+// $('.collapsible').click(function(e){
+//   console.log(dbSelected);
+//   console.log(document.getElementById(`customHTML_sf${dbSelected}`).innerHTML);
+//   console.log($(`#customHTML_sf${dbSelected}`).innerHTML);
+// //  customHTML_sfProducts
+//   document.getElementById(`customHTML_sf${dbSelected}`).innerHTML = default_smartFind;
+// //   div.innerHTML = document.getElementById('blockOfStuff').innerHTML;
+// // document.getElementById('targetElement').appendChild(div);
+// });
+
 
 ///////////////////////////CLICKING AND DOUBLE CLICKING A ROW//////////////////////////////////////////////
 

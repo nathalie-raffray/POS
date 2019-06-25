@@ -10,9 +10,14 @@
 var results;
 var rowsDisplayed;
 var numRowsToCreate;
+var query;
+var queryOrSearch; //false if last call to server was done by smart find, true if done by search bar
+var orderby = '';
+var ascdesc = '';
 
 document.getElementById('smartFind').addEventListener('submit', function(e){
   e.preventDefault();
+  queryOrSearch = false;
   var rows = document.getElementById('smartFindRows').children;
   //console.log(rows);
 //  var currentId;
@@ -26,10 +31,10 @@ document.getElementById('smartFind').addEventListener('submit', function(e){
 // SELECT id, type, description FROM (SELECT id, type, description FROM `lp` UNION ALL SELECT id,
 //    type, description FROM `ln` UNION ALL SELECT id, type, description
 //    FROM `cd`) AS errything WHERE description LIKE'%black%'
-  var query = 'SELECT id, type, description, sell, qty, class, fileunder, vcond, scond FROM '
-              +'( SELECT id, type, description, sell, qty, inv_floor, class, fileunder, vcond, scond FROM `ln`'
-              +'UNION ALL SELECT id, type, description, sell, qty, inv_floor, class, fileunder, vcond, scond FROM `lp`'
-              +'UNION ALL SELECT id, type, description, sell, qty, inv_floor, class, fileunder, vcond, scond FROM `cd` ) AS errything WHERE ';
+  query = 'SELECT id, type, description, sell, qty, class, fileunder, vcond, scond, inv_floor FROM '
+              +'( SELECT id, type, description, sell, qty, class, fileunder, vcond, scond, inv_floor FROM `ln`'
+              +'UNION ALL SELECT id, type, description, sell, qty, class, fileunder, vcond, scond, inv_floor FROM `lp`'
+              +'UNION ALL SELECT id, type, description, sell, qty, class, fileunder, vcond, scond, inv_floor FROM `cd` ) AS errything WHERE ';
   var table;
   var i = 0;
   var num = 0; //this keeps track of which row we're at, without counting the quantifier rows (All, Any, None)
@@ -122,7 +127,9 @@ document.getElementById('smartFind').addEventListener('submit', function(e){
   console.log(query);
 
   var search = {
-    query: query
+    query: query,
+    orderby: orderby,
+    ascdesc: ascdesc
   };
 
 
@@ -131,46 +138,47 @@ document.getElementById('smartFind').addEventListener('submit', function(e){
     url: 'backend/smartFind/smartFindProducts.php',
     data: search,
     success: function(response){
-      $('.row').remove();
-      var table = document.getElementById('table');
-      console.log(response);
-      var regex = RegExp('Allowed memory size of');
-
-      console.log(regex.test(response));
-      if(regex.test(response)){
-        table.innerHTML = 'Please make your query more precise.';
-        return;
-      }
-
-      //When receiving data from a web server, the data is always a string.
-      //Parse the data with JSON.parse(), and the data becomes a JavaScript object.
-      response = JSON.parse(response);
-
-      if(response.error == 'No results found.'){
-        var table = document.getElementById('table');
-        table.innerHTML = response.error;
-      }
-      else if(response.error == 'Invalid Query.'){
-        console.log('INVALID QUERY');
-      }else if(response.error == 'None'){
-        response.data = JSON.parse(response.data);
-        results = response.data;
-        //console.log(response);
-
-        //CHECK FOR ERRORS
-        console.log(results[0].id);
-
-        if(results.length > 50){
-          numRowsToCreate = 50;
-          rowsDisplayed += 50;
-        }else{
-          numRowsToCreate = results.length;
-          rowsDisplayed += results.length;
-        }
-        for(var i =0; i<numRowsToCreate; i++){
-         makeRow(results[i]);
-        }
-      }
+      displayProductResults(response);
+      // $('.row').remove();
+      // var table = document.getElementById('table');
+      // console.log(response);
+      // var regex = RegExp('Allowed memory size of');
+      //
+      // console.log(regex.test(response));
+      // if(regex.test(response)){
+      //   table.innerHTML = 'Please make your query more precise.';
+      //   return;
+      // }
+      //
+      // //When receiving data from a web server, the data is always a string.
+      // //Parse the data with JSON.parse(), and the data becomes a JavaScript object.
+      // response = JSON.parse(response);
+      //
+      // if(response.error == 'No results found.'){
+      //   var table = document.getElementById('table');
+      //   table.innerHTML = response.error;
+      // }
+      // else if(response.error == 'Invalid Query.'){
+      //   console.log('INVALID QUERY');
+      // }else if(response.error == 'None'){
+      //   response.data = JSON.parse(response.data);
+      //   results = response.data;
+      //   //console.log(response);
+      //
+      //   //CHECK FOR ERRORS
+      //   console.log(results[0].id);
+      //
+      //   if(results.length > 50){
+      //     numRowsToCreate = 50;
+      //     rowsDisplayed += 50;
+      //   }else{
+      //     numRowsToCreate = results.length;
+      //     rowsDisplayed += results.length;
+      //   }
+      //   for(var i =0; i<numRowsToCreate; i++){
+      //    makeRow(results[i]);
+      //   }
+      // }
     }
   });
 });
@@ -262,15 +270,35 @@ function makeSubClause(row, entered, not){
 
 }
 
-$('.plus').click(function(e){
+
+
+$('#smartFindRows').on('click', '.plus', function(e){
   e.preventDefault();
   var row = this.parentElement;
-  console.log(this.parentElement);
-  var newRow = row.cloneNode(true);
+
+  var newRow = document.querySelector('#customProductSmartFindRow').cloneNode(true);
+
+  newRow.removeAttribute('id');
+  if(row.id == 'quantifier2'){
+    newRow.className = 'under2';
+  }else if(row.id == 'quantifier1'){
+    newRow.className = 'under1';
+  }else{
+    newRow.className = row.className;
+  }
+
+  newRow.style.display = 'inline-block';
+  //console.log(newRow);
 
   row.parentNode.insertBefore(newRow, row.nextSibling);
-  //console.log(clone);
-})
+
+});
+
+$('#smartFindRows').on('click', '.minus', function(e){
+  e.preventDefault();
+  var row = this.parentElement;
+  row.remove();
+});
 
 
 
