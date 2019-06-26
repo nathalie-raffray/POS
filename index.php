@@ -50,7 +50,7 @@
 
                     <div id="showitems">
                         <span>Show</span>
-                        <select id="searchIndex" name="searchIndex" form="searchForm">
+                        <select id="searchIndex" class="filter" name="searchIndex" form="searchForm">
                             <option value="one">0-100</option>
                             <option value="two">0-200</option>
                             <option value="five">0-500</option>
@@ -71,7 +71,7 @@
                         </div>
                         <div id="selectcol">
 														<!-- <div w3-include-html="selectFilter.html"></div> -->
-                            <select id="filter" name="filter" form="searchForm">
+                            <select class="filter" id="filter" name="filter" form="searchForm">
                                 <option value="Product Code">Product Code</option>
                                 <option value="Description">Description</option>
                                 <option value="Artist">Artist</option>
@@ -207,7 +207,7 @@
 
 <script src="mainJS.js"></script>
 <script src="backend/smartFind/smartFindProducts.js"></script>
-<script src="search.js"></script>
+<script src="searchProducts.js"></script>
 <script src="makeRow.js"></script>
 <script src="getSqlCondition.js"></script>
 

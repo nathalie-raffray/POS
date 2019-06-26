@@ -9,7 +9,7 @@ function getSqlCondition(condition, entered, not){
       clause = `${not} LIKE "%${entered}$"`;
       break;
     case 'begins_with':
-      clause = `${not} LIKE "^${entered}%"`;
+      clause = `${not} LIKE "${entered}%"`;
       break;
     case 'is':
       if(not == ''){

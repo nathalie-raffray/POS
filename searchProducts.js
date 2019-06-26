@@ -20,13 +20,10 @@ var pageNumber;
 var search;
 // var orderby = ''; DECLARED IN SMARTFINDPRODUCTS
 // var ascdesc = '';
-
 //var queryOrSearch; //false if last call to server was done by smart find, true if done by search bar
 
-//var previousSearch;
 
 var arrowButtons = document.getElementsByClassName('headerbutton');
-//&#9650 - up arrow
 
 for(var i = 0; i < arrowButtons.length; i++)
 {
@@ -43,16 +40,16 @@ for(var i = 0; i < arrowButtons.length; i++)
         arrows[i].innerHTML = '';
       }
       console.log(this.children[0].innerHTML);
-      this.children[1].innerHTML = '\u25bc'; //down arrow
+      this.children[1].innerHTML = '\u2193'; //down arrow
       ascdesc = 'DESC'
     }
-    else if(this.children[1].innerHTML == '\u25bc'){ //down arrow
-      this.children[1].innerHTML = '\u25b2';    //up arrow
+    else if(this.children[1].innerHTML == '\u2193'){ //down arrow
+      this.children[1].innerHTML = '\u2191';    //up arrow
       ascdesc = 'ASC'
       //ADD FUNCTIONALITY HERE
     }
     else{
-      this.children[1].innerHTML = '\u25bc';    //down arrow
+      this.children[1].innerHTML = '\u2193';    //down arrow
       ascdesc = 'DESC';
     }
     orderby = orderColProducts(this.children[0].innerHTML);

@@ -110,91 +110,186 @@ $('.add, .sub').click(function(){
 
 var id = window.opener.document.getElementById('productOpened').innerHTML;
 
+search = {
+  id: id;
+};
+
+$.ajax({
+  type: 'POST',
+  url: 'getProductInfo.php',
+  data: search,
+  success: function(response){
+    var table = document.getElementById('table');
+    var response = JSON.parse(response);
+    if(response.error == 'Invalid Query'){
+  		console.log('INVALID QUERY');
+  	}else if(response.error == 'No results found.'){
+  		table.innerHTML = response.error;
+  	}else{
+  		 var data = JSON.parse(response.data);
+  		console.log(data);
+
+  		var code = data.id;
+
+  		for(var i=code.length; i<8; i++){
+  			code = '0' + code;
+  		}
+
+  		if(data.type == 1){
+  			code = 'LP' + code;
+  		}else if(data.type == 2){
+  			code = 'LN' + code;
+  		}else if(data.type == 3){
+  			code = 'CD' + code;
+  		}
+
+  		//FOR USED
+  		if(data.type == 1){
+  			document.getElementById('codeDisplay').innerHTML = code;
+  			document.getElementById('productCode').value = code;
+  			document.getElementById('productCode').readOnly = true;
+  			document.getElementById('description').value = data.description;
+  			document.getElementById('label').value = data.family;
+  			document.getElementById('fileUnder').value = data.fileunder;
+  			document.getElementById('pressInfo').value = data.pressinfo;
+  			document.getElementById('country').value = data.country;
+  			document.getElementById('catalogueNo').value = data.catno;
+  			document.getElementById('altCatalogueNo').value = data.altcatno;
+  			document.getElementById('vinylCon').value = data.vcond;
+  			document.getElementById('sleeveCon').value = data.scond;
+  			//document.getElementById('extraInfo').value = json[0][15]; //info supp?
+  			var selector = document.getElementById('genre');
+  			var opts = selector.options;
+  			console.log(opts);
+  			for(var i=0; i<genres.length; i++){
+  				if(opts[i].value == genres[json[0][8]-1])
+  				{
+  					selector.selectedIndex = i;
+  					break;
+  				}
+  			}
+  		}
+
+
+  		//FOR NEW
+  		if(json[0][1]==0){
+  			document.getElementById('codeDisplay').innerHTML = code;
+  			document.getElementById('productCode').readOnly = true;
+  			document.getElementById('productCode').value = code;
+  			document.getElementById('description').value = json[0][2] + ' - ' + json[0][3];
+  			document.getElementById('label').value = json[0][11];
+  			document.getElementById('fileUnder').value = json[0][12];
+  			document.getElementById('pressInfo').value = json[0][13];
+  			document.getElementById('country').readOnly=true;
+  			document.getElementById('catalogueNo').readOnly=true;
+  			document.getElementById('altCatalogueNo').readOnly=true;
+  			document.getElementById('vinylCon').readOnly=true;
+  			document.getElementById('sleeveCon').readOnly=true;
+  			document.getElementById('extraInfo').value = json[0][14];
+  			var selector = document.getElementById('genre');
+  			var opts = selector.options;
+  			console.log(opts);
+  			for(var i=0; i<genres.length; i++){
+  				if(opts[i].value == genres[json[0][10]-1])
+  				{
+  					selector.selectedIndex = i;
+  					break;
+  				}
+  			}
+  		}
+
+
+
+
+
+   }
+});
+
 var xhr = new XMLHttpRequest();
 
 xhr.open('GET', 'popp.php?id='+id, true);
 
 xhr.onload=function(){
-	if(this.responseText == 'query failed1'){
-		console.log('error');
-	}else if(this.responseText == 'query failed2'){
-		console.log('0 rows returned');
-	}else if(this.responseTest = ''){
-		console.log('ugh');
-	}
-	else{
-		 var json = JSON.parse(this.responseText);
-		console.log(json);
-
-		var code = json[0][0];
-
-		for(var i=code.length; i<8; i++){
-			code = '0' + code;
-		}
-
-		if(json[0][1]==1){
-			code = 'LP' + code;
-		}else if(json[0][1]==0){
-			code = 'LN' + code;
-		}
-
-		//FOR USED
-		if(json[0][1]==1){
-			document.getElementById('codeDisplay').innerHTML = code;
-			document.getElementById('productCode').value = code;
-			document.getElementById('productCode').readOnly = true;
-			document.getElementById('description').value = json[0][2] + ' - ' + json[0][3];
-			document.getElementById('label').value = json[0][9];
-			document.getElementById('fileUnder').value = json[0][10];
-			document.getElementById('pressInfo').value = json[0][11];
-			document.getElementById('country').value = json[0][12];
-			document.getElementById('catalogueNo').value = json[0][13];
-			document.getElementById('altCatalogueNo').value = json[0][14];
-			document.getElementById('vinylCon').value = conditions[Math.floor(parseInt(json[0][16])/10)];
-			document.getElementById('sleeveCon').value = conditions[parseInt(json[0][16])%10];
-			document.getElementById('extraInfo').value = json[0][15];
-			var selector = document.getElementById('genre');
-			var opts = selector.options;
-			console.log(opts);
-			for(var i=0; i<genres.length; i++){
-				if(opts[i].value == genres[json[0][8]-1])
-				{
-					selector.selectedIndex = i;
-					break;
-				}
-			}
-		}
-
-
-		//FOR NEW
-		if(json[0][1]==0){
-			document.getElementById('codeDisplay').innerHTML = code;
-			document.getElementById('productCode').readOnly = true;
-			document.getElementById('productCode').value = code;
-			document.getElementById('description').value = json[0][2] + ' - ' + json[0][3];
-			document.getElementById('label').value = json[0][11];
-			document.getElementById('fileUnder').value = json[0][12];
-			document.getElementById('pressInfo').value = json[0][13];
-			document.getElementById('country').readOnly=true;
-			document.getElementById('catalogueNo').readOnly=true;
-			document.getElementById('altCatalogueNo').readOnly=true;
-			document.getElementById('vinylCon').readOnly=true;
-			document.getElementById('sleeveCon').readOnly=true;
-			document.getElementById('extraInfo').value = json[0][14];
-			var selector = document.getElementById('genre');
-			var opts = selector.options;
-			console.log(opts);
-			for(var i=0; i<genres.length; i++){
-				if(opts[i].value == genres[json[0][10]-1])
-				{
-					selector.selectedIndex = i;
-					break;
-				}
-			}
-		}
-
-
-
-	}
+	// if(this.responseText == 'query failed1'){
+	// 	console.log('error');
+	// }else if(this.responseText == 'query failed2'){
+	// 	console.log('0 rows returned');
+	// }else if(this.responseTest = ''){
+	// 	console.log('ugh');
+	// }
+	// else{
+	// 	 var json = JSON.parse(this.responseText);
+	// 	console.log(json);
+  //
+	// 	var code = json[0][0];
+  //
+	// 	for(var i=code.length; i<8; i++){
+	// 		code = '0' + code;
+	// 	}
+  //
+	// 	if(json[0][1]==1){
+	// 		code = 'LP' + code;
+	// 	}else if(json[0][1]==0){
+	// 		code = 'LN' + code;
+	// 	}
+  //
+	// 	//FOR USED
+	// 	if(json[0][1]==1){
+	// 		document.getElementById('codeDisplay').innerHTML = code;
+	// 		document.getElementById('productCode').value = code;
+	// 		document.getElementById('productCode').readOnly = true;
+	// 		document.getElementById('description').value = json[0][2] + ' - ' + json[0][3];
+	// 		document.getElementById('label').value = json[0][9];
+	// 		document.getElementById('fileUnder').value = json[0][10];
+	// 		document.getElementById('pressInfo').value = json[0][11];
+	// 		document.getElementById('country').value = json[0][12];
+	// 		document.getElementById('catalogueNo').value = json[0][13];
+	// 		document.getElementById('altCatalogueNo').value = json[0][14];
+	// 		document.getElementById('vinylCon').value = conditions[Math.floor(parseInt(json[0][16])/10)];
+	// 		document.getElementById('sleeveCon').value = conditions[parseInt(json[0][16])%10];
+	// 		document.getElementById('extraInfo').value = json[0][15];
+	// 		var selector = document.getElementById('genre');
+	// 		var opts = selector.options;
+	// 		console.log(opts);
+	// 		for(var i=0; i<genres.length; i++){
+	// 			if(opts[i].value == genres[json[0][8]-1])
+	// 			{
+	// 				selector.selectedIndex = i;
+	// 				break;
+	// 			}
+	// 		}
+	// 	}
+  //
+  //
+	// 	//FOR NEW
+	// 	if(json[0][1]==0){
+	// 		document.getElementById('codeDisplay').innerHTML = code;
+	// 		document.getElementById('productCode').readOnly = true;
+	// 		document.getElementById('productCode').value = code;
+	// 		document.getElementById('description').value = json[0][2] + ' - ' + json[0][3];
+	// 		document.getElementById('label').value = json[0][11];
+	// 		document.getElementById('fileUnder').value = json[0][12];
+	// 		document.getElementById('pressInfo').value = json[0][13];
+	// 		document.getElementById('country').readOnly=true;
+	// 		document.getElementById('catalogueNo').readOnly=true;
+	// 		document.getElementById('altCatalogueNo').readOnly=true;
+	// 		document.getElementById('vinylCon').readOnly=true;
+	// 		document.getElementById('sleeveCon').readOnly=true;
+	// 		document.getElementById('extraInfo').value = json[0][14];
+	// 		var selector = document.getElementById('genre');
+	// 		var opts = selector.options;
+	// 		console.log(opts);
+	// 		for(var i=0; i<genres.length; i++){
+	// 			if(opts[i].value == genres[json[0][10]-1])
+	// 			{
+	// 				selector.selectedIndex = i;
+	// 				break;
+	// 			}
+	// 		}
+	// 	}
+  //
+  //
+  //
+	// }
 }
 xhr.send();

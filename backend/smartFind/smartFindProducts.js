@@ -274,10 +274,10 @@ function makeSubClause(row, entered, not){
 
 $('#smartFindRows').on('click', '.plus', function(e){
   e.preventDefault();
-  var row = this.parentElement;
+  var row = this.parentElement.parentElement;
 
   var newRow = document.querySelector('#customProductSmartFindRow').cloneNode(true);
-
+  // newRow.createAttribute('class');
   newRow.removeAttribute('id');
   if(row.id == 'quantifier2'){
     newRow.className = 'under2';
@@ -289,18 +289,36 @@ $('#smartFindRows').on('click', '.plus', function(e){
 
   newRow.style.display = 'inline-block';
   //console.log(newRow);
-
+  // console.log(newRow);
   row.parentNode.insertBefore(newRow, row.nextSibling);
 
 });
 
 $('#smartFindRows').on('click', '.minus', function(e){
   e.preventDefault();
-  var row = this.parentElement;
+  var row = this.parentElement.parentElement;
   row.remove();
 });
 
 
+$('#smartFindRows').on('change', '.firstFilter', function(){ //this is for when the value is changed of <select> of Product Code/Description/Artist/Album
+
+  var secondFilterOnElement = this.parentElement.children[1];
+  var filterPapa = document.getElementById('customProductSmartFindSelect');
+
+  var secondFilter1 = filterPapa.childNodes[0].cloneNode(true);
+  var secondFilter2 = filterPapa.childNodes[1].cloneNode(true);
+
+  secondFilterOnElement.remove();
+  var value = this.options[this.selectedIndex].value;
+
+  if(value == 'Product Code' || value == 'Price' || value == 'Quantity'){
+    this.parentNode.insertBefore(secondFilter2, this.nextSibling); // == insertAfter(this, secondFilter2). In reality insertAfter does not exist
+  }else{
+    this.parentNode.insertBefore(secondFilter1, this.nextSibling);
+  }
+
+});
 
 
 ///////makeRow and getSqlCondition is added underneath here/////////////////

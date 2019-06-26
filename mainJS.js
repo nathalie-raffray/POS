@@ -269,27 +269,6 @@ for(var i = 0; i < navButtons.length; i++)
 }
 
 
-//////////////////////////////////STUPID ARROWS////////////////////////////////////////////////////////
-// var arrowButtons = document.getElementsByClassName('headerbutton');
-//
-// for(var i = 0; i < arrowButtons.length; i++)
-// {
-//   arrowButtons[i].addEventListener('mousedown', function(e){
-//     this.style.backgroundColor = '#c0c0c0';
-//   });
-//   arrowButtons[i].addEventListener('click', function(e){
-//
-//     this.style.backgroundColor = '#f0f0f0';
-//
-//     if(this.children[1].textContent == '\u25bc'){ //down arrow
-//       this.children[1].textContent = '\u25b2';    //up arrow
-//       //ADD FUNCTIONALITY HERE
-//     }
-//     else{
-//       this.children[1].textContent = '\u25bc';    //down arrow
-//     }
-//   });
-// }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -361,6 +340,8 @@ $(document.body).on('click', '.row', function(){       //when row is clicked, th
   this.style.backgroundColor = '#c0c0c0';
 
 });
+
+
 
 
 $(document.body).on('dblclick', '.row', function(){

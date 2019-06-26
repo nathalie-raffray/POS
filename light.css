@@ -159,10 +159,73 @@ button:focus{
 }
 
 /*CSS FOR SMART FIND*/
+.content{
+  height:100%;
 
-#smartFind{
 
 }
+
+.filter{
+  background-color: rgb(237,237,237);
+}
+
+#smartFindRows{
+  list-style: none;
+  font-size: small;
+  max-height: 200px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  position:relative;
+  padding-left:0;
+  width:100%;
+
+}
+
+#smartFindRows li{
+  padding-bottom: 5px;
+  padding-top: 5px;
+  border-top: 1px solid rgb(203,203,203);
+  width: 100%;
+}
+
+#quantifier1{
+  padding-left: 5px;
+}
+
+.under1, #quantifier2{
+  padding-left: 35px;
+}
+
+.under2{
+  padding-left: 65px;
+}
+
+.plusminusdiv{
+  float:right;
+}
+
+#quantifier1 .plusminusdiv{
+  padding-right: 15px;
+}
+
+.under1 .plusminusdiv{
+  padding-right: 45px;
+}
+
+.under2 .plusminusdiv{
+  padding-right: 75px;
+}
+
+.minus, .plus{
+  border: 1px solid rgb(165, 165, 165);
+  font-weight: bold;
+  font-size: 13px;
+
+  background-color: rgb(237,237,237);
+  color: rgb(34, 34, 34);
+}
+
+
 
 /* Style the button that is used to open and close the collapsible content */
 .collapsible {
@@ -187,7 +250,6 @@ button:focus{
 
 /* Style the collapsible content. Note: hidden by default */
 .content {
-  padding: 0 18px;
   display: none;
   overflow: hidden;
   background-color: #f1f1f1;

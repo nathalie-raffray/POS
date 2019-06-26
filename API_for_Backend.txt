@@ -2,15 +2,17 @@
 Search for Products
 
 POST request to /searchProducts.php
-TYPE: JSON
+TYPE RETURNED: JSON
 
 Sample Post:
-{
+var search = {
   entered: 'black sabbath masters',
   filter: 'Description',
   searchIndex: '1-100',
   offset: '1000',
-  count: '1000'
+  count: '1000',
+  orderby: 'description',
+  ascdesc: 'ASC'
 }
 
 NOTE: offset and count will decide which rows will be
@@ -62,7 +64,7 @@ Sample Post:
   FROM `ln`UNION ALL SELECT id, type, description, sell, qty, class, fileunder,
   vcond, scond FROM `lp`UNION ALL SELECT id, type, description, sell, qty, class,
   fileunder, vcond, scond FROM `cd` ) AS errything WHERE  id NOT  LIKE "%0009%"
-  AND ( description  LIKE "^bla%")"
+  AND ( description  LIKE "bla%")"
 
 }
 
