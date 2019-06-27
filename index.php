@@ -13,8 +13,16 @@
 
 </head>
 <body>
+		<div id="beautifulHeader">
+
+		</div>
+
 
     <div id="maincontainer">
+			<div id="waterGirl">
+				<img src="pics/water.png" width="256"
+					 height="256">
+			</div>
         <div id="top-bar">
                 <button type="button" title="Create Customer" name="create-customer"><img id="createcustomer" src="pics/customers.png" /></button>
                 <button type="button" title="Create Product" name="create-product"><img id="createproduct" src="pics/products.png" /></button>
@@ -121,79 +129,86 @@
                         </tr>
 
                     </table>
+										<div id="scrollTable">
+											<table id="table">
 
-                    <table id="table">
+												<div id="waterGirl3">
+													<img src="pics/water3.png" width="256"
+										         height="256">
+												</div>
 
-                        <!-- <tr id="main-bar">
-                            <th class="col1 main-bar-element">Code<button class="updown" type="button">&#9650</button></th>
+	                        <!-- <tr id="main-bar">
+	                            <th class="col1 main-bar-element">Code<button class="updown" type="button">&#9650</button></th>
 
-                            <th class="col2 main-bar-element">Description<button class="updown" type="button">&#9650</button></th>
+	                            <th class="col2 main-bar-element">Description<button class="updown" type="button">&#9650</button></th>
 
-                            <th class="col3 main-bar-element">Price<button class="updown" type="button">&#9650</button></th>
+	                            <th class="col3 main-bar-element">Price<button class="updown" type="button">&#9650</button></th>
 
-                            <th class="col4 main-bar-element">Inventory<button class="updown" type="button">&#9650</button></th>
+	                            <th class="col4 main-bar-element">Inventory<button class="updown" type="button">&#9650</button></th>
 
-                            <th class="col5 main-bar-element">Genre<button class="updown" type="button">&#9650</button></th>
+	                            <th class="col5 main-bar-element">Genre<button class="updown" type="button">&#9650</button></th>
 
-                            <th class="col6 main-bar-element">Filed Under<button class="updown" type="button">&#9650</button></th>
+	                            <th class="col6 main-bar-element">Filed Under<button class="updown" type="button">&#9650</button></th>
 
-                            <th class="col7 main-bar-element">Condition<button class="updown" type="button">&#9650</button></th>
+	                            <th class="col7 main-bar-element">Condition<button class="updown" type="button">&#9650</button></th>
 
-                            <th class="col8 main-bar-element">Label<button class="updown" type="button">&#9650</button></th>
+	                            <th class="col8 main-bar-element">Label<button class="updown" type="button">&#9650</button></th>
 
-                        </tr> -->
+	                        </tr> -->
 
-                        <!-- <tr class="row">
-                            <td class="col1">LP000123123</td>
-                            <td class="col2">Black Uhuru - Guess Who's Coming To Dinner?</td>
-                            <td class="col3">$24.99</td>
-                            <td class="col4">4 Available</td>
-                            <td class="col5">Reggae</td>
-                            <td class="col6"></td>
-                            <td class="col7">VG+/VG+</td>
-                            <td class="col8">Heartbeat Records</td>
-                        </tr>
-
-
-
-                        <tr class="row">
-                            <td class="col1">LP000123123</td>
-                            <td class="col2">Black Uhuru - Guess Who's Coming To Dinner?</td>
-                            <td class="col3">$24.99</td>
-                            <td class="col4">4 Available</td>
-                            <td class="col5">Reggae</td>
-                            <td class="col6"></td>
-                            <td class="col7">VG+/VG+</td>
-                            <td class="col8">Heartbeat Records</td>
-                        </tr> -->
-
-                        <!-- <tr class="row">
-                            <td class="col1"><div>LP000123123</div></td>
-                            <td class="col2"><div>Black Uhuru - Guess Who's Coming To Dinner?</div></td>
-                            <td class="col3"><div>$24.99</div></td>
-                            <td class="col4"><div>4 Available</div></td>
-                            <td class="col5"><div>Reggae</div></td>
-                            <td class="col6"><div></div></td>
-                            <td class="col7"><div>VG+/VG+</div></td>
-                            <td class="col8"><div>Heartbeat Records</div></td>
-                        </tr>
+	                        <!-- <tr class="row">
+	                            <td class="col1">LP000123123</td>
+	                            <td class="col2">Black Uhuru - Guess Who's Coming To Dinner?</td>
+	                            <td class="col3">$24.99</td>
+	                            <td class="col4">4 Available</td>
+	                            <td class="col5">Reggae</td>
+	                            <td class="col6"></td>
+	                            <td class="col7">VG+/VG+</td>
+	                            <td class="col8">Heartbeat Records</td>
+	                        </tr>
 
 
 
-                        <tr class="row">
-                            <td class="col1"><div>LP000123123</div></td>
-                            <td class="col2"><div>Black Uhuru - Guess Who's Coming To Dinner?</div></td>
-                            <td class="col3"><div>$24.99</div></td>
-                            <td class="col4"><div>4 Available</div></td>
-                            <td class="col5"><div>Reggae</div></td>
-                            <td class="col6"><div></div></td>
-                            <td class="col7"><div>VG+/VG+</div></td>
-                            <td class="col8"><div>Heartbeat Records</div></td>
-                        </tr> -->
-                        <span id="productOpened" style="display:none"></span>
+	                        <tr class="row">
+	                            <td class="col1">LP000123123</td>
+	                            <td class="col2">Black Uhuru - Guess Who's Coming To Dinner?</td>
+	                            <td class="col3">$24.99</td>
+	                            <td class="col4">4 Available</td>
+	                            <td class="col5">Reggae</td>
+	                            <td class="col6"></td>
+	                            <td class="col7">VG+/VG+</td>
+	                            <td class="col8">Heartbeat Records</td>
+	                        </tr> -->
+
+	                        <!-- <tr class="row">
+	                            <td class="col1"><div>LP000123123</div></td>
+	                            <td class="col2"><div>Black Uhuru - Guess Who's Coming To Dinner?</div></td>
+	                            <td class="col3"><div>$24.99</div></td>
+	                            <td class="col4"><div>4 Available</div></td>
+	                            <td class="col5"><div>Reggae</div></td>
+	                            <td class="col6"><div></div></td>
+	                            <td class="col7"><div>VG+/VG+</div></td>
+	                            <td class="col8"><div>Heartbeat Records</div></td>
+	                        </tr>
 
 
-                    </table>
+
+	                        <tr class="row">
+	                            <td class="col1"><div>LP000123123</div></td>
+	                            <td class="col2"><div>Black Uhuru - Guess Who's Coming To Dinner?</div></td>
+	                            <td class="col3"><div>$24.99</div></td>
+	                            <td class="col4"><div>4 Available</div></td>
+	                            <td class="col5"><div>Reggae</div></td>
+	                            <td class="col6"><div></div></td>
+	                            <td class="col7"><div>VG+/VG+</div></td>
+	                            <td class="col8"><div>Heartbeat Records</div></td>
+	                        </tr> -->
+	                        <span id="productOpened" style="display:none"></span>
+
+
+	                    </table>
+
+										</div>
 
                 </div>
 
