@@ -7,7 +7,7 @@ if(isset($_POST['id'])){
   $sendBack = new \stdClass(); //this the class we will convert to JSON to send back to the client
   $sendBack->error = 'None';
   $sendBack->data = '';
-  $id = mysqli_real_escape_string($conn, $_GET['id']);
+  $id = mysqli_real_escape_string($conn, $_POST['id']);
   $query = '';
 
   switch($id[0].$id[1]){
@@ -15,7 +15,7 @@ if(isset($_POST['id'])){
       $id[0]=0;
       $id[1]=0;
       $id = (int)$id;
-      $query = "SELECT id, type, description, sell, family, class, upc, fileunder, pressinfo
+      $query = "SELECT id, type, description, sell, family, class, upc, fileunder, pressinfo,
                       inv_floor, inv_basement, inv_ccustomers, inv_cstock, reserved FROM `ln` WHERE id={$id}";
       break;
 
@@ -23,7 +23,7 @@ if(isset($_POST['id'])){
       $id[0]=0;
       $id[1]=0;
       $id = (int)$id;
-      $query = "SELECT id, type,description, sell, country, family, class, upc, scond, vcond, catno, altcatno, fileunder, pressinfo
+      $query = "SELECT id, type, description, sell, country, family, class, upc, scond, vcond, catno, altcatno, fileunder, pressinfo,
                       inv_floor, inv_basement, reserved FROM `lp` WHERE id={$id}";
       break;
 
@@ -49,6 +49,7 @@ if(isset($_POST['id'])){
   }else{
     //Fetch Data
     $post = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    //echo $post;
     //Free Result
     mysqli_free_result($result);
     //Close Connection
