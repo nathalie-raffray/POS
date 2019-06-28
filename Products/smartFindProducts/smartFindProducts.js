@@ -135,7 +135,7 @@ document.getElementById('smartFind').addEventListener('submit', function(e){
 
   $.ajax({
     type: 'POST',
-    url: 'backend/smartFind/smartFindProducts.php',
+    url: 'Products/smartFindProducts/smartFindProducts.php',
     data: search,
     success: function(response){
       displayProductResults(response);

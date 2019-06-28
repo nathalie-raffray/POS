@@ -65,7 +65,7 @@ function reOrder(){
     search.ascdesc = ascdesc;
     $.ajax({
       type: 'POST',
-      url: 'backend/searchDB/searchProducts.php',
+      url: 'Products/searchProducts.php',
       data: search,
       success: function(response){
         displayProductResults(response);
@@ -202,7 +202,7 @@ document.getElementById('searchForm').addEventListener('submit', function(e){
 
     $.ajax({
       type: 'POST',
-      url: 'backend/searchDB/searchProducts.php',
+      url: 'Products/searchProducts.php',
       data: search,
       success: function(response){
         displayProductResults(response);

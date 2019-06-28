@@ -81,6 +81,7 @@
 							<option value="Punk">Punk</option>
 							<option value="Metal">Metal</option>
 							<option value="Instrumentale">Instrumentale</option>
+							<option value="New Wave">New Wave</option>
 							<option value="Enfants">Enfants</option>
 							<option value="Rock">Rock</option>
 							<option value="Psych/Prog">Psych/Prog</option>
@@ -145,22 +146,28 @@
 						</div>
 
 						<div id="adjustBox">
-							<span id="adjustWhat">Adjust:
-							<select class="selectFrom" name="selectFrom">
-								<option value="floor">Floor</option>
-								<option value="basement">Basement</option>
-							</select></span>
-
-							<span>
+							<form action="adjustTransfer.php" method="post">
+									<span id="adjust:">
+										Adjust:
+									<select class="selectFrom" name="selectFrom">
+										<option value="floor">Floor</option>
+										<option value="basement">Basement</option>
+									</select>
+								</span><br><br>
+								<input type="radio" name="adjust" value="total"><span class="bcisayso">Total Quantity<input class="enterNumber" type="number" name="adjustby"></span><br>
+								<span><input type="radio" name="adjust" value="add">Add Quantity<input class="enterNumber" type="number" name="adjustby"></span><br>
+								<input type="submit" name="submit" value="Submit">
+							</form>
+							<!-- <span>
 								Add: <button class="add">&#xFF0B</button>
 								Subtract: <button class="sub">&#x2212</button>
-							</span>
+							</span> -->
 
-							<span>
+							<!-- <span>
 								Quantity: <input type="number" min="0"name="adjustby">
-							</span>
+							</span> -->
 
-							<button class="submit">Submit</button>
+							<!-- <button class="submit">Submit</button> -->
 						</div>
 
 						<div id="transferBox">
@@ -591,13 +598,13 @@
 		<button id="print">Print Label</button>
 		<button id="delete">Delete</button>
 		<button class="submit" form="savedeleteform" name="save" id="save">Save</button>
-		<form action="save.php" method="post" id="savedeleteform">
+		<form action="writeProductInfo.php" method="post" id="savedeleteform">
 
 
 		</form>
 
 	</div>
 
-<script src="productPopUp.js"></script>
+<script src="productPopUpRead.js"></script>
 </body>
 </html>

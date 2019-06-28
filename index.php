@@ -90,7 +90,7 @@
                                 <option value="All">All</option>
                             </select>
                             <form id="searchForm">
-                                <input type="text" id="input-box" name="entered" autofocus>
+                                <input type="text" id="input-box" name="entered"  autofocus>
                             </form>
                         </div>
                     </div>
@@ -103,7 +103,7 @@
 
                 <div >
 									<button class="collapsible">Smart Find</button>
-									<?php include("customHTML_smartFindProducts.php"); ?>
+									<?php include("Products/smartFindProducts/customHTML_smartFindProducts.php"); ?>
                 </div>
 
                 <div id="container">
@@ -221,10 +221,10 @@
 
 
 <script src="mainJS.js"></script>
-<script src="backend/smartFind/smartFindProducts.js"></script>
-<script src="searchProducts.js"></script>
+<script src="Products/smartFindProducts/smartFindProducts.js"></script>
+<script src="Products/searchProducts.js"></script>
 <script src="makeRow.js"></script>
-<script src="getSqlCondition.js"></script>
+<script src="smartFindShared/getSqlCondition.js"></script>
 
 </script>
 </body>

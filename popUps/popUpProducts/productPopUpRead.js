@@ -11,6 +11,11 @@ var conditions = ['', 'NM', 'VG+', 'VG', 'VG-', 'G'];
 var previousChoiceIIS;
 
 $('#info, #inventory, #supplier').mousedown(function(){
+  // if(this.id == 'info'){
+  //
+  // }else if(this.id == 'supplier'){
+  //
+  // }
 	if(previousChoiceIIS == undefined)
 	{
 		previousChoiceIIS = document.getElementById('info');
@@ -116,7 +121,7 @@ search = {
 
 $.ajax({
   type: 'POST',
-  url: './getProductInfo.php',
+  url: 'getProductInfo.php',
   data: search,
   success: function(response){
     console.log(response);
@@ -153,6 +158,7 @@ $.ajax({
       document.getElementById('description').value = data.description;
       document.getElementById('label').value = data.family;
       document.getElementById('fileUnder').value = data.fileunder;
+      document.getElementById('extraInfo').readOnly = true;
 
   		//FOR USED
   		if(data.type == 1){
@@ -163,12 +169,13 @@ $.ajax({
   			document.getElementById('vinylCon').value = data.vcond;
   			document.getElementById('sleeveCon').value = data.scond;
         document.getElementById('upc').readOnly = true;
+
   			//document.getElementById('extraInfo').value = json[0][15]; //info supp?
       }
 
   		//FOR NEW
   		if(data.type == 2){
-        document.getElementById('upc').value = data.upc;
+        document.getElementById('upc').readOnly = true;
   			document.getElementById('pressInfo').value = data.pressinfo;
   			document.getElementById('country').readOnly=true;
   			document.getElementById('catalogueNo').readOnly=true;
@@ -177,10 +184,23 @@ $.ajax({
   			document.getElementById('sleeveCon').readOnly=true;
   		//	document.getElementById('extraInfo').value = json[0][14];
 
+        ////Change Inventory sign
+        var el;
+        if(data.inv_ccustomers > 0){
+          el = document.getElementById('iCustOrder');
+          el.innerHTML = data.inv_floor + ' Coming For Customers';
+          el.style.backgroundColor = 'yellow';
+        }
+        if(data.inv_cstock > 0){
+          el = document.getElementById('iStockOrder');
+          el.innerHTML = data.inv_floor + ' Coming For Stock';
+          el.style.backgroundColor = 'yellow';
+        }
+
   		}
 
       if(data.type == 3){ //FOR CDs
-        document.getElementById('upc').readOnly = true;;
+        document.getElementById('upc').value = data.upc;
   			document.getElementById('pressInfo').readOnly = true;
   			document.getElementById('country').readOnly=true;
         document.getElementById('catalogueNo').value = data.catno;
@@ -202,6 +222,27 @@ $.ajax({
         }
       }
 
+      var el;
+      var totalInv = parseInt(data.inv_floor) + parseInt(data.inv_basement);
+      el = document.getElementById('iTotal');
+      el.innerHTML = totalInv + ' Total';
+      el.style.backgroundColor = 'rgb(119, 194, 66)';
+
+      if(data.inv_floor > 0){
+          el = document.getElementById('iFloor');
+          el.innerHTML = data.inv_floor + ' Floor';
+          el.style.backgroundColor = 'rgb(119, 194, 66)';
+      }
+      if(data.inv_basement > 0){
+        el = document.getElementById('iBasement');
+        el.innerHTML = data.inv_floor + ' Basement';
+        el.style.backgroundColor = 'blue';
+      }
+      if(data.reserved > 0){
+        el = document.getElementById('iReserved');
+        el.innerHTML = data.inv_floor + ' Reserved';
+        el.style.backgroundColor = 'orange';
+      }
 
 
    }

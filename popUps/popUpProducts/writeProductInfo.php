@@ -14,6 +14,10 @@ if(isset($_POST['save'])){
   $altCatalogueNo = $_POST['altCatalogueNo'];
   $fileUnder = $_POST['fileUnder'];
   $infoSup = $_POST['extraInfo'];
+  $genre = $_POST['genre'];
+  $numOnWall = $_POST['numOnWall'];
+  $vcond = $_POST['vinylCon'];
+  $scond = $_POST['sleeveCon'];
   // $numWall = $_POST['numWall'];
     //still need to fix genre and condition
 
@@ -23,31 +27,49 @@ if(isset($_POST['save'])){
     $code[0] = 0;
     $code[1] = 0;
 
-    $query = "UPDATE `new` SET
-              ln_artist='$artist',
-              ln_album='$album',
-              ln_label='$label',
-              ln_file_under='$fileUnder',
-              ln_pressing_info='$press_info',
-              ln_info_supp='$infoSup'
-                WHERE ln_id={$code}";
+    $query = "UPDATE `ln` SET
+              description = '{$description}'
+              ln_artist='{$artist}',
+              ln_album='{$album}',
+              family='{$label}',
+              fileunder='{$fileUnder}',
+              pressinfo='{$press_info}',
+              class = '{$genre}'
+              -- upc = {$upc}
+                WHERE id={$code}";
 
   } else if($code[1] == 'P'){
     $code[0] = 0;
     $code[1] = 0;
 
-    $query = "UPDATE `used` SET
-              lp_artist='$artist',
-              lp_album='$album',
-              lp_country='$country',
-              lp_catalog='$catalogueNo',
-              lp_altcatalog='$altCatalogueNo',
-              lp_label='$label',
-              lp_file_under='$fileUnder',
-              lp_pressing_info='$press_info',
-              lp_info_supp='$infoSup'
-                WHERE lp_id={$code}";
+    $query = "UPDATE `lp` SET
+              lp_artist='{$artist}',
+              lp_album='{$album}',
+              country='{$country}',
+              catno='{$catalogueNo}',
+              altcatno='{$altCatalogueNo}',
+              family='{$label}',
+              fileunder='{$fileUnder}',
+              pressinfo='{$press_info}',
+              class = '{$genre}',
+              scond='{$scond}',
+              vcond='{$vcond}'
+                WHERE id={$code}";
 
+  }else if($code[1] == 'D'){ //we are dealing with CDs
+    $code[0] = 0;
+    $code[1] = 0;
+
+    $query = "UPDATE `cd` SET
+              cd_artist='{$artist}',
+              cd_album='{$album}',
+              -- catno='{$catalogueNo}',
+              -- altcatno='{$altCatalogueNo}',
+              fileunder='{$fileUnder}',
+              -- pressinfo='{$press_info}',
+              class = '{$genre}',
+              upc = {$upc}
+                WHERE id={$code}";
   }
 
   if(mysqli_query($conn, $query)){

@@ -17,6 +17,10 @@
 	cursor: default;
 }
 
+select{
+	background-color: rgb(237,237,237);
+}
+
 button:focus {outline:0;}
 
 #coloredBox, #productBox, #containerBox{
@@ -104,7 +108,7 @@ button:focus {outline:0;}
 }
 
 #coloredBox, #productBox{
-	
+
 	flex:1;
 }
 
@@ -113,7 +117,7 @@ button:focus {outline:0;}
 }*/
 
 /*#productBox{
-	
+
 	display:flex;
 	flex-direction: column;
 }
@@ -203,8 +207,8 @@ textarea{ /* STYLING FOR ALL GREY TEXT AREAS */
 	padding-left: 2%;
 	padding-right: 2%;
 	/*font-weight:bold;
-*/	
-	
+*/
+
 
 }
 
@@ -222,7 +226,7 @@ textarea{ /* STYLING FOR ALL GREY TEXT AREAS */
 	height: 100%;
 	display:flex;
 	flex-direction: row;
-	
+
 
 }
 
@@ -235,7 +239,7 @@ textarea{ /* STYLING FOR ALL GREY TEXT AREAS */
 }
 
 
-#infoBox1 #infoBox2 ul{	
+#infoBox1 #infoBox2 ul{
 	width:100%;
 
 
@@ -321,9 +325,6 @@ textarea{ /* STYLING FOR ALL GREY TEXT AREAS */
 	display:none;
 }
 
-#adjustBox{
-	/*display:none;*/
-}
 
 #adjustTransferBox div{
 	padding-left: 5%;
@@ -340,7 +341,6 @@ textarea{ /* STYLING FOR ALL GREY TEXT AREAS */
 	background-color: #c0c0c0;
 	border-left: 1px solid #808080;
 	border-right: 1px solid #808080;
-
 }
 
 #adjust, #transfer{
@@ -353,6 +353,22 @@ textarea{ /* STYLING FOR ALL GREY TEXT AREAS */
 	height:92%;
 	/*padding-left: 20%;*/
 
+}
+
+#adjustBox{
+	/*display:none;*/
+	padding: 5px;
+}
+
+.enterNumber{
+	width: 150px;
+	background-color: rgb(237,237,237);
+}
+
+.bcisayso{
+	/* background-color:black; */
+	/* margin-left:-75px; */
+	padding:0;
 }
 
 .add{
@@ -388,7 +404,7 @@ textarea{ /* STYLING FOR ALL GREY TEXT AREAS */
 }
 
 #adjustBox span{
-	display:block;
+	/* display:block; */
 	margin-top: 3%;
 }
 
@@ -412,7 +428,7 @@ textarea{ /* STYLING FOR ALL GREY TEXT AREAS */
 
 #invBox2{
 	height:42%;
-	
+
 }
 
 #historyBox{
@@ -465,7 +481,7 @@ textarea{ /* STYLING FOR ALL GREY TEXT AREAS */
 
 #histRowBox td{
 	width: 12%;
-	
+
 }
 
 #reservedHeader th{
@@ -520,7 +536,7 @@ textarea{ /* STYLING FOR ALL GREY TEXT AREAS */
 
 #supRowBox{
 	height: 30%;
-	margin-left: 5%;	
+	margin-left: 5%;
 	width:90%;
 	overflow: auto;
 	border: 1px solid black;
@@ -546,8 +562,8 @@ textarea{ /* STYLING FOR ALL GREY TEXT AREAS */
 #bottomOptions{
 	display: flex;
 	justify-content: flex-end;
-	
-	
+
+
 }
 
 #moreOptions{
@@ -557,7 +573,7 @@ textarea{ /* STYLING FOR ALL GREY TEXT AREAS */
 
 #print, #delete, #save{
 	font-size: 12px;
-	
+
 }
 
 #print, #delete, #save, #moreOptions{
@@ -569,7 +585,7 @@ textarea{ /* STYLING FOR ALL GREY TEXT AREAS */
 	border: 1px solid #808080;
 	margin-left:2%;
 	margin-top: 2%;
-	
+
 }
 #save{
 	margin-right: 5%;
@@ -579,7 +595,7 @@ textarea{ /* STYLING FOR ALL GREY TEXT AREAS */
 	display: flex;
 	justify-content: flex-end;
 	margin-top: 1%;
-	
+
 }
 
 #bottomOptions button:active{
@@ -601,7 +617,7 @@ textarea{ /* STYLING FOR ALL GREY TEXT AREAS */
 	font-family: "Lucida Grande";
 	border-radius: 5px;
 	color: black;
-	
+
 }
 
 #moreOptions{
@@ -610,6 +626,3 @@ textarea{ /* STYLING FOR ALL GREY TEXT AREAS */
 #save{
 	margin-right: 3%;
 }*/
-
-
-
