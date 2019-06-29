@@ -77,6 +77,7 @@ if(isset($_POST['save'])){
   }else{
     echo 'ERROR'.mysqli_error($conn);
   }
+  mysqli_close($conn);
 
   // //get id
   // $id = mysqli_real_escape_string($conn, $_GET['id']);

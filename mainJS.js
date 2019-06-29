@@ -212,26 +212,32 @@ for(var i = 0; i < navButtons.length; i++)
 
       case 'Customers':
         dbSelected.innerHTML = 'Customers';
+        //also configure smart find
         //CHANGE MAIN BAR
-        containerHeaders[1].textContent = 'Customer Name';
-        containerHeaders[2].textContent = 'Phone Number';
-        containerHeaders[3].textContent = 'Address';
-        containerHeaders[4].textContent = 'Points';
-        containerHeaders[5].textContent = 'Discount';
-        containerHeaders[6].textContent = '';
-        containerHeaders[7].textContent = '';
+        containerHeaders[0].textContent = 'id';
+        containerHeaders[1].textContent = 'name';
+        containerHeaders[2].textContent = 'phone number';
+        containerHeaders[3].textContent = 'email';
+        containerHeaders[4].textContent = 'points';
+        containerHeaders[5].textContent = 'discount';
+        containerHeaders[6].textContent = 'postal code';
+        containerHeaders[7].textContent = 'city';
 
         //CHANGE SELECT
-        searchBy.options[0].textContent = 'Customer';
-        searchBy.options[1].textContent = 'Phone Number';
-        searchBy.options[2].textContent = 'Address';
-        searchBy.options[3].textContent = 'Points';
+        searchBy.options[0].textContent = 'customer';
+        searchBy.options[1].textContent = 'phone number';
+        searchBy.options[2].textContent = 'email';
+        searchBy.options[3].textContent = 'city';
+        searchBy.options[4].textContent = 'postal code';
+        searchBy.options[5].textContent = 'city';
+        searchBy.options[6].textContent = 'discount';
 
         break;
 
       case 'Products':
         dbSelected.innerHTML = 'Products';
         //CHANGE MAIN BAR
+        containerHeaders[0].textContent = 'Code';
         containerHeaders[1].textContent = 'Description';
         containerHeaders[2].textContent = 'Price';
         containerHeaders[3].textContent = 'Inventory';
@@ -243,8 +249,11 @@ for(var i = 0; i < navButtons.length; i++)
         //CHANGE SELECT
         searchBy.options[0].textContent = 'Product';
         searchBy.options[1].textContent = 'Description';
-        searchBy.options[2].textContent = 'Genre';
-        searchBy.options[3].textContent = 'Label';
+        searchBy.options[2].textContent = 'Artist';
+        searchBy.options[3].textContent = 'Album';
+        searchBy.options[4].textContent = 'Genre';
+        searchBy.options[5].textContent = 'Label';
+        searchBy.options[6].textContent = 'Price';
 
         break;
 

@@ -24,6 +24,7 @@ var search;
 
 
 var arrowButtons = document.getElementsByClassName('headerbutton');
+//console.log(arrowButtons);
 
 for(var i = 0; i < arrowButtons.length; i++)
 {

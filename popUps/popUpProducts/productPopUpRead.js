@@ -223,117 +223,130 @@ $.ajax({
       }
 
       var el;
-      var totalInv = parseInt(data.inv_floor) + parseInt(data.inv_basement);
+      var totalInv = parseInt(data.inv_floor) + parseInt(data.inv_basement) + parseInt(data.reserved);
       el = document.getElementById('iTotal');
       el.innerHTML = totalInv + ' Total';
       el.style.backgroundColor = 'rgb(119, 194, 66)';
 
+      el = document.getElementById('iFloor');
+      el.innerHTML = data.inv_floor + ' Floor';
       if(data.inv_floor > 0){
-          el = document.getElementById('iFloor');
-          el.innerHTML = data.inv_floor + ' Floor';
           el.style.backgroundColor = 'rgb(119, 194, 66)';
+      }else if(data.inv_floor < 0){
+        el.style.backgroundColor = 'red';
       }
+      el = document.getElementById('iBasement');
+      el.innerHTML = data.inv_basement + ' Basement';
       if(data.inv_basement > 0){
-        el = document.getElementById('iBasement');
-        el.innerHTML = data.inv_floor + ' Basement';
         el.style.backgroundColor = 'blue';
+      }else if(data.inv_basement < 0){
+        el.style.backgroundColor = 'red';
       }
+      el = document.getElementById('iReserved');
+      el.innerHTML = data.reserved + ' Reserved';
       if(data.reserved > 0){
-        el = document.getElementById('iReserved');
-        el.innerHTML = data.inv_floor + ' Reserved';
         el.style.backgroundColor = 'orange';
+      }else if(data.reserved < 0){
+        el.style.backgroundColor = 'red';
       }
 
 
    }
  }
 });
-//
-// var xhr = new XMLHttpRequest();
-//
-// xhr.open('GET', 'popp.php?id='+id, true);
-//
-// xhr.onload=function(){
-	// if(this.responseText == 'query failed1'){
-	// 	console.log('error');
-	// }else if(this.responseText == 'query failed2'){
-	// 	console.log('0 rows returned');
-	// }else if(this.responseTest = ''){
-	// 	console.log('ugh');
-	// }
-	// else{
-	// 	 var json = JSON.parse(this.responseText);
-	// 	console.log(json);
-  //
-	// 	var code = json[0][0];
-  //
-	// 	for(var i=code.length; i<8; i++){
-	// 		code = '0' + code;
-	// 	}
-  //
-	// 	if(json[0][1]==1){
-	// 		code = 'LP' + code;
-	// 	}else if(json[0][1]==0){
-	// 		code = 'LN' + code;
-	// 	}
-  //
-	// 	//FOR USED
-	// 	if(json[0][1]==1){
-	// 		document.getElementById('codeDisplay').innerHTML = code;
-	// 		document.getElementById('productCode').value = code;
-	// 		document.getElementById('productCode').readOnly = true;
-	// 		document.getElementById('description').value = json[0][2] + ' - ' + json[0][3];
-	// 		document.getElementById('label').value = json[0][9];
-	// 		document.getElementById('fileUnder').value = json[0][10];
-	// 		document.getElementById('pressInfo').value = json[0][11];
-	// 		document.getElementById('country').value = json[0][12];
-	// 		document.getElementById('catalogueNo').value = json[0][13];
-	// 		document.getElementById('altCatalogueNo').value = json[0][14];
-	// 		document.getElementById('vinylCon').value = conditions[Math.floor(parseInt(json[0][16])/10)];
-	// 		document.getElementById('sleeveCon').value = conditions[parseInt(json[0][16])%10];
-	// 		document.getElementById('extraInfo').value = json[0][15];
-	// 		var selector = document.getElementById('genre');
-	// 		var opts = selector.options;
-	// 		console.log(opts);
-	// 		for(var i=0; i<genres.length; i++){
-	// 			if(opts[i].value == genres[json[0][8]-1])
-	// 			{
-	// 				selector.selectedIndex = i;
-	// 				break;
-	// 			}
-	// 		}
-	// 	}
-  //
-  //
-	// 	//FOR NEW
-	// 	if(json[0][1]==0){
-	// 		document.getElementById('codeDisplay').innerHTML = code;
-	// 		document.getElementById('productCode').readOnly = true;
-	// 		document.getElementById('productCode').value = code;
-	// 		document.getElementById('description').value = json[0][2] + ' - ' + json[0][3];
-	// 		document.getElementById('label').value = json[0][11];
-	// 		document.getElementById('fileUnder').value = json[0][12];
-	// 		document.getElementById('pressInfo').value = json[0][13];
-	// 		document.getElementById('country').readOnly=true;
-	// 		document.getElementById('catalogueNo').readOnly=true;
-	// 		document.getElementById('altCatalogueNo').readOnly=true;
-	// 		document.getElementById('vinylCon').readOnly=true;
-	// 		document.getElementById('sleeveCon').readOnly=true;
-	// 		document.getElementById('extraInfo').value = json[0][14];
-	// 		var selector = document.getElementById('genre');
-	// 		var opts = selector.options;
-	// 		console.log(opts);
-	// 		for(var i=0; i<genres.length; i++){
-	// 			if(opts[i].value == genres[json[0][10]-1])
-	// 			{
-	// 				selector.selectedIndex = i;
-	// 				break;
-	// 			}
-	// 		}
-	// 	}
-  //
-  //
-  //
-	// }
-// }
-// xhr.send();
+
+$('.adjustTransferForm').submit(function(e){
+  e.preventDefault();
+  var input;
+  var qty;
+  var id = document.getElementById('productCode').value;
+  //if(radioValue == 'total')
+  if(this.parentElement.id == 'adjustBox'){
+    console.log('HI');
+    var radioValue = $("input[name='adjust']:checked").val();
+    if(radioValue == undefined){
+      return;
+    }
+    var floorbasement = document.getElementById('floorbasement').value;
+    //$("input[name='adjust']:checked").val();
+    if(radioValue == 'total'){
+      qty = document.getElementById('totalAdjustBy').value;
+    }else if(radioValue == 'add'){
+      qty = document.getElementById('addAdjustBy').value;
+    }
+    //var action = 'adjust';
+    input = {
+      action: 'adjust',
+      id: id,
+      floorbasement: floorbasement,
+      totalAdd: radioValue,
+      qty: qty
+    }
+    console.log(input);
+  }else if(this.parentElement.id == 'transferBox'){
+
+    qty = $("input[name='transferQty']").val();
+    var transferFrom = document.getElementById('from').value;
+    var transferTo = document.getElementById('to').value;
+    input = {
+      action: 'transfer',
+      id: id,
+      transferFrom: transferFrom,
+      transferTo: transferTo,
+      qty: qty
+    }
+  }
+  $.ajax({
+    type: 'POST',
+    url: 'adjustTransfer.php',
+    data: input,
+    success: function(response){
+      console.log(response);
+      response = JSON.parse(response);
+      if(response.error == 'Invalid Query.'){
+        console.log('INVALID QUERY');
+      }else if(response.error == 'Nothing happened.'){
+        return;
+      }else{
+        console.log(response);
+        var el;
+        if(response.inv_floor > 0){
+            el = document.getElementById('iFloor');
+            el.innerHTML = response.inv_floor + ' Floor';
+            el.style.backgroundColor = 'rgb(119, 194, 66)';
+        }else if(response.inv_floor == 0){
+          el = document.getElementById('iFloor');
+          el.innerHTML = response.inv_floor + ' Floor';
+          el.style.backgroundColor = 'rgb(159, 159, 159)';
+        }else{
+          el.style.backgroundColor = 'red';
+        }
+        if(response.inv_basement > 0){
+          el = document.getElementById('iBasement');
+          el.innerHTML = response.inv_basement + ' Basement';
+          el.style.backgroundColor = 'blue';
+        }else if(response.inv_basement == 0){
+          el = document.getElementById('iBasement');
+          el.innerHTML = response.inv_basement + ' Basement';
+          el.style.backgroundColor = 'rgb(159, 159, 159)';
+        }else{
+          el.style.backgroundColor = 'red';
+        }
+        var total = parseInt(response.inv_floor) + parseInt(response.inv_basement) + parseInt(response.reserved);
+        if(total > 0){
+          el = document.getElementById('iTotal');
+          el.innerHTML = total + ' Total';
+          el.style.backgroundColor = 'rgb(108, 186, 58)';
+        }else if(total == 0){
+          el = document.getElementById('iTotal');
+          el.innerHTML = total + ' Total';
+          el.style.backgroundColor = 'rgb(159, 159, 159)';
+        }else{
+          el.style.backgroundColor = 'red';
+        }
+      }
+      //console.log(response);
+
+     }
+  });
+});

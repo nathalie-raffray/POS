@@ -271,7 +271,7 @@ button:focus{
 	background-color: #f0f0f0;
 	cursor: default;
 	height:calc(100% - 53px);
-
+  /* overflow:hidden; */
 
 }
 
@@ -333,7 +333,8 @@ table th{
 }
 
 #scrollTable{
-
+  width: 100%;
+  height:100%;
   /* bottom: 19px; */
   /* height:calc(100% - 19px); */
   overflow:auto;

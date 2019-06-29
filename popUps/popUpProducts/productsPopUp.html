@@ -31,7 +31,7 @@
 				<ul>
 					<li>
 						 <span class="pcd">Product Code</span>
-						 <textarea class="grayBox" form="savedeleteform" name="code" id="productCode" required></textarea>
+						 <textarea class="grayBox" form="savedeleteform" form="adjustForm" name="code" id="productCode" required></textarea>
 					</li>
 					<br>
 					<li>
@@ -146,46 +146,37 @@
 						</div>
 
 						<div id="adjustBox">
-							<form action="adjustTransfer.php" method="post">
+							<form class="adjustTransferForm" action="adjustTransfer.php" method="post" name="adjustForm">
 									<span id="adjust:">
 										Adjust:
-									<select class="selectFrom" name="selectFrom">
-										<option value="floor">Floor</option>
-										<option value="basement">Basement</option>
+									<select id="floorbasement" class="selectFrom" name="selectFrom">
+										<option value="inv_floor">Floor</option>
+										<option value="inv_basement">Basement</option>
 									</select>
 								</span><br><br>
-								<input type="radio" name="adjust" value="total"><span class="bcisayso">Total Quantity<input class="enterNumber" type="number" name="adjustby"></span><br>
-								<span><input type="radio" name="adjust" value="add">Add Quantity<input class="enterNumber" type="number" name="adjustby"></span><br>
+								<input type="radio" name="adjust" value="total"><span class="bcisayso">Total Quantity<input class="enterNumber" type="number" id="totalAdjustBy" name="totalAdjustBy"></span><br>
+								<span><input type="radio" name="adjust" value="add">Add Quantity<input class="enterNumber" type="number" id="addAdjustBy" name="addAdjustBy"></span><br>
 								<input type="submit" name="submit" value="Submit">
 							</form>
-							<!-- <span>
-								Add: <button class="add">&#xFF0B</button>
-								Subtract: <button class="sub">&#x2212</button>
-							</span> -->
-
-							<!-- <span>
-								Quantity: <input type="number" min="0"name="adjustby">
-							</span> -->
-
-							<!-- <button class="submit">Submit</button> -->
 						</div>
 
 						<div id="transferBox">
-							<span id="from">Transfer From:
-							<select class="selectFrom" name="selectFrom">
-								<option value="floor">Floor</option>
-								<option value="basement">Basement</option>
-							</select></span>
+							<form class="adjustTransferForm" action="adjustTransfer.php" method="post" name="adjustForm">
+								<span>Transfer From:
+								<select id="from" class="selectFrom" name="selectFrom">
+									<option value="inv_floor">Floor</option>
+									<option value="inv_basement">Basement</option>
+								</select></span>
 
-
-							<span id="to">Transfer To:
-							<select class="selectTo" name="selectTo">
-								<option value="floor">Floor</option>
-								<option value="basement">Basement</option>
-							</select></span>
-
-
-							<span>
+								<span>Transfer To:
+								<select id="to" class="selectTo" name="selectTo">
+									<option value="inv_floor">Floor</option>
+									<option value="inv_basement">Basement</option>
+								</select></span><br><br>
+								<span class="bcisayso">Quantity<input class="enterNumber" type="number" name="transferQty"></span><br>
+								<input type="submit" name="submit" value="Submit">
+							</form>
+							<!-- <span>
 								Add: <button class="add"> &#xFF0B</button>
 								Subtract: <button class="sub">&#x2212</button>
 							</span>
@@ -196,7 +187,7 @@
 							</span>
 
 
-							<button class="submit">Submit</button>
+							<button class="submit">Submit</button>-->
 						</div>
 
 

@@ -97,9 +97,6 @@ if(isset($_POST['entered']) && isset($_POST['filter']) && isset($_POST['searchIn
 
             //Create Query
             if($numDigits == 8){
-              // $query = "SELECT id, type, description, sell, qty,
-              //                    class, fileunder, vcond, scond, family
-              //           FROM `{$table}` WHERE id=".$search;
               $whereClause = "WHERE id=".$search;
             }
             else{
@@ -109,9 +106,6 @@ if(isset($_POST['entered']) && isset($_POST['filter']) && isset($_POST['searchIn
               //lp00000001, it will search for lp00100000 - lp00199999
               $whereClause = "WHERE id>=".$min." AND id<".$max;
 
-              // $query = "SELECT id, type, description, sell, qty,
-              //                    class, fileunder, vcond, scond, family
-              //           FROM `{$table}` WHERE id>=".$min." AND id<".$max;
             }
             $query = "SELECT id, type, description, sell, qty,
                                class, fileunder, vcond, scond, family, inv_floor
@@ -163,116 +157,23 @@ if(isset($_POST['entered']) && isset($_POST['filter']) && isset($_POST['searchIn
       break;
 
     case "Description":
-      $searcharr = explode(' ', $search);
-      $string='';
-      for($i=1; $i<sizeof($searcharr); $i++){
-        $string = $string."AND description LIKE '%{$searcharr[$i]}%'";
-      }
-      $query = "SELECT id, type, description, sell, qty,
-                         class, fileunder, vcond, scond, family, inv_floor
-                FROM `lp` WHERE description LIKE '%{$searcharr[0]}%' {$string}
-                UNION ALL
-                SELECT id, type, description, sell, qty,
-                                   class, fileunder, vcond, scond, family, inv_floor
-                FROM `cd`  WHERE description LIKE '%{$searcharr[0]}%' {$string}
-                ".$orderClause;
-
-
-      //echo $query;
-       $result = mysqli_query($conn, $query);
-       // $responseClient=array();
-
-       if($result == false){ //if query failed
-         $sendBack->error = 'Invalid Query.';
-         $sendBack->data = '';
-         echo json_encode($sendBack);
-         mysqli_close($conn);
-         break;
-       }
-       $post = mysqli_fetch_all($result, MYSQLI_ASSOC); //, MYSQLI_ASSOC
-
-       if($post == NULL){
-         $sendBack->error = 'No results found.';
-         $sendBack->data = '';
-         echo json_encode($sendBack);
-         mysqli_free_result($result);
-         mysqli_close($conn);
-         break;
-       }
-
-       mysqli_free_result($result);
-       mysqli_close($conn);
-
-       $sendBack = new \stdClass();
-       $sendBack->error = 'None';
-       $sendBack->data = json_encode($post);
-
-       echo json_encode($sendBack);
-
-
+      doQuery($search, 'description', $orderClause, $sendBack, $conn);
       break;
 
     case "Artist":
-    $query = "SELECT lp_id, type, lp_artist, lp_album, lp_price, lp_inv_floor,
-                       lp_inv_basement, lp_genre, lp_file_under, lp_condition, lp_label
-              FROM `used` WHERE lp_artist LIKE '%{$search}%'
-               UNION
-               SELECT ln_id, type, ln_artist, ln_album, ln_price, ln_inv_floor,
-                                ln_inv_basement, ln_genre, ln_file_under, ln_pressing_info, ln_label
-                        FROM `new` WHERE ln_artist
-                           LIKE '%{$search}%' ";
-     $result = mysqli_query($conn, $query);
-
-     if($result == false){ //if query failed
-       $sendBack->error = 'Invalid Query.';
-       $sendBack->data = '';
-       echo json_encode($sendBack);
-       break;
-     }
-     $post = mysqli_fetch_all($result); //, MYSQLI_ASSOC
-     if($post == NULL){
-       $sendBack->error = 'No results found.';
-       $sendBack->data = '';
-       echo json_encode($sendBack);
-       break;
-     }
-     mysqli_free_result($result);
-     mysqli_close($conn);
-     echo json_encode($post);
+      doQuery($search, 'artiste', $orderClause, $sendBack, $conn);
       break;
 
     case "Album":
-    $query = "SELECT lp_id, type, lp_artist, lp_album, lp_price, lp_inv_floor,
-                       lp_inv_basement, lp_genre, lp_file_under, lp_condition, lp_label
-              FROM `used` WHERE lp_album LIKE '%{$search}%'
-               UNION
-               SELECT ln_id, type, ln_artist, ln_album, ln_price, ln_inv_floor,
-                                ln_inv_basement, ln_genre, ln_file_under, ln_pressing_info, ln_label
-                        FROM `new` WHERE ln_album LIKE '%{$search}%' ";
-     $result = mysqli_query($conn, $query);
-
-     if($result == false){ //if query failed
-       $sendBack->error = 'Invalid Query.';
-       $sendBack->data = '';
-       echo json_encode($sendBack);
-       break;
-     }
-     $post = mysqli_fetch_all($result); //, MYSQLI_ASSOC
-     if($post == NULL){
-       $sendBack->error = 'No results found.';
-       $sendBack->data = '';
-       echo json_encode($sendBack);
-       break;
-     }
-     mysqli_free_result($result);
-     mysqli_close($conn);
-     echo json_encode($post);
+      doQuery($search, 'album', $orderClause, $sendBack, $conn);
       break;
 
     case "Genre":
+      doQuery($search, 'class', $orderClause, $sendBack, $conn);
       break;
 
     case "Label":
+      doQuery($search, 'family', $orderClause, $sendBack, $conn);
       break;
 
     case "All":
@@ -285,6 +186,55 @@ function powerTo($x, $n){ //returns x*(10^n) recursively
     return $x;
   }
   return powerTo( (10 * $x), ($n - 1) );
+}
+
+
+function doQuery($search, $col, $orderClause, $sendBack, $conn){
+  $searcharr = explode(' ', $search);
+  $string='';
+  for($i=1; $i<sizeof($searcharr); $i++){
+    $string = $string."AND $col LIKE '%{$searcharr[$i]}%'";
+  }
+  $query = "SELECT id, type, description, sell, qty,
+                     class, fileunder, vcond, scond, family, inv_floor
+            FROM `lp` WHERE $col LIKE '%{$searcharr[0]}%' {$string}
+            UNION ALL
+            SELECT id, type, description, sell, qty,
+                               class, fileunder, vcond, scond, family, inv_floor
+            FROM `cd`  WHERE $col LIKE '%{$searcharr[0]}%' {$string}
+            ".$orderClause;
+
+
+  //echo $query;
+   $result = mysqli_query($conn, $query);
+   // $responseClient=array();
+
+   if($result == false){ //if query failed
+     $sendBack->error = 'Invalid Query.';
+     $sendBack->data = '';
+     echo json_encode($sendBack);
+     mysqli_close($conn);
+     return;
+   }
+   $post = mysqli_fetch_all($result, MYSQLI_ASSOC); //, MYSQLI_ASSOC
+
+   if($post == NULL){
+     $sendBack->error = 'No results found.';
+     $sendBack->data = '';
+     echo json_encode($sendBack);
+     mysqli_free_result($result);
+     mysqli_close($conn);
+     return;
+   }
+
+   mysqli_free_result($result);
+   mysqli_close($conn);
+
+   $sendBack = new \stdClass();
+   $sendBack->error = 'None';
+   $sendBack->data = json_encode($post);
+
+   echo json_encode($sendBack);
 }
 
 //DO IS VALID HELPER FUNCTIONs

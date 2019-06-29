@@ -125,9 +125,7 @@
                             <th class="col7"><button class="headerbutton" type="button"><span class="header">Condition</span><span class="updown"></span></button></th>
 
                             <th class="col8"><button class="headerbutton" type="button"><span class="header">Label</span><span class="updown"></span></button></th>
-
                         </tr>
-
                     </table>
 										<div id="scrollTable">
 											<table id="table">
