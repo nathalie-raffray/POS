@@ -48,7 +48,7 @@ function reOrder(){
       success: function(response){
         $('.row').remove();
         if(noErrors(response)){
-          console.log(makeRow);
+          //console.log(makeRow);
           displayResults(response, makeRow);
         }
        }

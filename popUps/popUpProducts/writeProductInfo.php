@@ -29,8 +29,8 @@ if(isset($_POST['save'])){
 
     $query = "UPDATE `ln` SET
               description = '{$description}'
-              ln_artist='{$artist}',
-              ln_album='{$album}',
+              artiste='{$artist}',
+              album='{$album}',
               family='{$label}',
               fileunder='{$fileUnder}',
               pressinfo='{$press_info}',
@@ -43,8 +43,8 @@ if(isset($_POST['save'])){
     $code[1] = 0;
 
     $query = "UPDATE `lp` SET
-              lp_artist='{$artist}',
-              lp_album='{$album}',
+              artiste='{$artist}',
+              album='{$album}',
               country='{$country}',
               catno='{$catalogueNo}',
               altcatno='{$altCatalogueNo}',
@@ -61,8 +61,8 @@ if(isset($_POST['save'])){
     $code[1] = 0;
 
     $query = "UPDATE `cd` SET
-              cd_artist='{$artist}',
-              cd_album='{$album}',
+              artiste='{$artist}',
+              album='{$album}',
               -- catno='{$catalogueNo}',
               -- altcatno='{$altCatalogueNo}',
               fileunder='{$fileUnder}',

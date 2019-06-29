@@ -98,15 +98,9 @@ $count = 0;
 // Main import logic
 foreach ($csv as $row => $value) {
 
-//  if($count < 2){
-    // echo 'value: '.$value[0];
-    // echo 'value[0][0]: '.$value[0][0];
-    // echo 'vardump: <br>';
 
     $value = clean_data_prior_insert($value);
-    // var_dump($value);
-    // echo 'new value!: '.$value[0];
-    // $newval = clean_datas_prior_insert($newval);
+
     $artist_album = explode(' - ', $value[2]);
     $floor = $value[17];
     $basement = 0;
@@ -118,10 +112,6 @@ foreach ($csv as $row => $value) {
     if($value[1][0] == 'L' && $value[1][1] == 'P') $table = 'lp';
     else if($value[1][0] == 'C' && $value[1][1] == 'D') $table = 'cd';
     else $table = 'unused';
-
-    // for($i = 0; $i < $value.length; $i++){
-    //   if($value[i] == '')
-    // }
 
     if($table != 'none'){
       $query = "INSERT INTO `{$table}` SET `id`= 0 ,
@@ -172,13 +162,6 @@ foreach ($csv as $row => $value) {
 
       if (!mysqli_query($conn, $query))  $err[] = $value;
    }
-
-  //}
-
-
-
-
-    //$count = $count+1;
 
 
     // echo "<br>[$query]";

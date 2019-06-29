@@ -4,8 +4,10 @@
 <head>
 	<title></title>
 	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="cssForResize.css">
 	<link rel="stylesheet" type="text/css" href="light.css">
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script src="colResizable/colResizable-1.6.min.js"></script>
 	<!-- <script src='mousestop-3.0.1/mousestop.js' type="text/javascript"></script> -->
 	<!-- <script src='./mousestop-3.0.1/mousestop.jquery.json' type="text/javascript"></script>
 	<script src='./mousestop-3.0.1/mousestop.min.js' type="text/javascript"></script>
@@ -109,7 +111,7 @@
                 <div id="container">
 
                     <table id="tableheader">
-                        <tr id="main-bar">
+                        <tr id="main-bar" width="100%" border="0" cellpadding="0" cellspacing="0">
                             <th class="col1"><button class="headerbutton" type="button"><span class="header">Code</span><span class="updown"></span></button></th>
 
                             <th class="col2"><button class="headerbutton" type="button"><span class="header">Description</span><span class="updown"></span></button></th>
@@ -222,13 +224,14 @@
 <script src="mainJS.js"></script>
 <script src="sharedSearch/scrollTable.js"></script>
 <script src="sharedSearch/reOrder.js"></script>
+<script src="sharedSearch/resizeCol.js"></script>
 <script src="Products/smartFindProducts/smartFindProducts.js"></script>
 <script src="Products/searchProducts.js"></script>
 <script src="Customers/searchCustomers.js"></script>
 <script src="makeRow.js"></script>
 <script src="smartFindShared/getSqlCondition.js"></script>
+<script src="navBar.js"></script>
 
-</script>
 </body>
 
 
