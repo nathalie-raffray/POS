@@ -218,9 +218,13 @@
     </div>
 
 
+<script src="sharedSearch/search.js"></script>
 <script src="mainJS.js"></script>
+<script src="sharedSearch/scrollTable.js"></script>
+<script src="sharedSearch/reOrder.js"></script>
 <script src="Products/smartFindProducts/smartFindProducts.js"></script>
 <script src="Products/searchProducts.js"></script>
+<script src="Customers/searchCustomers.js"></script>
 <script src="makeRow.js"></script>
 <script src="smartFindShared/getSqlCondition.js"></script>
 

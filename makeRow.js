@@ -1,4 +1,4 @@
-function makeRow(row){
+function makeProductRow(row){
   var dataTable = document.getElementById('table');
   var newRow = document.createElement('tr');
   newRow.className = 'row';
@@ -18,9 +18,6 @@ function makeRow(row){
 
   var rowElementsHTML = [];
 
-  // SELECT id, type, description, sell, qty,
-  //                    class, fileunder, vcond, scond, family
-
   rowElementsHTML=[newRow.id,                   //product code
               row.description,  //description
               '$'+row.sell,             //price
@@ -39,5 +36,11 @@ function makeRow(row){
     newRow.appendChild(newRowElement);
   }
   dataTable.appendChild(newRow);
+
+}
+
+makeRow = makeProductRow;
+
+function makeCustomerRow(row){
 
 }

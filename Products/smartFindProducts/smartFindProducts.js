@@ -7,13 +7,26 @@
 */
 
 //////////////////WHEN THE FORM IS SUBMITTED//////////////////////////////
-var results;
-var rowsDisplayed;
-var numRowsToCreate;
-var query;
-var queryOrSearch; //false if last call to server was done by smart find, true if done by search bar
-var orderby = '';
-var ascdesc = '';
+
+//var query; this is used to save a smart find POST object --> declared in search.js
+// var search; this is used to save a regular search POST object --> declared in search.js
+//var results; --> declared in search.js
+//var rowsDisplayed; --> declared in search.js
+//var numRowsToCreate; --> declared in search.js
+// var input; --> declared in search.js
+// var filterSearch; --> declared in search.js
+// var searchIndex; --> declared in search.js
+// var count; --> declared in search.js
+// var offset; --> declared in search.js
+// var pageNumber; --> declared in search.js
+// var results; --> declared in search.js
+// var rowsDisplayed; --> declared in search.js
+// var numRowsToCreate; --> declared in search.js
+// var orderby; --> declared in search.js
+// var ascdesc; --> declared in search.js
+//var queryOrSearch; //false if last call to server was done by smart find, true if done by search bar
+
+
 
 document.getElementById('smartFind').addEventListener('submit', function(e){
   e.preventDefault();
@@ -138,7 +151,11 @@ document.getElementById('smartFind').addEventListener('submit', function(e){
     url: 'Products/smartFindProducts/smartFindProducts.php',
     data: search,
     success: function(response){
-      displayProductResults(response);
+      $('.row').remove();
+      if(noErrors(response)){
+        displayResults(response, makeProductRow);
+      }
+    //  displayProductResults(response);
       // $('.row').remove();
       // var table = document.getElementById('table');
       // console.log(response);

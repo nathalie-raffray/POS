@@ -212,6 +212,10 @@ for(var i = 0; i < navButtons.length; i++)
 
       case 'Customers':
         dbSelected.innerHTML = 'Customers';
+        orderCol = orderColCustomers;
+        makeRow = makeCustomerRows;
+        searchUrl = 'Customers/searchCustomers.php';
+        smartFindUrl = 'Customers/smartFindCustomers/smartFindCustomers.php';
         //also configure smart find
         //CHANGE MAIN BAR
         containerHeaders[0].textContent = 'id';
@@ -236,6 +240,10 @@ for(var i = 0; i < navButtons.length; i++)
 
       case 'Products':
         dbSelected.innerHTML = 'Products';
+        orderCol = orderColProducts;
+        makeRow = makeProductRows;
+        searchUrl = 'Products/searchProducts.php';
+        smartFindUrl = 'Products/smartFindProducts/smartFindProducts.php';
         //CHANGE MAIN BAR
         containerHeaders[0].textContent = 'Code';
         containerHeaders[1].textContent = 'Description';
