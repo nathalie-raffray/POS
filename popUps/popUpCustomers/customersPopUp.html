@@ -4,7 +4,6 @@
 	<title>Customer</title>
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="styleCustomer.css">
-
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 </head>
 <body id="maincontainer">
@@ -24,11 +23,11 @@
 			<div id="titleBox">
 				<span id="customerBoxTitle">Customer</span>
 			</div>
-			
+
 			<div id="customerSubBox">
 				<ul>
 					<li>
-						
+
 						 <span class="ncd">Name</span>
 						 <textarea class="grayBox" id="firstName" required>Guy-Bernard</textarea>
 						 <textarea class="grayBox" id="lastName" required>Joseph</textarea>
@@ -68,7 +67,7 @@
 								<option value="home">home</option>
 								<option value="mobile">mobile</option>
 							</select>
-							<textarea class="grayBox" class="phoneNum">438 926 5500</textarea>
+							<textarea class="grayBox" class="phoneNum" id="phone1">438 926 5500</textarea>
 							<button class="phoneSel" id="firstButton"> <span class="dot"></span> </button>
 						</li>
 						<li>
@@ -76,16 +75,16 @@
 								<option value="home">home</option>
 								<option value="mobile">mobile</option>
 							</select>
-							<textarea class="grayBox" class="phoneNum">450 987 6543</textarea>
-							<button class="phoneSel"> <span class="dot"></span> </button>
+							<textarea class="grayBox" class="phoneNum" id="phone2">450 987 6543</textarea>
+							<button class="phoneSel" id="secondButton"> <span class="dot"></span> </button>
 						</li>
 						<li>
 							<select class="phone">
 								<option value="home">home</option>
 								<option value="mobile">mobile</option>
 							</select>
-							<textarea class="grayBox" class="phoneNum"></textarea>
-							<button class="phoneSel"> <span class="dot"></span> </button>
+							<textarea class="grayBox" class="phoneNum" id="phone3"></textarea>
+							<button class="phoneSel" id="thirdButton"> <span class="dot"></span> </button>
 						</li>
 						<li>
 							<select class="phone">
@@ -146,7 +145,7 @@
 									<option value="SK">
 									<option value="YT">
 	 -->							</datalist>
-							</span>											
+							</span>
 						</li>
 						<li>
 							<span id="country">
@@ -168,19 +167,19 @@
 				</div>
 
 			</div>
-			
+
 
 			<div id="notesBox">
-				<textarea id="noteText"> </textarea>	
+				<textarea id="noteText"> </textarea>
 			</div>
-		
+
 		</div>
 
 	</div>
 
 	<div id="bottomOptions">
 		<select id="moreOptions" name="type">
-			<option value="" id="default">&#9881</option> 
+			<option value="" id="default">&#9881</option>
 			<option value="merge">Merge Customer</option>
 			<option value="option2">Option 2</option>
 			<option value="option3">Option 3</option>

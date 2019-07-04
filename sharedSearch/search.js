@@ -122,7 +122,7 @@ function displayResults(response, makeRow){
     numRowsToCreate = results.length;
     rowsDisplayed += results.length;
   }
-  for(var i =0; i<numRowsToCreate; i++){
+  for(var i=0; i<numRowsToCreate; i++){
    makeRow(results[i]);
   }
 }
