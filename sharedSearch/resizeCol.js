@@ -5,6 +5,10 @@
 
 $("#tableheader").colResizable({
     liveDrag:true,
+    // flush: true,
+    // resizeMode: 'fit',
+    hoverCursor: "col-resize",
+    dragCursor: "col-resize",
     gripInnerHtml:"<div class='grip'></div>",
     draggingClass:"dragging" });
 

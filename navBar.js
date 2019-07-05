@@ -27,12 +27,19 @@ for(var i = 0; i < navButtons.length; i++)
 
         //CHANGE SELECT
         searchBy.options[0].textContent = 'customer';
+        searchBy.options[0].value = 'customer';
         searchBy.options[1].textContent = 'phone number';
+        searchBy.options[1].value = 'phone number';
         searchBy.options[2].textContent = 'email';
+        searchBy.options[2].value = 'email';
         searchBy.options[3].textContent = 'city';
+        searchBy.options[3].value = 'city';
         searchBy.options[4].textContent = 'postal code';
-        searchBy.options[5].textContent = 'city';
+        searchBy.options[4].value = 'postal code';
+        searchBy.options[5].textContent = 'points';
+        searchBy.options[5].value = 'points';
         searchBy.options[6].textContent = 'discount';
+        searchBy.options[6].value = 'discount';
 
         break;
 
@@ -53,13 +60,20 @@ for(var i = 0; i < navButtons.length; i++)
         containerHeaders[7].textContent = 'Label';
 
         //CHANGE SELECT
-        searchBy.options[0].textContent = 'Product';
+        searchBy.options[0].textContent = 'Product Code';
+        searchBy.options[0].value = 'Product Code';
         searchBy.options[1].textContent = 'Description';
+        searchBy.options[1].value = 'Description';
         searchBy.options[2].textContent = 'Artist';
+        searchBy.options[2].value = 'Artist';
         searchBy.options[3].textContent = 'Album';
+        searchBy.options[3].value = 'Album';
         searchBy.options[4].textContent = 'Genre';
+        searchBy.options[4].value = 'Genre';
         searchBy.options[5].textContent = 'Label';
+        searchBy.options[5].value = 'Label';
         searchBy.options[6].textContent = 'Price';
+        searchBy.options[6].value = 'Price';
 
         break;
 

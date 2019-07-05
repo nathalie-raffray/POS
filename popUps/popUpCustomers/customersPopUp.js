@@ -1,6 +1,6 @@
 var previousChoiceIN;
 
-$('#info, #notes').mousedown(function(){
+$('#info, #notes, #merge').mousedown(function(){
 	if(previousChoiceIN == undefined)
 	{
 		previousChoiceIN = document.getElementById('info');

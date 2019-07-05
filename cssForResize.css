@@ -18,7 +18,7 @@ th{
    text-align: center;
 }
 
-td{
+/* td{
 	text-indent:5px;
 	color:#444;
 	border-bottom:1px solid #bbb;
@@ -41,7 +41,7 @@ td.right{
 
 td.bottom{
 	border-bottom:1px solid #2e638e;
-}
+} */
 
 .grip{
 	width:20px;
@@ -51,7 +51,7 @@ td.bottom{
 	margin-left:-5px;
 	position:relative;
 	z-index:88;
-	cursor:e-resize;
+	cursor:col-resize;
 }
 
 .grip:hover{

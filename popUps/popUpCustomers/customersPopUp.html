@@ -55,6 +55,7 @@
 	<div id="containerBox">
 		<div class="select">
 			<span class="choice" id="info">Info</span>
+			<span class="choice" id="merge">Merge Customer</span>
 			<span class="choice" id="notes">Notes</span>
 		</div>
 
@@ -96,11 +97,11 @@
 						</li>
 						<li id="email">
 							<span class ="ew">Email</span>
-							<textarea class="grayBox"></textarea>
+							<textarea class="grayBox" id="emailBox"></textarea>
 						</li>
 						<li id="website">
 							<span class ="ew">Website</span>
-							<textarea class="grayBox"></textarea>
+							<textarea class="grayBox" id="websiteBox"></textarea>
 						</li>
 					</ul>
 				</div>
@@ -110,16 +111,16 @@
 					<ul>
 						<li>
 							Line 1:
-							<textarea  class="addressText" class="grayBox"></textarea>
+							<textarea  class="addressText" id="line1" class="grayBox"></textarea>
 						</li>
 						<li>
 							Line 2:
-							<textarea  class="addressText" class="grayBox"></textarea>
+							<textarea  class="addressText" id="line2" class="grayBox"></textarea>
 						</li>
 						<li>
 							<span id="city">
 								City:
-								<input type="text" list="cityList" name="city">
+								<input type="text" list="cityList" id="cityI" name="city">
 								<datalist id="cityList">
 									<option value="Montreal">
 									<!-- <option value="Quebec">
@@ -129,7 +130,7 @@
 
 							<span id="province">
 								Province:
-								<input type="text" list="provinceList" name="province">
+								<input type="text" list="provinceList" id="provinceI" name="province">
 								<datalist id="provinceList">
 									<option value="QC">
 									<!-- <option value="ON">
@@ -150,7 +151,7 @@
 						<li>
 							<span id="country">
 								Country:
-								<input type="text" list="countries" name="country">
+								<input type="text" list="countries" id="countryI" name="country">
 								<datalist id="countries">
 									<option value="Canada">
 									<!-- <option value="USA"> -->
@@ -159,7 +160,7 @@
 
 							<span id="postalCode">
 								Postal Code:
-								<textarea class="grayBox"></textarea>
+								<textarea id="postalCodeI" class="grayBox"></textarea>
 							</span>
 						</li>
 					</ul>

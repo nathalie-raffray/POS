@@ -80,7 +80,7 @@ document.getElementById('searchForm').addEventListener('submit', function(e){
 
 function noErrors(response){
   console.log(response);
-  var table = document.getElementById('table');
+  var table = document.getElementById('tableheader');
   var regex = RegExp('Allowed memory size of');
 
   if(regex.test(response)){ //for fatal PHP error where too many results were requested

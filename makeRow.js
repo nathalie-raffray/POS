@@ -1,5 +1,5 @@
 function makeProductRow(row){
-  var dataTable = document.getElementById('table');
+  var dataTable = document.getElementById('tableheader');
   var newRow = document.createElement('tr');
   newRow.className = 'row';
 
@@ -53,7 +53,7 @@ function makeCustomerRow(row){
 
   if(row.mainphone == 1){
     phone = row.phone1;
-  }else if(row.mainphone == 2
+  }else if(row.mainphone == 2){
     phone = row.phone2;
   }else if(row.mainphone == 3){
     phone = row.phone3;

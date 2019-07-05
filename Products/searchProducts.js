@@ -116,3 +116,8 @@ function orderColProducts(col){
 }
 
 orderCol = orderColProducts;
+
+function invDropDown(){
+  console.log('ho');
+  document.getElementById('dropdown-content').style.display = 'block';
+}

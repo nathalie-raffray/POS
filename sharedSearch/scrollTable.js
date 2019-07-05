@@ -5,9 +5,12 @@
 // var makeRow; //this will hold one of the functions: makeProductRows, makeCustomerRows, makeOrderRows, etc.
 
 var currentNumRows;
-$('#scrollTable').scroll(function() {
-
+//this still aint working
+//$(document.body).on('scroll', '#tableheader', function(){
+$('#tableheader').scroll(function() {
+  console.log(HEEEYY);
   let div = $(this).get(0);
+  console.log(div);
   if(div.scrollTop + div.clientHeight >= div.scrollHeight) {
       // do the lazy loading here
       //console.log('scrolling');
