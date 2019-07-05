@@ -36,7 +36,7 @@ if(isset($_POST['entered']) && isset($_POST['filter']) && isset($_POST['searchIn
         $string = $string."AND (firstname LIKE '%{$searcharr[$i]}%' OR lastname LIKE '%{$searcharr[$i]}%')";
       }
 
-      $query = "SELECT cid, firstname, lastname, phone1, email, discount, postalcode, city FROM `customers`
+      $query = "SELECT id, firstname, lastname, mainphone, email, points, discount, postalcode, city FROM `customers`
               WHERE $string $orderClause";
 
       if(!$valid){
@@ -137,7 +137,7 @@ if(isset($_POST['entered']) && isset($_POST['filter']) && isset($_POST['searchIn
 
 
 function doCustomerQuery($string, $sendBack, $orderClause, $conn){
-  $query = "SELECT cid, firstname, lastname, phone1, email, discount, postalcode, city FROM `customers`
+  $query = "SELECT id, firstname, lastname, mainphone, points, email, discount, postalcode, city FROM `customers`
           WHERE $string $orderClause";
   $result = mysqli_query($conn, $query);
   // $responseClient=array();
@@ -170,54 +170,6 @@ function doCustomerQuery($string, $sendBack, $orderClause, $conn){
   echo json_encode($sendBack);
 }
 
-// 
-// function doQuery($search, $col, $orderClause, $sendBack, $conn){
-//   $searcharr = explode(' ', $search);
-//   $string='';
-//   for($i=1; $i<sizeof($searcharr); $i++){
-//     $string = $string."AND $col LIKE '%{$searcharr[$i]}%'";
-//   }
-//   $query = "SELECT id, type, description, sell, qty,
-//                      class, fileunder, vcond, scond, family, inv_floor
-//             FROM `lp` WHERE $col LIKE '%{$searcharr[0]}%' {$string}
-//             UNION ALL
-//             SELECT id, type, description, sell, qty,
-//                                class, fileunder, vcond, scond, family, inv_floor
-//             FROM `cd`  WHERE $col LIKE '%{$searcharr[0]}%' {$string}
-//             ".$orderClause;
-//
-//
-//   //echo $query;
-//    $result = mysqli_query($conn, $query);
-//    // $responseClient=array();
-//
-//    if($result == false){ //if query failed
-//      $sendBack->error = 'Invalid Query.';
-//      $sendBack->data = '';
-//      echo json_encode($sendBack);
-//      mysqli_close($conn);
-//      return;
-//    }
-//    $post = mysqli_fetch_all($result, MYSQLI_ASSOC); //, MYSQLI_ASSOC
-//
-//    if($post == NULL){
-//      $sendBack->error = 'No results found.';
-//      $sendBack->data = '';
-//      echo json_encode($sendBack);
-//      mysqli_free_result($result);
-//      mysqli_close($conn);
-//      return;
-//    }
-//
-//    mysqli_free_result($result);
-//    mysqli_close($conn);
-//
-//    $sendBack = new \stdClass();
-//    $sendBack->error = 'None';
-//    $sendBack->data = json_encode($post);
-//
-//    echo json_encode($sendBack);
-// }
 
 
 

@@ -9,6 +9,10 @@ for(var i = 0; i < navButtons.length; i++)
     switch(this.textContent){
 
       case 'Customers':
+        document.getElementById('smartFindProducts').style.display = 'none';
+        document.getElementById('smartFindCustomers').style.display = 'block';
+        $('.row').remove();         //clear rows
+        document.getElementById('input-box').value = ''; //clear search box
         dbSelected.innerHTML = 'Customers';
         orderCol = orderColCustomers;
         makeRow = makeCustomerRow;
@@ -44,6 +48,10 @@ for(var i = 0; i < navButtons.length; i++)
         break;
 
       case 'Products':
+        document.getElementById('smartFindProducts').style.display = 'block';
+        document.getElementById('smartFindCustomers').style.display = 'none';
+        $('.row').remove();         //clear rows
+        document.getElementById('input-box').value = ''; //clear search box
         dbSelected.innerHTML = 'Products';
         orderCol = orderColProducts;
         makeRow = makeProductRow;
@@ -78,16 +86,28 @@ for(var i = 0; i < navButtons.length; i++)
         break;
 
       case 'Orders':
+        document.getElementById('smartFindCustomers').style.display = 'none';
+        document.getElementById('smartFindProducts').style.display = 'none';
+        $('.row').remove();         //clear rows
+        document.getElementById('input-box').value = ''; //clear search box
         dbSelected.innerHTML = 'Orders';
         //console.log('o');
         break;
 
       case 'Order Requests':
+        document.getElementById('smartFindCustomers').style.display = 'none';
+        document.getElementById('smartFindProducts').style.display = 'none';
+        $('.row').remove();         //clear rows
+        document.getElementById('input-box').value = ''; //clear search box
         dbSelected.innerHTML = 'Order_Requests';
        // console.log('or');
         break;
 
       case 'Invoices':
+        document.getElementById('smartFindCustomers').style.display = 'none';
+        document.getElementById('smartFindProducts').style.display = 'none';
+        $('.row').remove();         //clear rows
+        document.getElementById('input-box').value = ''; //clear search box
         dbSelected.innerHTML = 'Invoices';
         //console.log('i');
         break;

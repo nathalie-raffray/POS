@@ -36,11 +36,6 @@ document.getElementById('smartFind').addEventListener('submit', function(e){
 //  var currentId;
   var form = new FormData(document.getElementById("smartFind"));
   var entered = form.getAll("text");
-  //console.log(entered);
-  // if(entered[1].trim() == ''){
-  //   console.log('MEEMEENLF');
-  // }
-
 // SELECT id, type, description FROM (SELECT id, type, description FROM `lp` UNION ALL SELECT id,
 //    type, description FROM `ln` UNION ALL SELECT id, type, description
 //    FROM `cd`) AS errything WHERE description LIKE'%black%'
@@ -155,47 +150,6 @@ document.getElementById('smartFind').addEventListener('submit', function(e){
       if(noErrors(response)){
         displayResults(response, makeProductRow);
       }
-    //  displayProductResults(response);
-      // $('.row').remove();
-      // var table = document.getElementById('table');
-      // console.log(response);
-      // var regex = RegExp('Allowed memory size of');
-      //
-      // console.log(regex.test(response));
-      // if(regex.test(response)){
-      //   table.innerHTML = 'Please make your query more precise.';
-      //   return;
-      // }
-      //
-      // //When receiving data from a web server, the data is always a string.
-      // //Parse the data with JSON.parse(), and the data becomes a JavaScript object.
-      // response = JSON.parse(response);
-      //
-      // if(response.error == 'No results found.'){
-      //   var table = document.getElementById('table');
-      //   table.innerHTML = response.error;
-      // }
-      // else if(response.error == 'Invalid Query.'){
-      //   console.log('INVALID QUERY');
-      // }else if(response.error == 'None'){
-      //   response.data = JSON.parse(response.data);
-      //   results = response.data;
-      //   //console.log(response);
-      //
-      //   //CHECK FOR ERRORS
-      //   console.log(results[0].id);
-      //
-      //   if(results.length > 50){
-      //     numRowsToCreate = 50;
-      //     rowsDisplayed += 50;
-      //   }else{
-      //     numRowsToCreate = results.length;
-      //     rowsDisplayed += results.length;
-      //   }
-      //   for(var i =0; i<numRowsToCreate; i++){
-      //    makeRow(results[i]);
-      //   }
-      // }
     }
   });
 });

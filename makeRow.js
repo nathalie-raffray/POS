@@ -42,7 +42,7 @@ function makeProductRow(row){
 makeRow = makeProductRow; //this is the default, aka. when the page is refreshed and goes back to the product page
 
 function makeCustomerRow(row){
-  var dataTable = document.getElementById('table');
+  var dataTable = document.getElementById('tableheader');
   var newRow = document.createElement('tr');
   newRow.className = 'row';
 
@@ -51,19 +51,19 @@ function makeCustomerRow(row){
   var phone;
   newRow.id = code; //change this depending...
 
-  if(row.mainphone == 1){
-    phone = row.phone1;
-  }else if(row.mainphone == 2){
-    phone = row.phone2;
-  }else if(row.mainphone == 3){
-    phone = row.phone3;
-  }
+  // if(row.mainphone == 1){
+  //   phone = row.phone1;
+  // }else if(row.mainphone == 2){
+  //   phone = row.phone2;
+  // }else if(row.mainphone == 3){
+  //   phone = row.phone3;
+  // }
 
   var rowElementsHTML = [];
 
   rowElementsHTML=[newRow.id,                   //customer code
-              row.name,  //name
-              phone,             //phone
+              row.firstname + ' ' + row.lastname,  //name
+              row.mainphone,             //phone
               row.email, //email
               row.points,             //points
               row.discount,                    //discount

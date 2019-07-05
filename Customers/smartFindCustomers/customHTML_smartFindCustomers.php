@@ -1,4 +1,4 @@
-<div class="content" id="customHTML_sfProducts">
+<div class="content" id="customHTML_sfCustomers">
   <ul id="smartFindRows">
     <li id="quantifier1">
       <select class="filter"> <!-- name="quantifier1" form="smartFind" -->
@@ -24,12 +24,11 @@
           <option value="All">All</option>
       </select>
       <select class="filter secondFilter2">
-        <option value="is_equal_to">is equal to</option>
-        <option value="is_not_equal_to">is not equal to</option>
-        <option value="less_than">less than</option>
-        <option value="greater_than">greater than</option>
-        <option value="greater_than_or_equal">greater than or equal</option>
-        <option value="is_between">is between</option>
+        <option value="contains">contains</option>
+        <option value="ends_with">ends with</option>
+        <option value="begins_with">begins with</option>
+        <option value="is">is</option>
+        <option value="is_not">is not</option>
       </select>
       <input type="text" name="text" class="smfTextBox" form="smartFind" autofocus>
       <div class="plusminusdiv">
@@ -62,12 +61,11 @@
           <option value="All">All</option>
       </select>
       <select class="filter secondFilter2">
-        <option value="is_equal_to">is equal to</option>
-        <option value="is_not_equal_to">is not equal to</option>
-        <option value="less_than">less than</option>
-        <option value="greater_than">greater than</option>
-        <option value="greater_than_or_equal">greater than or equal</option>
-        <option value="is_between">is between</option>
+        <option value="contains">contains</option>
+        <option value="ends_with">ends with</option>
+        <option value="begins_with">begins with</option>
+        <option value="is">is</option>
+        <option value="is_not">is not</option>
       </select>
       <input type="text" name="text" class="smfTextBox" form="smartFind" autofocus>
       <div class="plusminusdiv">
@@ -88,12 +86,11 @@
           <option value="All">All</option>
       </select>
       <select class="filter secondFilter2">
-        <option value="is_equal_to">is equal to</option>
-        <option value="is_not_equal_to">is not equal to</option>
-        <option value="less_than">less than</option>
-        <option value="greater_than">greater than</option>
-        <option value="greater_than_or_equal">greater than or equal</option>
-        <option value="is_between">is between</option>
+        <option value="contains">contains</option>
+        <option value="ends_with">ends with</option>
+        <option value="begins_with">begins with</option>
+        <option value="is">is</option>
+        <option value="is_not">is not</option>
       </select>
       <input type="text" name="text" class="smfTextBox" form="smartFind" autofocus>
       <div class="plusminusdiv">
@@ -114,12 +111,11 @@
           <option value="All">All</option>
       </select>
       <select class="filter secondFilter2">
-        <option value="is_equal_to">is equal to</option>
-        <option value="is_not_equal_to">is not equal to</option>
-        <option value="less_than">less than</option>
-        <option value="greater_than">greater than</option>
-        <option value="greater_than_or_equal">greater than or equal</option>
-        <option value="is_between">is between</option>
+        <option value="contains">contains</option>
+        <option value="ends_with">ends with</option>
+        <option value="begins_with">begins with</option>
+        <option value="is">is</option>
+        <option value="is_not">is not</option>
       </select>
       <input type="text" name="text" class="smfTextBox" form="smartFind" autofocus>
       <div class="plusminusdiv">

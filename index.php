@@ -103,9 +103,13 @@
 
                 </div>
 
-                <div >
+                <div id="smartFindProducts">
 									<button class="collapsible">Smart Find</button>
 									<?php include("Products/smartFindProducts/customHTML_smartFindProducts.php"); ?>
+                </div>
+								<div id="smartFindCustomers" style="display:none">
+									<button class="collapsible">Smart Find</button>
+									<?php include("Customers/smartFindCustomers/customHTML_smartFindCustomers.php"); ?>
                 </div>
 
                 <div id="container">
