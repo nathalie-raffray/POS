@@ -94,28 +94,28 @@ var conditions = ['', 'NM', 'VG+', 'VG', 'VG-', 'G'];
 //   }
 // }
 
-function orderColProducts(col){
-  switch(col){
-    case 'Code':
-      return 'id';
-    case 'Description':
-      return 'description';
-    case 'Price':
-      return 'sell';
-    case 'Inventory':
-      return 'inv_floor'; //here i could do ORDER BY total, inv_floor (but need to add total col)
-    case 'Genre':
-      return 'class';
-    case 'Filed Under':
-      return 'fileunder';
-    case 'Condition':
-      return 'vcond';
-    case 'Label':
-      return 'family';
-  }
-}
+// function orderColProducts(col){
+//   switch(col){
+//     case 'Code':
+//       return 'id';
+//     case 'Description':
+//       return 'description';
+//     case 'Price':
+//       return 'sell';
+//     case 'Inventory':
+//       return 'inv_floor'; //here i could do ORDER BY total, inv_floor (but need to add total col)
+//     case 'Genre':
+//       return 'class';
+//     case 'Filed Under':
+//       return 'fileunder';
+//     case 'Condition':
+//       return 'vcond';
+//     case 'Label':
+//       return 'family';
+//   }
+// }
 
-orderCol = orderColProducts;
+//orderCol = orderColProducts;
 
 function invDropDown(){
   console.log('ho');

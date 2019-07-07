@@ -1,10 +1,27 @@
-//////////////////////////////////////////NAV BAR///////////////////////////////////////////////////
+///////////////////////////////DEFAULT VALUES///////////////////////////////////////////////////////
 //var containerHeaders = document.getElementsByClassName('header');
+containerHeaders[0].value = 'id';
+containerHeaders[1].value = 'description';
+containerHeaders[2].value = 'sell';
+containerHeaders[3].value = 'inv_floor';
+containerHeaders[4].value = 'class';
+containerHeaders[5].value = 'fileunder';
+containerHeaders[6].value = 'vcond';
+containerHeaders[7].value = 'family';
+
+var previousdbSelected = 'Products'; //previous database selected (eg. Customers, Products, Orders, etc)
+//////////////////////////////////////////NAV BAR///////////////////////////////////////////////////
 
 for(var i = 0; i < navButtons.length; i++)
 {
   navButtons[i].addEventListener('click', function(e){
-    var dbSelected = document.getElementById('db_Selected');
+  //  var dbSelected = document.getElementById('db_Selected');
+
+    if(previousdbSelected == this.textContent){ //this is to ensure that if someone is on the product page and clicks "Products" on the nav bar, then the rows won't be removed
+      return;
+    }
+    previousdbSelected = this.textContent;
+
 
     switch(this.textContent){
 
@@ -13,21 +30,29 @@ for(var i = 0; i < navButtons.length; i++)
         document.getElementById('smartFindCustomers').style.display = 'block';
         $('.row').remove();         //clear rows
         document.getElementById('input-box').value = ''; //clear search box
-        dbSelected.innerHTML = 'Customers';
-        orderCol = orderColCustomers;
+      //  dbSelected.innerHTML = 'Customers';
+        //orderCol = orderColCustomers;
         makeRow = makeCustomerRow;
         searchUrl = 'Customers/searchCustomers.php';
         smartFindUrl = 'Customers/smartFindCustomers/smartFindCustomers.php';
         //also configure smart find
         //CHANGE MAIN BAR
         containerHeaders[0].textContent = 'id';
+        containerHeaders[0].value = 'id';
         containerHeaders[1].textContent = 'name';
+        containerHeaders[1].value = 'firstname';
         containerHeaders[2].textContent = 'phone number';
+        containerHeaders[2].value = 'mainphone';
         containerHeaders[3].textContent = 'email';
+        containerHeaders[3].value = 'email';
         containerHeaders[4].textContent = 'points';
+        containerHeaders[4].value = 'points';
         containerHeaders[5].textContent = 'discount';
+        containerHeaders[5].value = 'discount';
         containerHeaders[6].textContent = 'postal code';
+        containerHeaders[6].value = 'postalcode';
         containerHeaders[7].textContent = 'city';
+        containerHeaders[7].value = 'city';
 
         //CHANGE SELECT
         searchBy.options[0].textContent = 'customer';
@@ -52,20 +77,28 @@ for(var i = 0; i < navButtons.length; i++)
         document.getElementById('smartFindCustomers').style.display = 'none';
         $('.row').remove();         //clear rows
         document.getElementById('input-box').value = ''; //clear search box
-        dbSelected.innerHTML = 'Products';
-        orderCol = orderColProducts;
+      //  dbSelected.innerHTML = 'Products';
+        //orderCol = orderColProducts;
         makeRow = makeProductRow;
         searchUrl = 'Products/searchProducts.php';
         smartFindUrl = 'Products/smartFindProducts/smartFindProducts.php';
         //CHANGE MAIN BAR
         containerHeaders[0].textContent = 'Code';
+        containerHeaders[0].value = 'id';
         containerHeaders[1].textContent = 'Description';
+        containerHeaders[1].value = 'description';
         containerHeaders[2].textContent = 'Price';
+        containerHeaders[2].value = 'sell';
         containerHeaders[3].textContent = 'Inventory';
+        containerHeaders[3].value = 'inv_floor';
         containerHeaders[4].textContent = 'Genre';
+        containerHeaders[4].value = 'class';
         containerHeaders[5].textContent = 'Filed Under';
+        containerHeaders[5].value = 'fileunder';
         containerHeaders[6].textContent = 'Condition';
+        containerHeaders[6].value = 'vcond';
         containerHeaders[7].textContent = 'Label';
+        containerHeaders[7].value = 'family';
 
         //CHANGE SELECT
         searchBy.options[0].textContent = 'Product Code';
@@ -90,7 +123,7 @@ for(var i = 0; i < navButtons.length; i++)
         document.getElementById('smartFindProducts').style.display = 'none';
         $('.row').remove();         //clear rows
         document.getElementById('input-box').value = ''; //clear search box
-        dbSelected.innerHTML = 'Orders';
+    //    dbSelected.innerHTML = 'Orders';
         //console.log('o');
         break;
 
@@ -99,7 +132,7 @@ for(var i = 0; i < navButtons.length; i++)
         document.getElementById('smartFindProducts').style.display = 'none';
         $('.row').remove();         //clear rows
         document.getElementById('input-box').value = ''; //clear search box
-        dbSelected.innerHTML = 'Order_Requests';
+      //  dbSelected.innerHTML = 'Order_Requests';
        // console.log('or');
         break;
 
@@ -108,7 +141,7 @@ for(var i = 0; i < navButtons.length; i++)
         document.getElementById('smartFindProducts').style.display = 'none';
         $('.row').remove();         //clear rows
         document.getElementById('input-box').value = ''; //clear search box
-        dbSelected.innerHTML = 'Invoices';
+    //    dbSelected.innerHTML = 'Invoices';
         //console.log('i');
         break;
 

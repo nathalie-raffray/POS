@@ -137,6 +137,7 @@
 														<td class="col2">Black Uhuru - Guess Who's Coming To Dinner?</td>
 														<td class="col3">$24.99</td>
 														<td class="col4">
+															<span class="dot"></span>
 															<!-- <button onclick="invDropDown()" class="dropbtn">Dropdown</button>
 														  <div id="myDropdown" id="dropdown-content">
 														    <a href="#">Link 1</a>

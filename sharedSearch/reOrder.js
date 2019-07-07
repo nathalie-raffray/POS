@@ -29,7 +29,12 @@ for(var i = 0; i < arrowButtons.length; i++)
       this.children[1].innerHTML = '\u2193';    //down arrow
       ascdesc = 'ASC';
     }
-    orderby = orderCol(this.children[0].innerHTML);
+    orderby = this.children[0].value;
+    console.log('orderby: ' + orderby);
+    //console.log(this.children[0]);
+
+    //console.log('children[0]: ' + this.children[0].value);
+  //  orderCol(this.children[0].innerHTML);
     reOrder();
     //console.log(orderby);
   });
@@ -48,6 +53,7 @@ function reOrder(){
       success: function(response){
         $('.row').remove();
         if(noErrors(response)){
+          console.log(response);
           //console.log(makeRow);
           displayResults(response, makeRow);
         }
