@@ -430,7 +430,70 @@ button:focus {outline:0;}
   /* border-right: 1px solid rgb(221, 221, 221); */
 }
 
-/**/
+/*CSS FOR INVENTORY DROP DOWN ON PRODUCTS PAGE*/
+
+.dot {
+  height: 13px;
+  width: 13px;
+  margin-top: 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.available{
+  display: inline-block;
+  margin-left: 2px;
+}
+
+.dropdownArrow{
+  height: 0;
+  width: 0;
+  display: inline-block;
+  border-top: 4px solid black;
+  border-bottom: 4px solid transparent;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  /* margin-bottom: 2px; */
+  margin-left: 2px;
+  /* border-bottom: 20px solid transparent; */
+  /* border-bottom: 5px solid black; */
+}
+
+.dropdownTriangle{
+  display: block;
+  position: absolute;
+  border: solid rgb(46, 46, 51);
+  border-width: 8px;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: transparent;
+  margin-left: 78px;
+}
+
+.invDropdown{
+  /* display: none; */
+  display: block;
+  position: absolute;
+  margin-top: 8px;
+  margin-left: 65px;
+  border-radius: 5%;
+  background-image: url(pics/blacksands.jpeg);
+  opacity: 0.87;
+  padding: 15px;
+
+}
+
+.dotNum{
+  margin-left: 5px;
+  margin-right: 5px;
+  display:inline-block;
+  /* padding-top: -2px; */
+  /* height: 50px; */
+  margin-bottom: 4px;
+  color: white;
+  font-weight: bold;
+}
 
 /* Dropdown Button
 i cant fucking function right now

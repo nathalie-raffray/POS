@@ -138,6 +138,30 @@
 														<td class="col3">$24.99</td>
 														<td class="col4">
 															<span class="dot"></span>
+															<span class="available">4 Available</span>
+															<span class="dropdownArrow"></span>
+															<span class="dropdownTriangle"></span>
+															<div class="invDropdown">
+																<span class="dot totalDot"></span>
+																<span class="dotNum">39</span>
+																<span class="dotWhere">TOTAL</span><br>
+																<span class="dot availableDot"></span>
+																<span class="dotNum">39</span>
+																<span class="dotWhere">AVAILABLE</span><br>
+																<span class="dot reservedDot"></span>
+																<span class="dotNum">0</span>
+																<span class="dotWhere">RESERVED</span><br>
+																<span class="dot warehouseDot"></span>
+																<span class="dotNum">0</span>
+																<span class="dotWhere">IN WAREHOUSES</span><br>
+																<span class="dot ccustomersDot"></span>
+																<span class="dotNum">0</span>
+																<span class="dotWhere">COMING FOR CUSTOMERS</span><br>
+																<span class="dot ccstockDot"></span>
+																<span class="dotNum">0</span>
+																<span class="dotWhere">COMING FOR STOCK</span>
+
+															</div>
 															<!-- <button onclick="invDropDown()" class="dropbtn">Dropdown</button>
 														  <div id="myDropdown" id="dropdown-content">
 														    <a href="#">Link 1</a>
@@ -145,6 +169,66 @@
 														    <a href="#">Link 3</a>
 														  </div> -->
 														</td>
+														<td class="col5">Reggae</td>
+														<td class="col6"></td>
+														<td class="col7">VG+/VG+</td>
+														<td class="col8">Heartbeat Records</td>
+												</tr>
+												<tr class="row">
+														<td class="col1">LP000123123</td>
+														<td class="col2">Black Uhuru - Guess Who's Coming To Dinner?</td>
+														<td class="col3">$24.99</td>
+														<td class="col4">4 Available</td>
+														<td class="col5">Reggae</td>
+														<td class="col6"></td>
+														<td class="col7">VG+/VG+</td>
+														<td class="col8">Heartbeat Records</td>
+												</tr>
+												<tr class="row">
+														<td class="col1">LP000123123</td>
+														<td class="col2">Black Uhuru - Guess Who's Coming To Dinner?</td>
+														<td class="col3">$24.99</td>
+														<td class="col4">4 Available</td>
+														<td class="col5">Reggae</td>
+														<td class="col6"></td>
+														<td class="col7">VG+/VG+</td>
+														<td class="col8">Heartbeat Records</td>
+												</tr>
+												<tr class="row">
+														<td class="col1">LP000123123</td>
+														<td class="col2">Black Uhuru - Guess Who's Coming To Dinner?</td>
+														<td class="col3">$24.99</td>
+														<td class="col4">4 Available</td>
+														<td class="col5">Reggae</td>
+														<td class="col6"></td>
+														<td class="col7">VG+/VG+</td>
+														<td class="col8">Heartbeat Records</td>
+												</tr>
+												<tr class="row">
+														<td class="col1">LP000123123</td>
+														<td class="col2">Black Uhuru - Guess Who's Coming To Dinner?</td>
+														<td class="col3">$24.99</td>
+														<td class="col4">4 Available</td>
+														<td class="col5">Reggae</td>
+														<td class="col6"></td>
+														<td class="col7">VG+/VG+</td>
+														<td class="col8">Heartbeat Records</td>
+												</tr>
+												<tr class="row">
+														<td class="col1">LP000123123</td>
+														<td class="col2">Black Uhuru - Guess Who's Coming To Dinner?</td>
+														<td class="col3">$24.99</td>
+														<td class="col4">4 Available</td>
+														<td class="col5">Reggae</td>
+														<td class="col6"></td>
+														<td class="col7">VG+/VG+</td>
+														<td class="col8">Heartbeat Records</td>
+												</tr>
+												<tr class="row">
+														<td class="col1">LP000123123</td>
+														<td class="col2">Black Uhuru - Guess Who's Coming To Dinner?</td>
+														<td class="col3">$24.99</td>
+														<td class="col4">4 Available</td>
 														<td class="col5">Reggae</td>
 														<td class="col6"></td>
 														<td class="col7">VG+/VG+</td>
