@@ -113,7 +113,7 @@
                 </div>
 
                 <div id="container">
-
+										
                     <table id="tableheader">
                         <tr id="main-bar" width="100%" border="0" cellpadding="0" cellspacing="0">
                             <th class="col1"><button class="headerbutton" type="button"><span class="header">Code</span><span class="updown"></span></button></th>
@@ -122,7 +122,7 @@
 
                             <th class="col3"><button class="headerbutton" type="button"><span class="header">Price</span><span class="updown"></span></button></th>
 
-                            <th class="col4"><button class="headerbutton" type="button"><span class="header">Inventory</span><span class="updown"></span></button></th>
+                            <th ><button class="headerbutton" type="button"><span class="header">Inventory</span><span class="updown"></span></button></th>
 
                             <th class="col5"><button class="headerbutton" type="button"><span class="header">Genre</span><span class="updown"></span></button></th>
 
@@ -132,35 +132,35 @@
 
                             <th class="col8"><button class="headerbutton" type="button"><span class="header">Label</span><span class="updown"></span></button></th>
                         </tr>
+												<?php include("Products/invDropDown.php") ?>
 												<tr class="row">
-														<td class="col1">LP000123123</td>
-														<td class="col2">Black Uhuru - Guess Who's Coming To Dinner?</td>
-														<td class="col3">$24.99</td>
+														<td class="col1 dblclickable">LP000123123</td>
+														<td class="col2 dblclickable">Black Uhuru - Guess Who's Coming To Dinner?</td>
+														<td class="col3 dblclickable">$24.99</td>
 														<td class="col4">
-															<span class="dot"></span>
+															<span class="dot rowDot"></span>
 															<span class="available">4 Available</span>
 															<span class="dropdownArrow"></span>
 															<span class="dropdownTriangle"></span>
 															<div class="invDropdown">
-																<span class="dot totalDot"></span>
-																<span class="dotNum">39</span>
-																<span class="dotWhere">TOTAL</span><br>
-																<span class="dot availableDot"></span>
-																<span class="dotNum">39</span>
-																<span class="dotWhere">AVAILABLE</span><br>
-																<span class="dot reservedDot"></span>
-																<span class="dotNum">0</span>
-																<span class="dotWhere">RESERVED</span><br>
-																<span class="dot warehouseDot"></span>
-																<span class="dotNum">0</span>
-																<span class="dotWhere">IN WAREHOUSES</span><br>
-																<span class="dot ccustomersDot"></span>
-																<span class="dotNum">0</span>
-																<span class="dotWhere">COMING FOR CUSTOMERS</span><br>
-																<span class="dot ccstockDot"></span>
-																<span class="dotNum">0</span>
-																<span class="dotWhere">COMING FOR STOCK</span>
-
+															  <span class="dot totalDot"></span>
+															  <span class="dotNum numTotal">0</span>
+															  <span class="dotWhere">TOTAL</span><br>
+															  <span class="dot availableDot"></span>
+															  <span class="dotNum numFloor">0</span>
+															  <span class="dotWhere">FLOOR</span><br>
+															  <span class="dot reservedDot"></span>
+															  <span class="dotNum numReserved">0</span>
+															  <span class="dotWhere">RESERVED</span><br>
+															  <span class="dot warehouseDot"></span>
+															  <span class="dotNum numBasement">0</span>
+															  <span class="dotWhere">IN BASEMENT</span><br>
+															  <span class="dot ccustomersDot"></span>
+															  <span class="dotNum numCCustomers">0</span>
+															  <span class="dotWhere">COMING FOR CUSTOMERS</span><br>
+															  <span class="dot ccstockDot"></span>
+															  <span class="dotNum numCStock">0</span>
+															  <span class="dotWhere">COMING FOR STOCK</span>
 															</div>
 															<!-- <button onclick="invDropDown()" class="dropbtn">Dropdown</button>
 														  <div id="myDropdown" id="dropdown-content">
@@ -168,6 +168,18 @@
 														    <a href="#">Link 2</a>
 														    <a href="#">Link 3</a>
 														  </div> -->
+														</td>
+														<td class="col5 dblclickable">Reggae</td>
+														<td class="col6 dblclickable"></td>
+														<td class="col7 dblclickable">VG+/VG+</td>
+														<td class="col8 dblclickable">Heartbeat Records</td>
+												</tr>
+												<tr class="row">
+														<td class="col1">LP000123123</td>
+														<td class="col2">Black Uhuru - Guess Who's Coming To Dinner?</td>
+														<td class="col3">$24.99</td>
+														<td class="col4">
+															<?php include("Products/invDropDown.php") ?>
 														</td>
 														<td class="col5">Reggae</td>
 														<td class="col6"></td>
@@ -205,21 +217,11 @@
 														<td class="col8">Heartbeat Records</td>
 												</tr>
 												<tr class="row">
-														<td class="col1">LP000123123</td>
-														<td class="col2">Black Uhuru - Guess Who's Coming To Dinner?</td>
-														<td class="col3">$24.99</td>
+														<td class="col1 dblclickable">LP000123123</td>
+														<td class="col2 dblclickable">Black Uhuru - Guess Who's Coming To Dinner?</td>
+														<td class="col3 dblclickable">$24.99</td>
 														<td class="col4">4 Available</td>
-														<td class="col5">Reggae</td>
-														<td class="col6"></td>
-														<td class="col7">VG+/VG+</td>
-														<td class="col8">Heartbeat Records</td>
-												</tr>
-												<tr class="row">
-														<td class="col1">LP000123123</td>
-														<td class="col2">Black Uhuru - Guess Who's Coming To Dinner?</td>
-														<td class="col3">$24.99</td>
-														<td class="col4">4 Available</td>
-														<td class="col5">Reggae</td>
+														<td class="col5 dblclickable">Reggae</td>
 														<td class="col6"></td>
 														<td class="col7">VG+/VG+</td>
 														<td class="col8">Heartbeat Records</td>
@@ -333,7 +335,7 @@
 <script src="sharedSearch/reOrder.js"></script>
 <script src="sharedSearch/resizeCol.js"></script>
 <script src="Products/smartFindProducts/smartFindProducts.js"></script>
-<script src="Products/searchProducts.js"></script>
+<script src="Products/products.js"></script>
 <script src="Customers/searchCustomers.js"></script>
 <script src="makeRow.js"></script>
 <script src="smartFindShared/getSqlCondition.js"></script>

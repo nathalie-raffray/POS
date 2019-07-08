@@ -24,6 +24,8 @@ for(var i = 0; i < navButtons.length; i++)
 
 
     switch(this.textContent){
+      default:
+        previousRowClicked = undefined;
 
       case 'Customers':
         document.getElementById('smartFindProducts').style.display = 'none';
@@ -77,6 +79,8 @@ for(var i = 0; i < navButtons.length; i++)
         document.getElementById('smartFindCustomers').style.display = 'none';
         $('.row').remove();         //clear rows
         document.getElementById('input-box').value = ''; //clear search box
+        pastInvDropped = undefined; //pastInvDropped keeps track of last inventory dropdown on products page.
+                                    //it is used to know if to close an inventory dropdown or open it
       //  dbSelected.innerHTML = 'Products';
         //orderCol = orderColProducts;
         makeRow = makeProductRow;

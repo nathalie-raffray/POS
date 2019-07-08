@@ -6,6 +6,9 @@
 
 */
 
+///////////////////////////////////
+
+
 ///////////////////////////GRABBING ELEMENTS ON THE PAGE/////////////////////////////////
 var body = document.getElementById('container');
 var dataTable = document.getElementById('table');
@@ -257,7 +260,12 @@ for (i = 0; i < coll.length; i++) {
 
 
 ///////////////////////////CLICKING AND DOUBLE CLICKING A ROW//////////////////////////////////////////////
-
+// var invTotal;
+// var invFloor;
+// var invReserved;
+// var invBasement;
+// var invCCustomers;
+// var invCStock;
 
 var previousRowClicked;
 var previousColor;
@@ -268,18 +276,48 @@ $(document.body).on('click', '.row', function(){       //when row is clicked, th
   {
     previousRowClicked.style.backgroundColor = previousColor;
   }
-  previousRowClicked = this;
+
   previousColor = window.getComputedStyle(this).getPropertyValue('background-color');
 
   this.style.backgroundColor = '#c0c0c0';
 
+  if(previousRowClicked != this){
+    console.log($(this).find('.col1').html());
+    var id = $(this).find('.col1').html();
+    var preview = {
+      id: id,
+      database: previousdbSelected
+    };
+    $.ajax({
+      type: 'POST',
+      url: 'preview.php',
+      data: preview,
+      success: function(response){
+        response = JSON.parse(response)[0];
+
+        if(preview.database == 'Products'){
+          // invTotal = (response.inv_floor == undefined || response.inv_basement == undefined) ? 0: (parseInt(response.inv_floor) + parseInt(response.inv_basement));
+          // invFloor = (response.inv_floor == undefined) ? 0: response.inv_floor;
+          // invBasement = (response.inv_basement == undefined) ? 0: response.inv_basement;
+          // invCStock = (response.inv_cstock == undefined) ? 0: response.inv_cstock;
+          // invCCustomers = (response.inv_ccustomers == undefined) ? 0: response.inv_ccustomers;
+        //  console.log(invCStock);
+        }
+        // if(noErrors(response)){
+        //   displayResults(response, makeRow);
+        // }
+       }
+
+    });
+  }
+
+  previousRowClicked = this;
 });
 
-
-
-
-$(document.body).on('dblclick', '.row', function(){
-  document.getElementById('productOpened').innerHTML = this.id;
+//////////OPEN PRODUCT POP UP///////////////////////////////
+$(document.body).on('dblclick', '.dblclickable', function(){
+  document.getElementById('productOpened').innerHTML = this.parentElement.id;
+//  console.log(document.getElementById('productOpened').innerHTML);
   // document.getElementById('productOpenedType').innerHTML = this.id;
   popupWindow = window.open('./popUps/popUpProducts/productsPopUp.html',
     'popUpProduct', 'height=500, width=525, position=fixed, top=50%, left=50%, resizable=yes,scrollbars=yes, toolbar=no, menubar=no, location=no, directories=no, status=yes');

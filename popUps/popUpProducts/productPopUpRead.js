@@ -119,6 +119,7 @@ search = {
   id: id
 };
 
+
 $.ajax({
   type: 'POST',
   url: 'getProductInfo.php',

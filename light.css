@@ -16,7 +16,7 @@ button{
 
 body{
 	background-color: rgb(29, 60, 221);
-	overflow: hidden;
+	/* overflow: hidden; */
 
 }
 
@@ -408,8 +408,13 @@ button:focus {outline:0;}
 
 .row td{
 	/* border: solid #606060 1px; */
-	overflow:hidden;
+
   color:#444;
+  position:relative;
+}
+
+td:not(.col4){
+  overflow:hidden;
 }
 
 /* #table tr:first-child td{
@@ -447,6 +452,7 @@ button:focus {outline:0;}
 }
 
 .dropdownArrow{
+
   height: 0;
   width: 0;
   display: inline-block;
@@ -461,6 +467,8 @@ button:focus {outline:0;}
 }
 
 .dropdownTriangle{
+  z-index: 1;
+  overflow: visible;
   display: block;
   position: absolute;
   border: solid rgb(46, 46, 51);
@@ -473,6 +481,8 @@ button:focus {outline:0;}
 
 .invDropdown{
   /* display: none; */
+  z-index: 1;
+  overflow:visible;
   display: block;
   position: absolute;
   margin-top: 8px;

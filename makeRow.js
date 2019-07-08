@@ -21,7 +21,7 @@ function makeProductRow(row){
   rowElementsHTML=[newRow.id,                   //product code
               row.description,  //description
               '$'+row.sell,             //price
-              row.qty+' Available', //inventory
+              document.getElementById('inventoryHTML').innerHTML, //inventory
               row.class,             //genre
               row.fileunder,                    //file under
               row.vcond+'/'+row.scond, //condition
@@ -32,7 +32,14 @@ function makeProductRow(row){
     var newRowElement = document.createElement('td');
     newRowElement.className = 'col' + i;
     newRowElement.innerHTML = rowElementsHTML[i-1];
+    if(i!= 4){
+      newRowElement.className += ' dblclickable';
+    }
 
+    if(i==4){
+      $(newRowElement).find('.available').html(row.qty + ' Available');
+    }
+    //console.log(newRowElement);
     newRow.appendChild(newRowElement);
   }
   dataTable.appendChild(newRow);

@@ -79,7 +79,7 @@ document.getElementById('searchForm').addEventListener('submit', function(e){
 });
 
 function noErrors(response){
-  console.log(response);
+  //console.log(response);
   var table = document.getElementById('tableheader');
   var regex = RegExp('Allowed memory size of');
 
@@ -93,13 +93,13 @@ function noErrors(response){
     return true;
   }
   else if(response.error == 'No results found.'){
-    table.innerHTML = response.error;
+    // table.innerHTML = response.error;
   }
   else if(response.error == 'Invalid Query.'){
     console.log('INVALID QUERY');
   }
   else if(response.error == 'Please enter a valid product code.'){
-    table.innerHTML = response.error;
+    // table.innerHTML = response.error;
   }
   return false;
 }
