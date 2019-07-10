@@ -1,5 +1,5 @@
 <div class="content" id="customHTML_sfCustomers">
-  <ul id="smartFindRows">
+  <ul id="smartFindRowsC">
     <li id="quantifier1">
       <select class="filter"> <!-- name="quantifier1" form="smartFind" -->
         <option value="All">All</option>
@@ -13,14 +13,14 @@
     </li>
     <li class="under1">
       <select class="filter firstFilter"> <!-- name="smfFilter11" form="smartFind" -->
-          <option value="Product Code">id</option>
-          <option value="Description">name</option>
-          <option value="Artist">phone number</option>
-          <option value="Album">email</option>
-          <option value="Genre">points</option>
-          <option value="Label">discount</option>
-          <option value="Price">postal code</option>
-          <option value="Quantity">city</option>
+        <option value="id">id</option>
+        <option value="name">name</option>
+        <option value="phonenumber">phone number</option>
+        <option value="email">email</option>
+        <option value="points">points</option>
+        <option value="discount">discount</option>
+        <option value="postalcode">postal code</option>
+        <option value="city">city</option>
           <option value="All">All</option>
       </select>
       <select class="filter secondFilter2">
@@ -30,7 +30,7 @@
         <option value="is">is</option>
         <option value="is_not">is not</option>
       </select>
-      <input type="text" name="text" class="smfTextBox" form="smartFind" autofocus>
+      <input type="text" name="text" class="smfTextBox" form="smartFindC" autofocus>
       <div class="plusminusdiv">
         <button type="button" class="minus" name="button">-</button>
           <button type="button" class="plus" name="button">+</button>
@@ -50,14 +50,14 @@
     </li>
     <li class="under2">
       <select class="filter firstFilter">
-        <option value="Product Code">id</option>
-        <option value="Description">name</option>
-        <option value="Artist">phone number</option>
-        <option value="Album">email</option>
-        <option value="Genre">points</option>
-        <option value="Label">discount</option>
-        <option value="Price">postal code</option>
-        <option value="Quantity">city</option>
+        <option value="id">id</option>
+        <option value="name">name</option>
+        <option value="phonenumber">phone number</option>
+        <option value="email">email</option>
+        <option value="points">points</option>
+        <option value="discount">discount</option>
+        <option value="postalcode">postal code</option>
+        <option value="city">city</option>
           <option value="All">All</option>
       </select>
       <select class="filter secondFilter2">
@@ -67,7 +67,7 @@
         <option value="is">is</option>
         <option value="is_not">is not</option>
       </select>
-      <input type="text" name="text" class="smfTextBox" form="smartFind" autofocus>
+      <input type="text" name="text" class="smfTextBox" form="smartFindC" autofocus>
       <div class="plusminusdiv">
           <button type="button" class="minus" name="button">-</button>
           <button type="button" class="plus" name="button">+</button>
@@ -75,14 +75,14 @@
     </li>
     <li class="under2">
       <select class="filter firstFilter">
-        <option value="Product Code">id</option>
-        <option value="Description">name</option>
-        <option value="Artist">phone number</option>
-        <option value="Album">email</option>
-        <option value="Genre">points</option>
-        <option value="Label">discount</option>
-        <option value="Price">postal code</option>
-        <option value="Quantity">city</option>
+        <option value="id">id</option>
+        <option value="name">name</option>
+        <option value="phonenumber">phone number</option>
+        <option value="email">email</option>
+        <option value="points">points</option>
+        <option value="discount">discount</option>
+        <option value="postalcode">postal code</option>
+        <option value="city">city</option>
           <option value="All">All</option>
       </select>
       <select class="filter secondFilter2">
@@ -92,22 +92,22 @@
         <option value="is">is</option>
         <option value="is_not">is not</option>
       </select>
-      <input type="text" name="text" class="smfTextBox" form="smartFind" autofocus>
+      <input type="text" name="text" class="smfTextBox" form="smartFindC" autofocus>
       <div class="plusminusdiv">
         <button type="button" class="minus" name="button">-</button>
           <button type="button" class="plus" name="button">+</button>
       </div>
     </li>
-    <li id="customProductSmartFindRow" style = "display:none">
+    <li id="customCustomerSmartFindRow" style = "display:none">
       <select class="filter firstFilter">
-        <option value="Product Code">id</option>
-        <option value="Description">name</option>
-        <option value="Artist">phone number</option>
-        <option value="Album">email</option>
-        <option value="Genre">points</option>
-        <option value="Label">discount</option>
-        <option value="Price">postal code</option>
-        <option value="Quantity">city</option>
+        <option value="id">id</option>
+        <option value="name">name</option>
+        <option value="phonenumber">phone number</option>
+        <option value="email">email</option>
+        <option value="points">points</option>
+        <option value="discount">discount</option>
+        <option value="postalcode">postal code</option>
+        <option value="city">city</option>
           <option value="All">All</option>
       </select>
       <select class="filter secondFilter2">
@@ -117,13 +117,13 @@
         <option value="is">is</option>
         <option value="is_not">is not</option>
       </select>
-      <input type="text" name="text" class="smfTextBox" form="smartFind" autofocus>
+      <input type="text" name="text" class="smfTextBox" form="smartFindC" autofocus>
       <div class="plusminusdiv">
         <button type="button" class="minus" name="button">-</button>
         <button type="button" class="plus" name="button">+</button>
       </div>
     </li>
-    <form id="smartFind">
+    <form id="smartFindC">
       <input type="submit" name="submit" value="" style="display:none">
     </form>
   </ul>

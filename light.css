@@ -179,7 +179,7 @@ button:focus{
   background-color: rgb(237,237,237);
 }
 
-#smartFindRows{
+#smartFindRows, #smartFindRowsC{
   list-style: none;
   font-size: small;
   max-height: 200px;
@@ -191,7 +191,7 @@ button:focus{
 
 }
 
-#smartFindRows li{
+#smartFindRows li, #smartFindRowsC li{
   padding-bottom: 5px;
   padding-top: 5px;
   border-top: 1px solid rgb(203,203,203);

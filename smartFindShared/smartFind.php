@@ -1,6 +1,6 @@
 <?php
-require('../../config/config.php');
-require('../../config/db.php');
+require('../config/config.php');
+require('../config/db.php');
 
 if(isset($_POST['query'])){ //&& isset($_POST['offset'])&& isset($_POST['count'])
   //$query = mysqli_real_escape_string($conn, $_POST['query']);

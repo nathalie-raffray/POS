@@ -23,16 +23,18 @@ $('#info, #notes, #merge').mousedown(function(){
 });
 
 var preButtonPressed;
-var tempButton;
+//var tempButton;
 
-$('.phoneSel').click(function(){
-	tempButton = preButtonPressed;
+$('.phoneSel').click(function(){ //for choosing which phone number is the main phone number
+	//tempButton = preButtonPressed;
+
+	document.getElementById('mainphone').value = this.id;
 
 	if(preButtonPressed != undefined){
 		preButtonPressed.style.backgroundColor = 'white';
 	}
 	else{
-		 document.getElementById('firstButton').style.backgroundColor = 'white';
+		 document.getElementById('1').style.backgroundColor = 'white';
 	}
 	this.style.backgroundColor = '#03A9F4';
 	preButtonPressed = this;

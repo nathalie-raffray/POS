@@ -35,8 +35,8 @@ for(var i = 0; i < navButtons.length; i++)
       //  dbSelected.innerHTML = 'Customers';
         //orderCol = orderColCustomers;
         makeRow = makeCustomerRow;
+        makeSubClause = makeCustomerSubClause; //this is for smart find
         searchUrl = 'Customers/searchCustomers.php';
-        smartFindUrl = 'Customers/smartFindCustomers/smartFindCustomers.php';
         //also configure smart find
         //CHANGE MAIN BAR
         containerHeaders[0].textContent = 'id';
@@ -84,8 +84,8 @@ for(var i = 0; i < navButtons.length; i++)
       //  dbSelected.innerHTML = 'Products';
         //orderCol = orderColProducts;
         makeRow = makeProductRow;
+        makeSubClause = makeProductSubClause; //this is for smart find
         searchUrl = 'Products/searchProducts.php';
-        smartFindUrl = 'Products/smartFindProducts/smartFindProducts.php';
         //CHANGE MAIN BAR
         containerHeaders[0].textContent = 'Code';
         containerHeaders[0].value = 'id';

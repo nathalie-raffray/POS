@@ -5,7 +5,10 @@ require('../config/db.php');
 if(isset($_POST['entered']) && isset($_POST['filter']) && isset($_POST['searchIndex']) && isset($_POST['offset'])&& isset($_POST['count'])){
   ini_set('memory_limit','125M');
 
-  $database = $_POST['database'];
+  $database='';
+  if(isset($_POST['database'])){
+    $database = $_POST['database'];
+  }
 
   $search = mysqli_real_escape_string($conn, $_POST['entered']);
   $offset = $_POST['offset'];
@@ -199,7 +202,8 @@ function doQuery($search, $col, $orderClause, $sendBack, $database, $conn){
   }
 
   $query = '';
-  if(sizeof($database) == 0){
+  //var_dump($database);
+  if(!isset($_POST['database'])){
     $query = "SELECT id, type, description, sell, qty,
                        class, fileunder, vcond, scond, family, inv_floor
               FROM `lp` WHERE $col LIKE '%{$searcharr[0]}%' {$string}

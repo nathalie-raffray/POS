@@ -337,8 +337,12 @@
 <script src="Products/smartFindProducts/smartFindProducts.js"></script>
 <script src="Products/products.js"></script>
 <script src="Customers/searchCustomers.js"></script>
+<script src="Customers/smartFindCustomers/smartFindCustomers.js"></script>
 <script src="makeRow.js"></script>
 <script src="smartFindShared/getSqlCondition.js"></script>
+<script src="smartFindShared/onChangeSF.js"></script>
+<script src="smartFindShared/onSubmitSF.js"></script>
+<script src="smartFindShared/plusMinus.js"></script>
 <script src="navBar.js"></script>
 
 </body>

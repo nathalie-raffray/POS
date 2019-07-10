@@ -2,8 +2,9 @@
 require('../../config/config.php');
 require('../../config/db.php');
 
-echo $_POST['mainphone1'];
-$mainphone = '';
+// echo $_POST['mainphone'];
+$mainphone = $_POST['phone'.$_POST['mainphone']];
+// echo $mainphone;
 
 $query = "UPDATE `customers` SET
           firstname='{$_POST['firstname']}',
@@ -20,11 +21,16 @@ $query = "UPDATE `customers` SET
           phone2='{$_POST['phone2']}',
           phone3='{$_POST['phone3']}',
           mainphone='$mainphone',
-          company='{$_POST['company']}',
+          company='{$_POST['company']}'
           WHERE id= {$_POST['id']} ";
 
 
-
-    echo $query;
+    if(mysqli_query($conn, $query)){
+       header('Location: customersPopUp.html');
+    }else{
+      echo 'ERROR'.mysqli_error($conn);
+    }
+    mysqli_close($conn);
+    //echo $query;
 
  ?>

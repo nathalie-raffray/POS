@@ -44,12 +44,24 @@ $.ajax({
       document.getElementById('phone2').value = data.phone2;
       document.getElementById('phone3').value = data.phone3;
 
-      if(data.mainphone == data.phone1){
-        document.getElementById('firstButton').click();
-      }else if(data.mainphone == data.phone2){
-        document.getElementById('secondButton').click();
-      }else if(data.mainphone == data.phone3){
-        document.getElementById('thirdButton').click();
+      console.log(data.mainphone);
+      var mainphone = data.mainphone.replace(/-|\(|\)| /g, '');
+      var phone1 = data.phone1.replace(/-|\(|\)| /g, '');
+      var phone2 = data.phone2.replace(/-|\(|\)| /g, '');
+      var phone3 = data.phone3.replace(/-|\(|\)| /g, '');
+      console.log(mainphone);
+      console.log(phone2);
+      // var x ='514-(912) - (1220)';
+      // x = x.replace(/-|\(|\)| /g, '');
+      // x = x.trim();
+      // console.log(x);
+
+      if(mainphone == phone1){
+        document.getElementById('1').click();
+      }else if(mainphone == phone2){
+        document.getElementById('2').click();
+      }else if(mainphone == phone3){
+        document.getElementById('3').click();
       }
 
       document.getElementById('emailBox').value = data.email;

@@ -7,7 +7,6 @@ var input;
 var filterSearch;
 var searchIndex;
 var searchUrl = 'Products/searchProducts.php';
-var smartFindUrl = 'Products/smartFindProducts/smartFindProducts.php';
 //by default, they hold the Product urls
 var count;
 var offset;
