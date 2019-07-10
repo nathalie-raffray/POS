@@ -319,7 +319,21 @@ $(document.body).on('dblclick', '.dblclickable', function(){
   document.getElementById('productOpened').innerHTML = this.parentElement.id;
 //  console.log(document.getElementById('productOpened').innerHTML);
   // document.getElementById('productOpenedType').innerHTML = this.id;
-  popupWindow = window.open('./popUps/popUpProducts/productsPopUp.html',
-    'popUpProduct', 'height=500, width=525, position=fixed, top=50%, left=50%, resizable=yes,scrollbars=yes, toolbar=no, menubar=no, location=no, directories=no, status=yes');
+  switch(previousdbSelected){
+    case 'Products':
+      popupWindow = window.open('./popUps/popUpProducts/productsPopUp.html',
+      'popUpProduct', 'height=500, width=525, position=fixed, top=50%, left=50%, resizable=yes,scrollbars=yes, toolbar=no, menubar=no, location=no, directories=no, status=yes');
+      break;
+    case 'Customers':
+      popupWindow = window.open('./popUps/popUpCustomers/customersPopUp.html',
+      'popUpCustomer', 'height=600, width=700, position=fixed, top=50%, left=50%, resizable=yes,scrollbars=yes, toolbar=no, menubar=no, location=no, directories=no, status=yes');
+      break;
+    case 'Orders':
+      break;
+    case 'Invoices':
+      break;
+  }
+
+
 
 });

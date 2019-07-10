@@ -81,6 +81,7 @@ function makeCustomerRow(row){
   for(var i=1; i<9; i++){
     var newRowElement = document.createElement('td');
     newRowElement.className = 'col' + i;
+    newRowElement.className += ' dblclickable';
     newRowElement.innerHTML = rowElementsHTML[i-1];
 
     newRow.appendChild(newRowElement);

@@ -5,6 +5,8 @@ require('../config/db.php');
 if(isset($_POST['entered']) && isset($_POST['filter']) && isset($_POST['searchIndex']) && isset($_POST['offset'])&& isset($_POST['count'])){
   ini_set('memory_limit','125M');
 
+  $database = $_POST['database'];
+
   $search = mysqli_real_escape_string($conn, $_POST['entered']);
   $offset = $_POST['offset'];
   $count = $_POST['count'];
@@ -157,23 +159,23 @@ if(isset($_POST['entered']) && isset($_POST['filter']) && isset($_POST['searchIn
       break;
 
     case "Description":
-      doQuery($search, 'description', $orderClause, $sendBack, $conn);
+      doQuery($search, 'description', $orderClause, $sendBack, $database, $conn);
       break;
 
     case "Artist":
-      doQuery($search, 'artiste', $orderClause, $sendBack, $conn);
+      doQuery($search, 'artiste', $orderClause, $sendBack, $database, $conn);
       break;
 
     case "Album":
-      doQuery($search, 'album', $orderClause, $sendBack, $conn);
+      doQuery($search, 'album', $orderClause, $sendBack, $database, $conn);
       break;
 
     case "Genre":
-      doQuery($search, 'class', $orderClause, $sendBack, $conn);
+      doQuery($search, 'class', $orderClause, $sendBack, $database, $conn);
       break;
 
     case "Label":
-      doQuery($search, 'family', $orderClause, $sendBack, $conn);
+      doQuery($search, 'family', $orderClause, $sendBack, $database, $conn);
       break;
 
     case "All":
@@ -189,21 +191,35 @@ function powerTo($x, $n){ //returns x*(10^n) recursively
 }
 
 
-function doQuery($search, $col, $orderClause, $sendBack, $conn){
+function doQuery($search, $col, $orderClause, $sendBack, $database, $conn){
   $searcharr = explode(' ', $search);
   $string='';
   for($i=1; $i<sizeof($searcharr); $i++){
     $string = $string."AND $col LIKE '%{$searcharr[$i]}%'";
   }
-  $query = "SELECT id, type, description, sell, qty,
-                     class, fileunder, vcond, scond, family, inv_floor
-            FROM `lp` WHERE $col LIKE '%{$searcharr[0]}%' {$string}
-            UNION ALL
-            SELECT id, type, description, sell, qty,
-                               class, fileunder, vcond, scond, family, inv_floor
-            FROM `cd`  WHERE $col LIKE '%{$searcharr[0]}%' {$string}
-            ".$orderClause;
 
+  $query = '';
+  if(sizeof($database) == 0){
+    $query = "SELECT id, type, description, sell, qty,
+                       class, fileunder, vcond, scond, family, inv_floor
+              FROM `lp` WHERE $col LIKE '%{$searcharr[0]}%' {$string}
+              UNION ALL
+              SELECT id, type, description, sell, qty,
+                                 class, fileunder, vcond, scond, family, inv_floor
+              FROM `cd`  WHERE $col LIKE '%{$searcharr[0]}%' {$string}
+              ".$orderClause; //will have to add ln, etc, when those databases are made
+  }else{
+    for($i = 0; $i < sizeof($database); $i++){
+      if($i!=0){
+        $query .= 'UNION ALL ';
+      }
+      $query .= "SELECT id, type, description, sell, qty,
+                         class, fileunder, vcond, scond, family, inv_floor
+                FROM `{$database[$i]}` WHERE $col LIKE '%{$searcharr[0]}%' {$string} ";
+    }
+  }
+
+  //echo $query;
 
   //echo $query;
    $result = mysqli_query($conn, $query);

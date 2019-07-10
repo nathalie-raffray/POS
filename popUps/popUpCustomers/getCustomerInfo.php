@@ -10,35 +10,8 @@ if(isset($_POST['id'])){
   $id = mysqli_real_escape_string($conn, $_POST['id']);
   $query = '';
 
-
-  // switch($id[0].$id[1]){
-  //   case "LN":
-  //     $id[0]=0;
-  //     $id[1]=0;
-  //     $id = (int)$id;
-  //     $query = "SELECT id, type, description, sell, family, class, upc, fileunder, pressinfo,
-  //                     inv_floor, inv_basement, inv_ccustomers, inv_cstock, reserved FROM `ln` WHERE id={$id}";
-  //     break;
-  //
-  //   case "LP":
-  //     $id[0]=0;
-  //     $id[1]=0;
-  //     $id = (int)$id;
-  //     $query = "SELECT id, type, description, sell, country, family, class, upc, scond, vcond, catno, altcatno, fileunder, pressinfo,
-  //                     inv_floor, inv_basement, reserved FROM `lp` WHERE id={$id}";
-  //     break;
-  //
-  //   case "CD":
-  //     $id[0]=0;
-  //     $id[1]=0;
-  //     $id = (int)$id;
-  //     $query = "SELECT id, type, description, sell, country, family, class, catno, altcatno, fileunder,
-  //                     inv_floor, inv_basement, reserved FROM `cd` WHERE id={$id}";
-  //     break;
-  // }
-
-  // echo $query;
-
+  $query = "SELECT id, firstname, lastname, phone1, phone2, phone3, company, website, mainphone, points, address1, address2, email, province, country, notes, discount, postalcode, city
+            FROM `customers` WHERE id = $id";
 
   //Get Result
   $result = mysqli_query($conn, $query);
@@ -50,7 +23,6 @@ if(isset($_POST['id'])){
   }else{
     //Fetch Data
     $post = mysqli_fetch_all($result, MYSQLI_ASSOC);
-    //echo $post;
     //Free Result
     mysqli_free_result($result);
     //Close Connection

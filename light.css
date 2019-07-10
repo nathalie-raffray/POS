@@ -441,9 +441,13 @@ td:not(.col4){
   height: 13px;
   width: 13px;
   margin-top: 2px;
-  background-color: #bbb;
+  background-color: red;
   border-radius: 50%;
   display: inline-block;
+}
+
+.dotWhere{
+  font-weight: bold;
 }
 
 .available{

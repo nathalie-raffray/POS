@@ -75,8 +75,8 @@
                             <label for="ln">LN</label><input type="checkbox" name="ln" id="ln" value="LN">
                             <label for="lp">LP</label><input type="checkbox" name="lp" id="lp" value="LP">
                             <label for="cd">CD</label><input type="checkbox" name="cd" id="cd" value="CD">
-                            <label for="other">Other</label><input type="checkbox" name="other" id="other" value="Other">
-                            <label for="all">All</label><input type="checkbox" name="lp|cd" id="all" value="All">
+                            <!-- <label for="other">Other</label><input type="checkbox" name="other" id="other" value="Other"> -->
+                            <!-- <label for="all">All</label><input type="checkbox" name="lp|cd" id="all" value="All"> -->
 
                         </div>
                         <div id="selectcol">
@@ -113,7 +113,7 @@
                 </div>
 
                 <div id="container">
-										
+
                     <table id="tableheader">
                         <tr id="main-bar" width="100%" border="0" cellpadding="0" cellspacing="0">
                             <th class="col1"><button class="headerbutton" type="button"><span class="header">Code</span><span class="updown"></span></button></th>

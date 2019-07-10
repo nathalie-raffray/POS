@@ -21,10 +21,20 @@ var orderCol; //this will hold one of the functions: orderColProducts, orderColC
 //makeRow = makeProductRows; is declared under makeProductRows() in makeRows.js
 //orderCol = orderColProducts; is declared under orderColProducts() in makeRows.js
 
+
 document.getElementById('searchForm').addEventListener('submit', function(e){
   //var dbSelected = document.getElementById('db_Selected').innerHTML;
   e.preventDefault();
   queryOrSearch = true;
+
+  var dbArray = [];
+  if(previousdbSelected == 'Products'){
+    if(document.getElementById('ln').checked) dbArray.push('ln');
+    if(document.getElementById('lp').checked) dbArray.push('lp');
+    if(document.getElementById('cd').checked) dbArray.push('cd');
+    console.log(dbArray);
+  }
+
   //The preventDefault() method cancels the event if it is cancelable, meaning
   //that the default action that belongs to the event will not occur.
   //preventDefault useful for when:
@@ -45,6 +55,7 @@ document.getElementById('searchForm').addEventListener('submit', function(e){
       entered: input,
       filter: filterSearch,
       searchIndex: searchIndex,
+      database: dbArray,
       offset: 0,
       count: 1000,
       orderby: orderby,
@@ -68,6 +79,7 @@ document.getElementById('searchForm').addEventListener('submit', function(e){
       url: searchUrl,
       data: search,
       success: function(response){
+        console.log(response);
         $('.row').remove();
         if(noErrors(response)){
           displayResults(response, makeRow);
