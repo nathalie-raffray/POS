@@ -190,12 +190,16 @@ $.ajax({
         if(data.inv_ccustomers > 0){
           el = document.getElementById('iCustOrder');
           el.innerHTML = data.inv_floor + ' Coming For Customers';
-          el.style.backgroundColor = 'yellow';
+          el.style.backgroundImage = 'linear-gradient(rgb(205, 166, 56), rgb(228, 188, 62))';
+          el.style.borderTop = '1px solid rgb(240, 211, 128)';
+          el.style.borderBottom = '1px solid rgb(205, 166, 56)';
         }
         if(data.inv_cstock > 0){
           el = document.getElementById('iStockOrder');
           el.innerHTML = data.inv_floor + ' Coming For Stock';
-          el.style.backgroundColor = 'yellow';
+          el.style.backgroundImage = 'linear-gradient(rgb(205, 166, 56), rgb(228, 188, 62))';
+          el.style.borderTop = '1px solid rgb(240, 211, 128)';
+          el.style.borderBottom = '1px solid rgb(205, 166, 56)';
         }
 
   		}
@@ -223,32 +227,46 @@ $.ajax({
         }
       }
 
+
       var el;
       var totalInv = parseInt(data.inv_floor) + parseInt(data.inv_basement) + parseInt(data.reserved);
       el = document.getElementById('iTotal');
       el.innerHTML = totalInv + ' Total';
-      el.style.backgroundColor = 'rgb(119, 194, 66)';
+      if(totalInv > 0){
+        el.style.backgroundImage = 'linear-gradient(rgb(95, 156, 52), rgb(119, 194, 66))';
+        el.style.borderTop = 'solid 1px rgb(136, 222, 77)';
+        el.style.borderBottom = 'solid 2px rgb(95, 156, 52)';
+      }else if(totalInv < 0){
+        colorRed(el);
+      }
+
 
       el = document.getElementById('iFloor');
       el.innerHTML = data.inv_floor + ' Floor';
       if(data.inv_floor > 0){
-          el.style.backgroundColor = 'rgb(119, 194, 66)';
+        el.style.backgroundImage = 'linear-gradient(rgb(95, 156, 52), rgb(119, 194, 66))';
+        el.style.borderTop = 'solid 1px rgb(136, 222, 77)';
+        el.style.borderBottom = 'solid 2px rgb(95, 156, 52)';
       }else if(data.inv_floor < 0){
-        el.style.backgroundColor = 'red';
+        colorRed(el);
       }
       el = document.getElementById('iBasement');
       el.innerHTML = data.inv_basement + ' Basement';
       if(data.inv_basement > 0){
-        el.style.backgroundColor = 'blue';
+        el.style.backgroundImage = 'linear-gradient(rgb(0, 51, 204), rgb(0, 0, 153))';
+        el.style.borderTop = '1px solid rgb(0, 153, 255)';
+        el.style.borderBottom = '1px solid rgb(0, 0, 102)';
       }else if(data.inv_basement < 0){
-        el.style.backgroundColor = 'red';
+        colorRed(el);
       }
       el = document.getElementById('iReserved');
       el.innerHTML = data.reserved + ' Reserved';
       if(data.reserved > 0){
-        el.style.backgroundColor = 'orange';
+        el.style.backgroundImage = 'linear-gradient(rgb(220, 116, 43), rgb(242, 142, 72))';
+        el.style.borderTop = '1px solid rgb(215, 112, 37)';
+        el.style.borderBottom = '1px solid rgb(245, 142, 72)';
       }else if(data.reserved < 0){
-        el.style.backgroundColor = 'red';
+        colorRed(el);
       }
 
 
@@ -314,36 +332,48 @@ $('.adjustTransferForm').submit(function(e){
         if(response.inv_floor > 0){
             el = document.getElementById('iFloor');
             el.innerHTML = response.inv_floor + ' Floor';
-            el.style.backgroundColor = 'rgb(119, 194, 66)';
+            el.style.backgroundImage = 'linear-gradient(rgb(95, 156, 52), rgb(119, 194, 66))';
+            el.style.borderTop = 'solid 1px rgb(136, 222, 77)';
+            el.style.borderBottom = 'solid 2px rgb(95, 156, 52)';
         }else if(response.inv_floor == 0){
           el = document.getElementById('iFloor');
           el.innerHTML = response.inv_floor + ' Floor';
-          el.style.backgroundColor = 'rgb(159, 159, 159)';
+          el.style.backgroundImage = 'linear-gradient(rgb(158, 158, 158), rgb(182, 182, 182))';
+          el.style.borderTop = '1px solid rgb(218, 218, 218)';
+          el.style.borderBottom = '1px solid rgb(158, 158, 158)';
         }else{
-          el.style.backgroundColor = 'red';
+          colorRed(el);
         }
         if(response.inv_basement > 0){
           el = document.getElementById('iBasement');
           el.innerHTML = response.inv_basement + ' Basement';
-          el.style.backgroundColor = 'blue';
+          el.style.backgroundImage = 'linear-gradient(rgb(0, 51, 204), rgb(0, 0, 153))';
+          el.style.borderTop = '1px solid rgb(0, 153, 255)';
+          el.style.borderBottom = '1px solid rgb(0, 0, 102)';
         }else if(response.inv_basement == 0){
           el = document.getElementById('iBasement');
           el.innerHTML = response.inv_basement + ' Basement';
-          el.style.backgroundColor = 'rgb(159, 159, 159)';
+          el.style.backgroundImage = 'linear-gradient(rgb(158, 158, 158), rgb(182, 182, 182))';
+          el.style.borderTop = '1px solid rgb(218, 218, 218)';
+          el.style.borderBottom = '1px solid rgb(158, 158, 158)';
         }else{
-          el.style.backgroundColor = 'red';
+          colorRed(el);
         }
         var total = parseInt(response.inv_floor) + parseInt(response.inv_basement) + parseInt(response.reserved);
         if(total > 0){
           el = document.getElementById('iTotal');
           el.innerHTML = total + ' Total';
-          el.style.backgroundColor = 'rgb(108, 186, 58)';
+          el.style.backgroundImage = 'linear-gradient(rgb(95, 156, 52), rgb(119, 194, 66))';
+          el.style.borderTop = 'solid 1px rgb(136, 222, 77)';
+          el.style.borderBottom = 'solid 2px rgb(95, 156, 52)';
         }else if(total == 0){
           el = document.getElementById('iTotal');
           el.innerHTML = total + ' Total';
-          el.style.backgroundColor = 'rgb(159, 159, 159)';
+          el.style.backgroundImage = 'linear-gradient(rgb(158, 158, 158), rgb(182, 182, 182))';
+          el.style.borderTop = '1px solid rgb(218, 218, 218)';
+          el.style.borderBottom = '1px solid rgb(158, 158, 158)';
         }else{
-          el.style.backgroundColor = 'red';
+          colorRed(el);
         }
       }
       //console.log(response);
@@ -351,3 +381,29 @@ $('.adjustTransferForm').submit(function(e){
      }
   });
 });
+
+function colorRed(el){
+  el.style.backgroundImage = 'linear-gradient(rgb(220, 20, 60), rgb(139, 0, 0))';
+  el.style.borderTop = '1px solid rgb(205, 92, 92)';
+}
+
+/*grey*/
+/* background-image: linear-gradient(rgb(158, 158, 158), rgb(182, 182, 182));
+border-top: 1px solid rgb(218, 218, 218);
+border-bottom: 1px solid rgb(158, 158, 158); */
+/*orange*/
+/* background-image: linear-gradient(rgb(220, 116, 43), rgb(242, 142, 72));
+border-top: 1px solid rgb(215, 112, 37);
+border-bottom: 1px solid rgb(245, 142, 72); */
+/*green*/
+/* background-image: linear-gradient(rgb(95, 156, 52), rgb(119, 194, 66));
+border-top: solid 1px rgb(136, 222, 77);
+border-bottom: solid 2px rgb(95, 156, 52); */
+/*red*/
+/* background-image: linear-gradient(rgb(220, 20, 60), rgb(139, 0, 0));
+border-top: 1px solid rgb(205, 92, 92);
+font-weight: 500; */
+/*yellow*/
+/* background-image: linear-gradient(rgb(205, 166, 56), rgb(228, 188, 62));
+border-top: 1px solid rgb(240, 211, 128);
+border-bottom: 1px solid rgb(205, 166, 56); */

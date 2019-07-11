@@ -2,7 +2,7 @@
 require('../config/config.php');
 require('../config/db.php');
 
-if(isset($_POST['entered']) && isset($_POST['filter']) && isset($_POST['searchIndex']) && isset($_POST['offset'])&& isset($_POST['count'])){
+if(isset($_POST['entered']) && isset($_POST['filter']) && isset($_POST['offset'])&& isset($_POST['count'])){
   ini_set('memory_limit','125M');
 
   $search = mysqli_real_escape_string($conn, $_POST['entered']);

@@ -28,6 +28,8 @@ function makeProductRow(row){
               row.family                  //label
             ];
 
+  var avail = parseInt(row.inv_floor);
+
   for(var i=1; i<9; i++){
     var newRowElement = document.createElement('td');
     newRowElement.className = 'col' + i;
@@ -37,7 +39,15 @@ function makeProductRow(row){
     }
 
     if(i==4){
-      $(newRowElement).find('.available').html(row.qty + ' Available');
+      //console.log($(newRowElement).find('.dot')[0]);
+      $(newRowElement).find('.available').html(avail + ' Available');
+      if(avail > 0 && parseInt(row.inv_floor)<= 0){
+        $(newRowElement).find('.dot')[0].style.backgroundColor = 'rgb(0, 0, 153)';
+      }else if(avail > 0){
+        $(newRowElement).find('.dot')[0].style.backgroundColor = 'rgb(119, 194, 66)';
+      }else if(avail < 0){
+        $(newRowElement).find('.dot')[0].style.backgroundColor = 'red';
+      }
     }
     //console.log(newRowElement);
     newRow.appendChild(newRowElement);

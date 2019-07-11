@@ -2,7 +2,7 @@
 require('../config/config.php');
 require('../config/db.php');
 
-if(isset($_POST['entered']) && isset($_POST['filter']) && isset($_POST['searchIndex']) && isset($_POST['offset'])&& isset($_POST['count'])){
+if(isset($_POST['entered']) && isset($_POST['filter']) && isset($_POST['offset'])&& isset($_POST['count'])){
   ini_set('memory_limit','125M');
 
   $database='';
@@ -71,15 +71,15 @@ if(isset($_POST['entered']) && isset($_POST['filter']) && isset($_POST['searchIn
             }
             //if LP/LN/CD arent specified we must look through each database
             $query = "SELECT id, type, description, sell, qty,
-                               class, fileunder, vcond, scond, family, inv_floor
+                               class, fileunder, vcond, scond, family, inv_floor, inv_basement,
                       FROM `ln` ".$whereClause."
                       UNION ALL
                       SELECT id, type, description, sell, qty,
-                                         class, fileunder, vcond, scond, family, inv_floor
+                                         class, fileunder, vcond, scond, family, inv_floor, inv_basement,
                                 FROM `lp` ".$whereClause."
                       UNION ALL
                       SELECT id, type, description, sell, qty,
-                                         class, fileunder, vcond, scond, family, inv_floor
+                                         class, fileunder, vcond, scond, family, inv_floor, inv_basement,
                                 FROM `cd` ".$whereClause.$orderClause;
 
           }
@@ -113,7 +113,7 @@ if(isset($_POST['entered']) && isset($_POST['filter']) && isset($_POST['searchIn
 
             }
             $query = "SELECT id, type, description, sell, qty,
-                               class, fileunder, vcond, scond, family, inv_floor
+                               class, fileunder, vcond, scond, family, inv_floor, inv_basement
                       FROM `{$table}` ".$whereClause.$orderClause;
           }
 
@@ -205,11 +205,11 @@ function doQuery($search, $col, $orderClause, $sendBack, $database, $conn){
   //var_dump($database);
   if(!isset($_POST['database'])){
     $query = "SELECT id, type, description, sell, qty,
-                       class, fileunder, vcond, scond, family, inv_floor
+                       class, fileunder, vcond, scond, family, inv_floor, inv_basement
               FROM `lp` WHERE $col LIKE '%{$searcharr[0]}%' {$string}
               UNION ALL
               SELECT id, type, description, sell, qty,
-                                 class, fileunder, vcond, scond, family, inv_floor
+                                 class, fileunder, vcond, scond, family, inv_floor, inv_basement
               FROM `cd`  WHERE $col LIKE '%{$searcharr[0]}%' {$string}
               ".$orderClause; //will have to add ln, etc, when those databases are made
   }else{
@@ -218,7 +218,7 @@ function doQuery($search, $col, $orderClause, $sendBack, $database, $conn){
         $query .= 'UNION ALL ';
       }
       $query .= "SELECT id, type, description, sell, qty,
-                         class, fileunder, vcond, scond, family, inv_floor
+                         class, fileunder, vcond, scond, family, inv_floor, inv_basement
                 FROM `{$database[$i]}` WHERE $col LIKE '%{$searcharr[0]}%' {$string} ";
     }
   }

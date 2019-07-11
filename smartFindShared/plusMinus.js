@@ -1,5 +1,5 @@
 
-$(document.body).on('click', '#smartFindRows .plus', function(e){
+$(document.body).on('click', '.content .plus', function(e){
   e.preventDefault();
   var row = this.parentElement.parentElement;
 
@@ -26,7 +26,7 @@ $(document.body).on('click', '#smartFindRows .plus', function(e){
 
 });
 
-$(document.body).on('click', '#smartFindRows .minus', function(e){
+$(document.body).on('click', '.content .minus', function(e){
   e.preventDefault();
   var row = this.parentElement.parentElement;
   row.remove();

@@ -43,7 +43,7 @@ document.getElementById('searchForm').addEventListener('submit', function(e){
   */
   input = document.getElementById('input-box').value;
   filterSearch = document.getElementById('filter').value;
-  searchIndex = document.getElementById('searchIndex').value;
+  //searchIndex = document.getElementById('searchIndex').value;
   //var js;
   rowsDisplayed = 0;
   pageNumber = 0;
@@ -53,7 +53,7 @@ document.getElementById('searchForm').addEventListener('submit', function(e){
     search = {
       entered: input,
       filter: filterSearch,
-      searchIndex: searchIndex,
+      //searchIndex: searchIndex,
       database: dbArray,
       offset: 0,
       count: 1000,

@@ -58,7 +58,7 @@
                 <div id="searchbar">
 
 
-                    <div id="showitems">
+                    <!-- <div id="showitems" style="display:none">
                         <span>Show</span>
                         <select id="searchIndex" class="filter" name="searchIndex" form="searchForm">
                             <option value="one">0-100</option>
@@ -68,17 +68,23 @@
                             <option value="All">All</option>
                         </select>
                         <span>Items</span>
-                    </div>
+                    </div> -->
+										<div id="selectdb">
+												<!-- <label for="ln">LN</label><input type="checkbox" name="ln" id="ln" value="LN">
+												<label for="lp">LP</label><input type="checkbox" name="lp" id="lp" value="LP">
+												<label for="cd">CD</label><input type="checkbox" name="cd" id="cd" value="CD"> -->
+												<ul class="ks-cboxtags">
+													<li><input type="checkbox" id="ln" title="Search for new vinyl" value="ln"><label for="ln">LN</label></li>
+													<li><input type="checkbox" id="lp" title="Search for used vinyl" value="lp"><label for="lp">LP</label></li>
+													<li><input type="checkbox" id="cd" title="Search for CDs" value="cd"><label for="cd">CD</label></li>
+												</ul>
+																									<!-- <label for="other">Other</label><input type="checkbox" name="other" id="other" value="Other"> -->
+												<!-- <label for="all">All</label><input type="checkbox" name="lp|cd" id="all" value="All"> -->
+
+										</div>
 
                     <div id="rightsearchbar">
-                        <div id="selectdb">
-                            <label for="ln">LN</label><input type="checkbox" name="ln" id="ln" value="LN">
-                            <label for="lp">LP</label><input type="checkbox" name="lp" id="lp" value="LP">
-                            <label for="cd">CD</label><input type="checkbox" name="cd" id="cd" value="CD">
-                            <!-- <label for="other">Other</label><input type="checkbox" name="other" id="other" value="Other"> -->
-                            <!-- <label for="all">All</label><input type="checkbox" name="lp|cd" id="all" value="All"> -->
 
-                        </div>
                         <div id="selectcol">
 														<!-- <div w3-include-html="selectFilter.html"></div> -->
                             <select class="filter" id="filter" name="filter" form="searchForm">

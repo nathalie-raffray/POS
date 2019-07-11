@@ -178,6 +178,44 @@ $(document.body).on('click', '.col4', function(e){
         $(el).find('.numReserved').html(r);
         $(el).find('.numCCustomers').html(cc);
         $(el).find('.numCStock').html(cs);
+
+        if(t > 0){
+          $(el).find('.totalDot')[0].style.backgroundColor = 'rgb(119, 194, 66)';
+        }else if(t < 0){
+          $(el).find('.totalDot')[0].style.backgroundColor = 'red';
+        }
+        if(f > 0){
+          $(el).find('.availableDot')[0].style.backgroundColor = 'rgb(119, 194, 66)';
+        }else if(f<0){
+          $(el).find('.availableDot')[0].style.backgroundColor = 'red';
+        }
+        if(b > 0){
+          $(el).find('.warehouseDot')[0].style.backgroundColor = 'rgb(0, 0, 153)';
+        }else if(b < 0){
+          $(el).find('.warehouseDot')[0].style.backgroundColor = 'red';
+        }
+        if(r > 0){
+          $(el).find('.reservedDot')[0].style.backgroundColor = 'orange';
+        }else if(r < 0){
+          $(el).find('.reservedDot')[0].style.backgroundColor = 'red';
+        }
+        if(cs > 0){
+          $(el).find('.ccstockDot')[0].style.backgroundColor = 'yellow';
+        }else if(cs < 0){
+          $(el).find('.ccstockDot')[0].style.backgroundColor = 'red';
+        }
+        if(cc > 0){
+          $(el).find('.ccustomersDot')[0].style.backgroundColor = 'yellow';
+        }else if(cs < 0){
+          $(el).find('.ccustomersDot')[0].style.backgroundColor = 'red';
+        }
+        // if(avail > 0 && parseInt(row.inv_floor)<= 0){
+        //   $(newRowElement).find('.rowDot')[0].style.backgroundColor = 'rgb(0, 0, 153)';
+        // }else if(avail > 0){
+        //   $(el).find('.rowDot')[0].style.backgroundColor = 'rgb(119, 194, 66)';
+        // }else if(avail < 0){
+        //   $(newRowElement).find('.rowDot')[0].style.backgroundColor = 'red';
+        // }
       }
     });
 
