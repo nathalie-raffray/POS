@@ -13,7 +13,7 @@ th{
    /* background-image:url('colresizable/img/th.png'); */
    background-image: linear-gradient(rgb(102, 204, 255), rgb(0, 115, 230));
    height:30px;
-   border: 1px solid white;
+
 
    /* background-repeat:no-repeat; */
    color:white;
