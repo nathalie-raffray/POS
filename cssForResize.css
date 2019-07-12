@@ -10,9 +10,12 @@
 } */
 
 th{
-   background-image:url('colresizable/img/th.png');
+   /* background-image:url('colresizable/img/th.png'); */
+   background-image: linear-gradient(rgb(102, 204, 255), rgb(0, 115, 230));
    height:30px;
-   background-repeat:no-repeat;
+   border: 1px solid white;
+
+   /* background-repeat:no-repeat; */
    color:white;
    text-shadow: #012b4d 2px 2px 2px;
    text-align: center;

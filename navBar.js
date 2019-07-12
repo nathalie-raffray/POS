@@ -87,21 +87,21 @@ for(var i = 0; i < navButtons.length; i++)
         makeSubClause = makeProductSubClause; //this is for smart find
         searchUrl = 'Products/searchProducts.php';
         //CHANGE MAIN BAR
-        containerHeaders[0].textContent = 'Code';
+        containerHeaders[0].textContent = 'CODE';
         containerHeaders[0].value = 'id';
-        containerHeaders[1].textContent = 'Description';
+        containerHeaders[1].textContent = 'DESCRIPTION';
         containerHeaders[1].value = 'description';
-        containerHeaders[2].textContent = 'Price';
+        containerHeaders[2].textContent = 'PRICE';
         containerHeaders[2].value = 'sell';
-        containerHeaders[3].textContent = 'Inventory';
+        containerHeaders[3].textContent = 'INVENTORY';
         containerHeaders[3].value = 'inv_floor';
-        containerHeaders[4].textContent = 'Genre';
+        containerHeaders[4].textContent = 'GENRE';
         containerHeaders[4].value = 'class';
-        containerHeaders[5].textContent = 'Filed Under';
+        containerHeaders[5].textContent = 'FILED UNDER';
         containerHeaders[5].value = 'fileunder';
-        containerHeaders[6].textContent = 'Condition';
+        containerHeaders[6].textContent = 'CONDITION';
         containerHeaders[6].value = 'vcond';
-        containerHeaders[7].textContent = 'Label';
+        containerHeaders[7].textContent = 'LABEL';
         containerHeaders[7].value = 'family';
 
         //CHANGE SELECT

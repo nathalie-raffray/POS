@@ -6,6 +6,7 @@
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="cssForResize.css">
 	<link rel="stylesheet" type="text/css" href="light.css">
+	<link rel="stylesheet" type="text/css" href="Transaction/transactionStyle.css">
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 	<script src="colResizable/colResizable-1.6.min.js"></script>
 	<!-- <script src='mousestop-3.0.1/mousestop.js' type="text/javascript"></script> -->
@@ -34,7 +35,9 @@
                 <button type="button" title="Create Supplier" name="create-supplier"><img src="pics/supplier.png" /></button>
                 <button type="button" title="Create Consigne" id="unicorn" name="create-consigne"><span>&#x1f984;</span></button>
 
+								<button type="button" title="Create Supplier" id="transactionScreenButton" name="create-supplier"><img src="pics/supplier.png" /></button>
         </div>
+
 
         <div id="bigBox">
 
@@ -98,7 +101,7 @@
                                 <option value="All">All</option>
                             </select>
                             <form id="searchForm">
-                                <input type="text" id="input-box" name="entered"  autofocus>
+                                <input type="search" id="input-box" name="entered"  autofocus>
                             </form>
                         </div>
                     </div>
@@ -122,24 +125,24 @@
 
                     <table id="tableheader">
                         <tr id="main-bar" width="100%" border="0" cellpadding="0" cellspacing="0">
-                            <th class="col1"><button class="headerbutton" type="button"><span class="header">Code</span><span class="updown"></span></button></th>
+                            <th class="col1"><button class="headerbutton" type="button"><span class="header">CODE</span><span class="updown"></span></button></th>
 
-                            <th class="col2"><button class="headerbutton" type="button"><span class="header">Description</span><span class="updown"></span></button></th>
+                            <th class="col2"><button class="headerbutton" type="button"><span class="header">DESCRIPTION</span><span class="updown"></span></button></th>
 
-                            <th class="col3"><button class="headerbutton" type="button"><span class="header">Price</span><span class="updown"></span></button></th>
+                            <th class="col3"><button class="headerbutton" type="button"><span class="header">PRICE</span><span class="updown"></span></button></th>
 
-                            <th ><button class="headerbutton" type="button"><span class="header">Inventory</span><span class="updown"></span></button></th>
+                            <th ><button class="headerbutton" type="button"><span class="header">INVENTORY</span><span class="updown"></span></button></th>
 
-                            <th class="col5"><button class="headerbutton" type="button"><span class="header">Genre</span><span class="updown"></span></button></th>
+                            <th class="col5"><button class="headerbutton" type="button"><span class="header">GENRE</span><span class="updown"></span></button></th>
 
-                            <th class="col6"><button class="headerbutton" type="button"><span class="header">Filed Under</span><span class="updown"></span></button></th>
+                            <th class="col6"><button class="headerbutton" type="button"><span class="header">FILED UNDER</span><span class="updown"></span></button></th>
 
-                            <th class="col7"><button class="headerbutton" type="button"><span class="header">Condition</span><span class="updown"></span></button></th>
+                            <th class="col7"><button class="headerbutton" type="button"><span class="header">CONDITION</span><span class="updown"></span></button></th>
 
-                            <th class="col8"><button class="headerbutton" type="button"><span class="header">Label</span><span class="updown"></span></button></th>
+                            <th class="col8"><button class="headerbutton" type="button"><span class="header">LABEL</span><span class="updown"></span></button></th>
                         </tr>
 												<?php include("Products/invDropDown.php") ?>
-												<tr class="row">
+												<!-- <tr class="row">
 														<td class="col1 dblclickable">LP000123123</td>
 														<td class="col2 dblclickable">Black Uhuru - Guess Who's Coming To Dinner?</td>
 														<td class="col3 dblclickable">$24.99</td>
@@ -174,7 +177,7 @@
 														    <a href="#">Link 2</a>
 														    <a href="#">Link 3</a>
 														  </div> -->
-														</td>
+														<!-- </td>
 														<td class="col5 dblclickable">Reggae</td>
 														<td class="col6 dblclickable"></td>
 														<td class="col7 dblclickable">VG+/VG+</td>
@@ -241,7 +244,7 @@
 														<td class="col6"></td>
 														<td class="col7">VG+/VG+</td>
 														<td class="col8">Heartbeat Records</td>
-												</tr>
+												</tr> --> 
 
 											<!-- <div id="scrollTable">
 												 <table id="table">
@@ -333,7 +336,7 @@
 
         </div>
     </div>
-
+<?php include('Transaction/transactionHTML.php') ?>
 
 <script src="sharedSearch/search.js"></script>
 <script src="mainJS.js"></script>
@@ -349,6 +352,9 @@
 <script src="smartFindShared/onChangeSF.js"></script>
 <script src="smartFindShared/onSubmitSF.js"></script>
 <script src="smartFindShared/plusMinus.js"></script>
+<script src="Transaction/slidedown.js"></script>
+
+</script>
 <script src="navBar.js"></script>
 
 </body>

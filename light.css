@@ -94,6 +94,10 @@ button:focus{
   filter: drop-shadow(0 0 0.5rem #afeeee);
 }
 
+#transactionScreenButton{
+  float: right;
+}
+
 /*CSS FOR FLEX DISPLAY OF LEFT BOX AND RIGHT BOX BELOW TOP-BAR*/
 
 #bigBox{
@@ -243,6 +247,16 @@ ul.ks-cboxtags li input[type="checkbox"]:focus + label {
 #searchForm{
 	display:inline;
 	margin-right: 20px;
+
+}
+
+#input-box{
+  background-color: rgb(255, 255, 255);
+}
+
+#input-box::-webkit-search-cancel-button{
+    position:relative;
+    right:2px;
 }
 
 /*CSS FOR SMART FIND*/
@@ -388,6 +402,7 @@ table th{
   /* position:fixed; */
   /* border-left:none;
   border-right:none; */
+  border: 1px solid white;
 
 }
 
@@ -432,7 +447,7 @@ table th{
   height:100%; */
 
   /* height:100%; */
-  background-color:black;
+  /* background-color:black; */
   color:black;
 
   /* height:100%; */
