@@ -7,7 +7,7 @@
 
   <div id="ttopBar">
     <div id="ttopButtons">
-      <input id="tsearch" type="search" name="search" value="Search Products">
+      <input id="tsearch" type="search" name="search" value=" Search Products">
       <button id="tsearchProduct "type="button" name="button"><img width="100%" height="32" src="pics/littlevinyl.png"></button>
       <button id="tsearchCustomer "type="button" name="button"><img width="100%" height="32" src="pics/littlecustomer.jpg"></button>
 
@@ -17,13 +17,15 @@
   <div id="tmainBox">
     <div id="tleftBox">
       <div id="tcustomerBox">
-        <span id="tcustomertitle">Customer</span>
-        <span id="twalkintitle">Walk In</span><br>
+        <!-- <div id="tcwbox"> -->
+          <span id="tcustomertitle">Customer</span>
+          <span id="twalkintitle">Walk In</span><br>
+        <!-- </div> -->
         <div id="tcustomerInfo">
             <span id="tcustomername">Nathalie Raffray</span><br><br>
-            <span id="tphonetitle">Phone</span><span id="tphone">(438) 926-7260</span><br>
-            <span id="temailtitle">Email</span><span id="temail">nathalie.raffray9@gmail.com</span><br>
-            <span id="tshippingtitle">Shipping</span><div id="tshipping">
+            <span class="bold" id="tphonetitle">Phone</span><span class="notbold" id="tphone">(438) 926-7260</span><br>
+            <span class="bold" id="temailtitle">Email</span><span class="notbold" id="temail">nathalie.raffray9@gmail.com</span><br>
+            <span class="bold" id="tshippingtitle">Shipping</span><div class="notbold" id="tshipping">
               <span id="taddress1">555 dead dog lane</span><br>
               <span id="taddress2">Penthouse</span><br>
               <span id="taddress2">Penthouse</span><br>
@@ -41,10 +43,7 @@
         </div>
       </div>
       <div id="tbeepBoopBox">
-        <span class="tbeep" id="poch">Pochettes</span>
-        <span class="tbeep" id="gear">Gear</span>
-        <span class="tbeep" id="dranks">Dranks</span>
-        <span class="tbeep" id="other">Other</span>
+        <span class="tbeep" id="poch">Pochettes</span><span class="tbeep" id="gear">Gear</span><span class="tbeep" id="dranks">Dranks</span><span class="tbeep" id="other">Other</span>
         <br>
         <div id="tbuttonBox">
           <button type="button" name="button">10 Pochettes Exterieures</button>
@@ -56,56 +55,47 @@
           <button type="button" name="button">100 Pochettes Japonaises</button>
           <button type="button" name="button">10 Pochettes 7"</button>
           <button type="button" name="button">100 Pochettes 7"</button>
-
         </div>
       </div>
     </div>
     <div id="tMiddleBox">
-      <div class="middleTopBar">
-        <span id="qtyTH">Qty</span>
-        <span id="productTH">Product</span>
-        <span id="sellTH">Sell</span>
-        <span id="discTH">Disc</span>
-        <span id="totalSellTH">Total Sell</span>
-      </div>
-      <ul>
-        <li>
-          <div class="tqty">
-            <input class="qty" type="text" name="qty" value="1"><br>
-            <span class="attention"></span>
-          </div>
-          <!-- <span class="attention"><img src="pics/stop.jpg"></span> -->
-          <div class="tproduct">
+
+      <table id="transactionTable">
+        <tr>
+          <th>Qty</th>
+          <th>Product</th>
+          <th>Sell</th>
+          <th>Disc.</th>
+          <th>Total Sell</th>
+        </tr>
+
+        <tr>
+          <td><input class="qty" type="text" name="qty" value="1"></td>
+          <td>
             <span class="productName">Mf Doom - MmFood</span><br>
             <span class="productId">LN00003953</span>
-          </div>
+          </td>
+          <td><input type="text" class="sell" name="sell" value="5.99"></td>
+          <td><input type="text" class="discount" name="discount" value="0"></td>
+          <td><input type="text" class="totalsell" name="totalsell" value="5.99"></td>
+        </tr>
 
-          <div>
-            <input type="text" class="sell" name="sell" value="53.99">
-            <input type="text" class="discount" name="discount" value="0">
-            <input type="text" class="totalsell" name="totalsell" value="53.99">
-          </div>
-        </li>
-        <li>
-          <div class="tqty">
-            <input class="qty" type="text" name="qty" value="1">
-            <!-- <span class="attention"></span> -->
-          </div>
-          <div class="tproduct">
+
+        <tr>
+          <td><input class="qty" type="text" name="qty" value="1"></td>
+          <td>
             <span class="productName">Genesis - A Trick of the Tail</span><br>
             <span class="productId">CD00009328</span>
-          </div>
-          <div>
-            <input type="text" class="sell" name="sell" value="5.99">
-            <input type="text" class="discount" name="discount" value="0">
-            <input type="text" class="totalsell" name="totalsell" value="5.99">
-          </div>
-        </li>
-      </ul>
+          </td>
+          <td><input type="text" class="sell" name="sell" value="5.99"></td>
+          <td><input type="text" class="discount" name="discount" value="0"></td>
+          <td><input type="text" class="totalsell" name="totalsell" value="5.99"></td>
+        </tr>
+      </table>
     </div>
-    <div id="tRightBox">
+    <!-- <div id="tRightBox">
 
-    </div>
+    </div> -->
   </div>
 
   <div id="tbottomBar">

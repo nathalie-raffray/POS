@@ -1,12 +1,17 @@
-@font-face {
+/* @font-face {
   font-family: 'Digital-7';
   src: url('../fonts/digital-7/webfont/digital-7-webfont.woff') format('woff'), /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-  url('../fonts/digital-7/digital-7.ttf') format('truetype');
+  /*url('../fonts/digital-7/digital-7.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
+} */
+/* font-family: "Lucida Grande" sans-serif; */
+*{
+  /* font-family: inherit; */
 }
 
 #transactionScreen{
+  font-family: "Lucida Grande" sans-serif !important;
   color:white;
   height: 100%;
   width: 0;
@@ -43,20 +48,38 @@
 }
 
 #ttopBar{
+  /* overflow:hidden; */
+  padding-top: 5px;
   width:100%;
   height:60px;
-  background-color: yellow;
+  border-bottom: 1px solid rgb(60, 60, 60);
+  background-image: linear-gradient(rgb(60, 60, 60), rgb(23, 23, 23));
 }
 
 #ttopButtons{
+  overflow:hidden;
+  /* margin-top: 5px; */
+  margin-left: 80px;
   height: 50px;
   width: 350px;
-  border: 4px solid white;
+  border: 1px solid rgb(35, 35, 35);
   border-radius: 15px;
 }
 
 #ttopButtons button{
   width: 12%;
+  height: 50px;
+  float:left;
+  border-bottom: none;
+  border-top: none;
+  border-right: 1px solid rgb(16, 14, 14);
+  border-left: 1px solid rgb(55, 55, 55);
+  background-image: linear-gradient(rgb(23, 23, 23), rgb(60, 60, 60));
+}
+
+#ttopButtons button:focus{
+  background-image:none;
+  background-color: rgb(0, 0, 0);
 }
 
 /* #ttopButtons button{
@@ -66,12 +89,15 @@
 #tsearch{
   /* margin-left: 35%; */
   /* margin-top: 5px; */
+  margin-left: 6px;
+  margin-top: 5px;
   display:inline-block;
   height: 40px;
-  color:white;
-  font-size: 20px;
+  color:rgb(167, 167, 167);
+  font-size: 15px;
   width: 250px;
-  border: 4px solid white;
+  /* border:none; */
+  border: 1px solid rgb(79, 79, 79);
   border-radius: 15px;
   /* margin:0;
   margin-bottom: 100px;
@@ -93,93 +119,167 @@
 }
 
 #tcustomerBox{
+  color:rgb(167, 167, 167);
   width:90%;
-  height:40%;
-  background-color: black;
+  height:42%;
   margin-left: 10px;
+  background-image: linear-gradient(rgb(34, 34, 34), rgb(8, 8, 8));
+  overflow:auto;
 }
 
+#twalkintitle, #tcustomertitle{
+  /* padding-top:10px; */
+  /* padding-bottom: 5px; */
+  /* font-family: "Lucida Grande" sans-serif; */
+  display:inline-block;
+  width:49%;
+  height:15%;
+  text-align: center;
+}
+
+#tcustomertitle{
+  /* background-image: linear-gradient(rgb(8, 8, 8), rgb(34, 34, 34)); */
+  /* border-right: 1px solid black; */
+}
+
+#twalkintitle{
+  background-image: linear-gradient(rgb(34, 34, 34), rgb(8, 8, 8));
+  border-left: 1px solid rgb(54, 54, 54);
+  border-bottom: 1px solid rgb(54, 54, 54);
+}
+
+#twalkintitle::before{
+
+  /* border-left:1px solid black;
+  width: 49%; */
+}
+
+#tcustomerInfo{
+  padding-bottom: 5px;
+  display:none;
+}
+
+#tcustomerInfo span:not(#tcustomername){
+  font-size: 12px;
+}
+
+#tcustomername{
+  display:inline-block;
+  padding-left: 35%;
+  padding-bottom: -5px;
+  font-size: 20px;
+
+}
+
+.bold{
+  font-weight: bold;
+  padding-left: 10%;
+  text-align: right;
+}
+
+.notbold{
+  padding-left:5%;
+  display: inline-block;
+  vertical-align:top;
+}
+
+
 #tbeepBoopBox{
-  margin-top: 100px;
+  /* margin-bottom: 40px; */
+  margin-top: 20px;
   width:90%;
   height:45%;
   background-color: black;
   margin-left: 10px;
-  overflow:auto;
+
 }
 
 #twalkinInfo{
-  display:none;
+  /* display:none; */
+  margin-left: 5%;
+}
+
+#twalkinInfo input{
+  color:white;
+  margin-bottom: 4%;
+  width: 90%;
+  height: 20px;
+  border-radius: 5px;
+  border: none;
+  border-right: 1px solid rgb(79, 79, 79);
+  border-bottom: 2px solid rgb(44, 44, 44);
 }
 
 .tbeep{
+  color:rgb(167, 167, 167);
+  display: inline-block;
+  width: 23%;
+  padding: 1px;
+  height:12%;
+  text-align: center;
   border: 1px solid grey;
   border-collapse: collapse;
   /* border-left: 1px solid grey;
   border-left: 1px solid grey; */
 }
 
-#tbuttonBox button{
-  width:45%;
-  height: 40px;
+#poch{
+  border-bottom: none;
+}
 
+#tbuttonBox{
+  height: 88%;
+  width:100%;
+  overflow:auto;
+  background-color:black;
+
+}
+
+#tbuttonBox button:nth-child(odd){
+  margin-left: 10%;
+  /* left: 10%; */
+}
+
+#tbuttonBox button{
+  /* margin: 2px; */
+  vertical-align: top;
+  margin-top: 4px;
+  width:40%;
+  height: 40px;
 }
 
 #tMiddleBox{
-  flex:4;
+  flex:2;
   background-color:green;
-  background-image: url('../pics/meateatingplants.jpg');
+  /* background-image: url('../pics/meateatingplants.jpg');
   background-repeat: no-repeat;
-  background-position: bottom center;
+  background-position: bottom center; */
 }
 
-.middleTopBar{
-  height: 50px;
-  background-color: black;
+#transactionTable th{
+  background-image: linear-gradient(rgb(34, 34, 34), rgb(8, 8, 8));
 }
 
-.middleTopBar span{
-  display:inline-block;
-}
-#qtyTH{
-  margin-left: 10px;
-}
-#productTH{
-  margin-left: 30px;
-}
-#sellTH{
-  margin-left: 760px;
-}
-#discTH{
-  margin-left: 18px;
-}
-#totalSellTH{
-  margin-left: 30px;
-}
-
-#tMiddleBox ul{
-  list-style:none;
-  padding:0;
-  margin:0;
-}
-
-#tMiddleBox li{
-  padding:0;
-  margin:0;
-  height: 50px;
+#transactionTable tr{
+  /* height: 50px; */
   border-bottom: 1px solid rgb(43, 43, 42);
   border-left: 1px solid rgb(38, 38, 38);
   border-right: 1px solid rgb(38, 38, 38);
   border-top: 1px solid rgb(100, 101, 100);
   background-image: linear-gradient(rgb(40, 40, 40), rgb(85, 85, 85));
-
 }
 
-#tMiddleBox li::after{
-  /* content: ' ';
-  height:30px;
-  z-index: 11;
-  background-image: linear-gradient(rgb(23, 23, 23), rgb(34, 34, 34)); */
+#transactionTable th:first-child, #transactionTable th:nth-child(4){
+  width:10%;
+}
+
+#transactionTable th:nth-child(3), #transactionTable th:nth-child(5){
+  width: 15%;
+}
+
+#transactionTable td{
+  padding-top: 8px;
+  padding-bottom:8px;
 }
 
 .qty{
@@ -188,7 +288,7 @@
   text-align:center;
   margin-right: 8px;
   display:inline-block;
-  margin-bottom: 50px;
+  /* margin-bottom: 50px; */
   margin-left: 10px;
   /* background-image: linear-gradient(black, rgb(40,40,40)); */
 }
@@ -229,10 +329,7 @@
 
 .sell, .discount, .totalsell{
   text-align:right;
-  font-family: 'Digital-7';
   margin-left: 5px;
-  /* position:absolute;
-  top: 155px; */
 }
 
 
@@ -241,21 +338,14 @@
 }
 .sell{
   width:80px;
-  /* right:370px; */
 }
 .discount{
   width:30px;
-  /* right: 320px; */
 }
 
 .totalsell{
   height:30px;
   width: 80px;
-}
-
-
-#tRightBox{
-  flex:1;
 }
 
 #tbottomBar{
