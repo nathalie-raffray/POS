@@ -398,7 +398,7 @@
 
 #tMiddleBox{
   flex:2;
-  background-color:green;
+  background-color:black;;
   /* background-image: url('../pics/meateatingplants.jpg');
   background-repeat: no-repeat;
   background-position: bottom center; */
@@ -422,15 +422,20 @@
 
 #transactionTable tr{
   /* height: 50px; */
-  /* border-bottom: 1px solid rgb(43, 43, 42); */
+  border-bottom: 1px solid rgb(43, 43, 42);
   border-left: 1px solid rgb(38, 38, 38);
   border-right: 1px solid rgb(38, 38, 38);
   border-top: 1px solid rgb(100, 101, 100);
-  /* background-image: linear-gradient(rgb(40, 40, 40), rgb(85, 85, 85)); */
+  background-image: linear-gradient(rgb(40, 40, 40), rgb(85, 85, 85));
 
-  border-bottom: 1px solid rgb(125, 170, 108);
-  background-image: linear-gradient(rgb(104, 168, 94), rgb(74, 122, 67));
-  background-size:50%;
+  /* background-image:linear-gradient(rgb(104, 168, 94), rgb(74, 122, 67)), linear-gradient(rgb(197, 251, 172), rgb(119, 184, 108));
+  background-position:bottom center, top center;
+  background-size: auto 51%, auto 51%;
+  border-bottom: none, 1px solid rgb(125, 170, 108);
+  background-repeat: no-repeat; */
+
+  /* background-image: linear-gradient(rgb(104, 168, 94), rgb(74, 122, 67)); */
+  /* background-size:50%; */
 }
 
 #transactionTable th:first-child, #transactionTable th:nth-child(4){
