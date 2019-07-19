@@ -7,23 +7,29 @@
 
   <div id="ttopBar">
     <div id="ttopButtons">
-      <input id="tsearch" type="search" name="search" value=" Search Products">
+      <input id="tsearch" type="search" name="search" placeholder=" Search Products">
       <button id="tsearchProduct" type="button" name="button"><img width="100%" height="32" src="pics/littlevinyl.png"></button>
       <button id="tsearchCustomer" type="button" name="button"><img width="100%" height="32" src="pics/littlecustomer.jpg"></button>
-
     </div>
+    <!-- <button type="button" name="button" id="holdButton">Hold</button> -->
   </div>
 
   <div id="tmainBox">
     <div id="tleftBox">
       <div id="tcustomerBox">
         <!-- <div id="tcwbox"> -->
-          <span id="tcustomertitle">Customer</span>
-          <span id="twalkintitle">Walk In</span><br>
+          <div id="tcustomertitleBox">
+            <span id="tcustomertitle">Customer</span>
+          </div>
+          <div id="twalkintitleBox">
+            <span id="twalkintitle">Walk In</span>
+          </div>
+
+          <!-- <span id="twalkintitle">Walk In</span><br> -->
         <!-- </div> -->
         <div id="tcustomerInfo">
             <div id="tcustomerNameBox">
-                <button type="button" id="teditCustomer" name="button"><img width="17" height="17" src="pics/edit.png"></button><span id="tcustomername">Nathalie Raffray</span>
+                <button type="button" id="teditCustomer" name="button"><img width="30" height="30" src="pics/edit.jpg"></button><span id="tcustomername">Nathalie Raffray</span>
             </div>
             <div id="tcustomerInfoetc">
               <span class="bold" id="tphonetitle">Phone</span><span class="notbold" id="tphone">(438) 926-7260</span><br>
@@ -50,45 +56,255 @@
         <span class="tbeep" id="poch">Pochettes</span><span class="tbeep" id="gear">Gear</span><span class="tbeep" id="dranks">Dranks</span><span class="tbeep" id="other">Other</span>
         <br>
         <div id="pochBox" class="tbuttonBox">
-          <button type="button" name="button">10 Pochettes Exterieures</button>
-          <button type="button" name="button">100 Pochettes Exterieures</button>
-          <button type="button" name="button">10 Pochettes Interieures</button>
-          <button type="button" name="button">100 Pochettes Interieures</button>
-          <button type="button" name="button">10 Pochettes Japonaises</button>
-          <button type="button" name="button">100 Pochettes Japonaises</button>
-          <button type="button" name="button">10 Pochettes 7"</button>
-          <button type="button" name="button">100 Pochettes 7"</button>
-          <button type="button" name="button">25 Pochettes Interieures Papiers</button>
-          <button type="button" name="button">500 Pochettes Exterieures</button>
+          <button type="button" name="button" class="tbflex">
+            <div class="buttonprice">
+              $1.99
+            </div>
+            <div class="buttondescription">
+              10 Pochettes Exterieures
+            </div>
+          </button>
+          <button type="button" name="button" class="tbflex">
+            <div class="buttonprice">
+              $17.99
+            </div>
+            <div class="buttondescription">
+              100 Pochettes Exterieures
+            </div>
+          </button>
+          <button type="button" name="button" class="tbflex">
+            <div class="buttonprice">
+              $2.99
+            </div>
+            <div class="buttondescription">
+              10 Pochettes Interieures
+            </div>
+            </button>
+            <button type="button" name="button" class="tbflex">
+              <div class="buttonprice">
+                $24.99
+              </div>
+              <div class="buttondescription">
+                100 Pochettes Interieures
+              </div>
+            </button>
+            <button type="button" name="button" class="tbflex">
+              <div class="buttonprice">
+                $3.49
+              </div>
+              <div class="buttondescription">
+                10 Pochettes Japonaises
+              </div>
+            </button>
+            <button type="button" name="button" class="tbflex">
+              <div class="buttonprice">
+                $34.99
+              </div>
+              <div class="buttondescription">
+                100 Pochettes Japonaises
+              </div>
+            </button>
+            <button type="button" name="button" class="tbflex">
+              <div class="buttonprice">
+                $1.49
+              </div>
+              <div class="buttondescription">
+                10 Pochettes 7"
+              </div>
+            </button>
+            <button type="button" name="button" class="tbflex">
+              <div class="buttonprice">
+                $12.99
+              </div>
+              <div class="buttondescription">
+                100 Pochettes 7"
+              </div>
+            </button>
+            <button type="button" name="button" class="tbflex">
+              <div class="buttonprice">
+                $6.99
+              </div>
+              <div class="buttondescription">
+                25 Pochettes Interieures Papiers
+              </div>
+            </button>
+            <button type="button" name="button" class="tbflex">
+              <div class="buttonprice">
+                $74.99
+              </div>
+              <div class="buttondescription">
+                500 Pochettes Exterieures
+              </div>
+          </button>
         </div>
 
         <div id="gearBox" class="tbuttonBox" style="display:none">
-          <button type="button" name="button">Reparation: 0.5 heure(s)</button>
-          <button type="button" name="button">Reparation: 1.0 heure(s)</button>
-          <button type="button" name="button">Reparation: 1.5 heure(s)</button>
-          <button type="button" name="button">Pieces De Rechange</button>
-          <button type="button" name="button">Courroie</button>
-          <button type="button" name="button">Dome Pour 45-Tours</button>
-          <button type="button" name="button">Installation De Cartouche</button>
+          <button type="button" name="button" class="tbflex">
+            <div class="buttonprice">
+              $24.99
+            </div>
+            <div class="buttondescription">
+              Reparation: 0.5 heure(s)
+            </div>
+        </button>
+        <button type="button" name="button" class="tbflex">
+          <div class="buttonprice">
+            $39.99
+          </div>
+          <div class="buttondescription">
+            Reparation: 1.0 heure(s)
+          </div>
+        </button>
+        <button type="button" name="button" class="tbflex">
+          <div class="buttonprice">
+            $49.99
+          </div>
+          <div class="buttondescription">
+            Reparation: 1.5 heure(s)
+          </div>
+        </button>
+        <button type="button" name="button" class="tbflex">
+          <div class="buttonprice">
+            $0.00
+          </div>
+          <div class="buttondescription">
+            Pieces De Rechange
+          </div>
+        </button>
+        <button type="button" name="button" class="tbflex">
+          <div class="buttonprice">
+            $9.99
+          </div>
+          <div class="buttondescription">
+            Courroie
+          </div>
+        </button>
+        <button type="button" name="button" class="tbflex">
+          <div class="buttonprice">
+            $2.99
+          </div>
+          <div class="buttondescription">
+            Dome Pour 45-Tours
+          </div>
+        </button>
+        <button type="button" name="button" class="tbflex">
+          <div class="buttonprice">
+            $10.00
+          </div>
+          <div class="buttondescription">
+            Installation De Cartouche
+          </div>
+        </button>
         </div>
 
         <div id="dranksBox" class="tbuttonBox" style="display:none">
-          <button type="button" name="button">bouteille d'eau</button>
-          <button type="button" name="button">7up</button>
-          <button type="button" name="button">PERRIER</button>
-          <button type="button" name="button">PEPSI</button>
-          <button type="button" name="button">GATORADE</button>
-          <button type="button" name="button">JUS OASIS</button>
+          <button type="button" name="button" class="tbflex">
+            <div class="buttonprice">
+              $0.99
+            </div>
+            <div class="buttondescription">
+              bouteille d'eau
+            </div>
+          </button>
+          <button type="button" name="button" class="tbflex">
+            <div class="buttonprice">
+              $0.99
+            </div>
+            <div class="buttondescription">
+              7up
+            </div>
+          </button>
+          <button type="button" name="button" class="tbflex">
+            <div class="buttonprice">
+              $1.49
+            </div>
+            <div class="buttondescription">
+              Perrier
+            </div>
+          </button>
+          <button type="button" name="button" class="tbflex">
+            <div class="buttonprice">
+              $0.99
+            </div>
+            <div class="buttondescription">
+              Pepsi
+            </div>
+          </button>
+          <button type="button" name="button" class="tbflex">
+            <div class="buttonprice">
+              $1.49
+            </div>
+            <div class="buttondescription">
+              Gatorade
+            </div>
+          </button>
+          <button type="button" name="button" class="tbflex">
+            <div class="buttonprice">
+              $1.49
+            </div>
+            <div class="buttondescription">
+              Jus Oasis
+            </div>
+          </button>
         </div>
 
         <div id="otherBox" class="tbuttonBox" style="display:none">
-          <button type="button" name="button">Contrat Achat - VINYL</button>
-          <button type="button" name="button">Contrat Achat - GEAR</button>
-          <button type="button" name="button">Sac Aux 33 Tours</button>
-          <button type="button" name="button">Liquidation 45 Tours</button>
-          <button type="button" name="button">Album Discogs - AUCUNE REQUETE</button>
-          <button type="button" name="button">Album Discogs - REQUETE EN LIGNE</button>
-          <button type="button" name="button">Carte Cadeau</button>
+          <button type="button" name="button" class="tbflex">
+            <div class="buttonprice">
+              $0.00
+            </div>
+            <div class="buttondescription">
+              Contrat Achat - VINYL
+            </div>
+          </button>
+          <button type="button" name="button" class="tbflex">
+            <div class="buttonprice">
+              $0.00
+            </div>
+            <div class="buttondescription">
+              Contrat Achat - GEAR
+            </div>
+          </button>
+          <button type="button" name="button" class="tbflex">
+            <div class="buttonprice">
+              $1.99
+            </div>
+            <div class="buttondescription">
+              Sac Aux 33 Tours
+            </div>
+          </button>
+          <button type="button" name="button" class="tbflex">
+            <div class="buttonprice">
+              $0.99
+            </div>
+            <div class="buttondescription">
+              Liquidation 45 Tours
+            </div>
+          </button>
+          <button type="button" name="button" class="tbflex">
+            <div class="buttonprice">
+              $1000.00
+            </div>
+            <div class="buttondescription">
+              Album Discogs - AUCUNE REQUETE
+            </div>
+          </button>
+          <button type="button" name="button" class="tbflex">
+            <div class="buttonprice">
+              $1000.00
+            </div>
+            <div class="buttondescription">
+              Album Discogs - REQUETE EN LIGNE
+            </div>
+          </button>
+          <button type="button" name="button" class="tbflex">
+            <div class="buttonprice">
+              $0.00
+            </div>
+            <div class="buttondescription">
+              Carte Cadeau
+            </div>
+          </button>
         </div>
       </div>
     </div>
@@ -96,11 +312,11 @@
 
       <table id="transactionTable">
         <tr>
-          <th>Qty</th>
-          <th>Product</th>
-          <th>Sell</th>
-          <th>Disc.</th>
-          <th>Total Sell</th>
+          <th> Qty</th>
+          <th> Product</th>
+          <th> Sell</th>
+          <th> Disc.</th>
+          <th> Total Sell</th>
         </tr>
 
         <tr>
@@ -134,11 +350,14 @@
 
   <div id="tbottomBar">
     <button type="button" name="button" id="clear">Clear</button>
+    <button type="button" name="button" id="on hold">
+      <span id="howManyHold">15</span>
+      Currently On Hold</button>
     <button type="button" name="button" id="checkout">Check Out</button>
     <div id="tpriceBox">
       <div id="tpriceButtons">
-        <button type="button" name="button" id="discButton"></button>
-        <button type="button" name="button" id="taxButton"></button>
+        <button type="button" name="button" id="discButton"><img width="30" height="20" src="pics/edit.jpg"></button>
+        <button type="button" name="button" id="taxButton"><img width="30" height="20" src="pics/edit.jpg"></button>
       </div><div id="tpriceTax">
         <div id="taxFlex">
           <div class="taxflex1 tflex">
