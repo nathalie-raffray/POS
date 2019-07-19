@@ -22,15 +22,19 @@
           <span id="twalkintitle">Walk In</span><br>
         <!-- </div> -->
         <div id="tcustomerInfo">
-            <button type="button" name="button">Edit</button><span id="tcustomername">Nathalie Raffray</span><br><br>
-            <span class="bold" id="tphonetitle">Phone</span><span class="notbold" id="tphone">(438) 926-7260</span><br>
-            <span class="bold" id="temailtitle">Email</span><span class="notbold" id="temail">nathalie.raffray9@gmail.com</span><br>
-            <span class="bold" id="tshippingtitle">Shipping</span><div class="notbold" id="tshipping">
-              <span id="taddress1">555 dead dog lane</span><br>
-              <span id="taddress2">Penthouse</span><br>
-              <span id="taddress2">Penthouse</span><br>
-              <span id="taddress3">St Tropez, QC, 92009</span><br>
-              <span id="tcountry">Monaco</span><br>
+            <div id="tcustomerNameBox">
+                <button type="button" id="teditCustomer" name="button"><img width="17" height="17" src="pics/edit.png"></button><span id="tcustomername">Nathalie Raffray</span>
+            </div>
+            <div id="tcustomerInfoetc">
+              <span class="bold" id="tphonetitle">Phone</span><span class="notbold" id="tphone">(438) 926-7260</span><br>
+              <span class="bold" id="temailtitle">Email</span><span class="notbold" id="temail">nathalie.raffray9@gmail.com</span><br>
+              <span class="bold" id="tshippingtitle">Shipping</span><div class="notbold" id="tshipping">
+                <span id="taddress1">555 dead dog lane</span><br>
+                <span id="taddress2">Penthouse</span><br>
+                <span id="taddress2">Penthouse</span><br>
+                <span id="taddress3">St Tropez, QC, 92009</span><br>
+                <span id="tcountry">Monaco</span><br>
+            </div>
             </div>
         </div>
         <div id="twalkinInfo">
@@ -150,7 +154,7 @@
             <span class="pp1">SUBTOTAL</span><span class="pp2">5.99</span>
           </div>
           <div class="tflex" id="priceFlex2">
-            <span class="pp1">TOTAL</span><span class="pp2">6.89</span>
+            <span class="pp1">TOTAL</span><span id="bigPrice" class="pp2">6.89</span>
           </div>
         </div>
         <!-- <span class="p1">SUBTOTAL</span><span class="p2">5.99</span><br>
