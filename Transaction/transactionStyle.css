@@ -1,17 +1,15 @@
-/* @font-face {
+@font-face {
   font-family: 'Digital-7';
   src: url('../fonts/digital-7/webfont/digital-7-webfont.woff') format('woff'), /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-  /*url('../fonts/digital-7/digital-7.ttf') format('truetype');
+  url('../fonts/digital-7/digital-7.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
-} */
-/* font-family: "Lucida Grande" sans-serif; */
-*{
-  /* font-family: inherit; */
 }
 
+
 #transactionScreen{
-  font-family: "Lucida Grande" sans-serif !important;
+  font-family: "Lucida Grande";
+  /* font-family: "Lucida Grande" sans-serif; */
   color:white;
   height: 100%;
   width: 0;
@@ -23,6 +21,10 @@
   background-color: rgba(0,0,0, 0.9); /* Black w/opacity */
   overflow-x: hidden; /* Disable horizontal scroll */
   transition: 0.5s; /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
+}
+
+#transactionScren div{
+  /* font-family: "Lucida Grande" sans-serif !important; */
 }
 
 #transactionScreen input{
@@ -59,11 +61,12 @@
 #ttopButtons{
   overflow:hidden;
   /* margin-top: 5px; */
-  margin-left: 80px;
+  margin-left: 33%;
   height: 50px;
   width: 350px;
   border: 1px solid rgb(35, 35, 35);
-  border-radius: 15px;
+  border-radius: 10px;
+
 }
 
 #ttopButtons button{
@@ -73,8 +76,18 @@
   border-bottom: none;
   border-top: none;
   border-right: 1px solid rgb(16, 14, 14);
-  border-left: 1px solid rgb(55, 55, 55);
+  border-left:none;
+  /* border-left: 1px solid rgb(55, 55, 55); */
   background-image: linear-gradient(rgb(23, 23, 23), rgb(60, 60, 60));
+}
+
+
+#tsearchProduct img{
+  border-radius:10px;
+}
+
+#tsearchCustomer{
+  /* border-left: 1px solid rgb(55, 55, 55); */
 }
 
 #ttopButtons button:focus{
@@ -96,7 +109,6 @@
   color:rgb(167, 167, 167);
   font-size: 15px;
   width: 250px;
-  /* border:none; */
   border: 1px solid rgb(79, 79, 79);
   border-radius: 15px;
   /* margin:0;
@@ -124,7 +136,8 @@
   height:42%;
   margin-left: 10px;
   background-image: linear-gradient(rgb(34, 34, 34), rgb(8, 8, 8));
-  overflow:auto;
+  overflow:hidden;
+  position:relative;
 }
 
 #twalkintitle, #tcustomertitle{
@@ -132,17 +145,23 @@
   /* padding-bottom: 5px; */
   /* font-family: "Lucida Grande" sans-serif; */
   display:inline-block;
-  width:49%;
+  width:calc(50% - 4px);
   height:15%;
   text-align: center;
 }
 
+#twalkintitle:hover, #tcustomertitle:hover{
+  cursor: pointer;
+}
+
 #tcustomertitle{
+  background-image: none;
   /* background-image: linear-gradient(rgb(8, 8, 8), rgb(34, 34, 34)); */
   /* border-right: 1px solid black; */
 }
 
 #twalkintitle{
+  /* width:52%; */
   background-image: linear-gradient(rgb(34, 34, 34), rgb(8, 8, 8));
   border-left: 1px solid rgb(54, 54, 54);
   border-bottom: 1px solid rgb(54, 54, 54);
@@ -156,7 +175,6 @@
 
 #tcustomerInfo{
   padding-bottom: 5px;
-  display:none;
 }
 
 #tcustomerInfo span:not(#tcustomername){
@@ -189,14 +207,19 @@
   margin-top: 20px;
   width:90%;
   height:45%;
-  background-color: black;
+  background-image: linear-gradient(rgb(34, 34, 34), rgb(8, 8, 8));
   margin-left: 10px;
 
+}
+
+#dranks, #gear, #other{
+  background-image: linear-gradient(rgb(34, 34, 34), rgb(8, 8, 8));
 }
 
 #twalkinInfo{
   /* display:none; */
   margin-left: 5%;
+  display:none;
 }
 
 #twalkinInfo input{
@@ -216,31 +239,35 @@
   width: 23%;
   padding: 1px;
   height:12%;
+  font-size: 12px;
   text-align: center;
-  border: 1px solid grey;
+  border: 1px solid rgb(47, 47, 47);
   border-collapse: collapse;
-  /* border-left: 1px solid grey;
-  border-left: 1px solid grey; */
+}
+
+.tbeep:hover{
+  cursor: pointer;
 }
 
 #poch{
   border-bottom: none;
 }
 
-#tbuttonBox{
-  height: 88%;
+.tbuttonBox{
+  padding-top: 5px;
+  height: 84%;
   width:100%;
   overflow:auto;
-  background-color:black;
+  /* background-color:black; */
 
 }
 
-#tbuttonBox button:nth-child(odd){
+.tbuttonBox button:nth-child(odd){
   margin-left: 10%;
   /* left: 10%; */
 }
 
-#tbuttonBox button{
+.tbuttonBox button{
   /* margin: 2px; */
   vertical-align: top;
   margin-top: 4px;
@@ -297,6 +324,7 @@
   background-image: url('../pics/static.jpg');
   background-size: cover;
   color: rgb(57, 255, 20);
+  /* font-family: 'Digital-7'; */
 }
 
 #tMiddleBox li div{
@@ -349,6 +377,104 @@
 }
 
 #tbottomBar{
-  height: 40px;
-  background-color: yellow;
+  height: 64px;
+  background-image: linear-gradient(rgb(75, 75, 75), rgb(1, 1, 1));
+  border-top: 1px solid rgb(90, 90, 90);
+}
+
+#checkout, #tpriceBox{
+  float:right;
+}
+
+#clear, #checkout{
+  height: 70%;
+  border-radius: 5px;
+  width: 8%;
+  color:white;
+  border: none;
+  font-size: 15px;
+  margin-top: 9px;
+}
+
+#clear{
+  background-image: linear-gradient(rgb(179, 71, 69), rgb(97, 9, 8));
+  margin-left: 10px;
+  text-shadow: 1px 1px red;
+  /* border-top: 1px solid rgb(86, 58, 57); */
+  /* border-right: 1px solid rgb(108, 44, 42);
+  border-left: 1px solid rgb(115, 45, 43); */
+}
+
+#checkout{
+  background-image: linear-gradient(rgb(155, 224, 144), rgb(78, 116, 72));
+  border-top: 1px solid rgb(78, 92, 75);
+  border-bottom: 1px solid rgb(78, 127, 71);
+  border-right: 1px solid rgb(118, 157, 111);
+  border-left: 1px solid rgb(120, 160, 113);
+  margin-right: 10px;
+    text-shadow: 1px 1px green;
+}
+
+#tpriceBox{
+  border-radius: 5px;
+  border: 1px solid rgb(89, 89, 89);
+  height:85%;
+  width:35%;
+  margin-top: 2px;
+  color: rgb(186, 222, 174);
+  margin-right: 10px;
+  font-size: 10px;
+}
+
+#tpriceButtons, #tpriceTax, #tpricePrice{
+  display:inline-block;
+  height:100%;
+}
+#tpriceButtons{
+  width:20%;
+}
+#tpricePrice{
+  width:calc(45% - 2px);
+}
+
+#tpriceTax{
+  border-left: 1px solid rgb(89, 89, 89);
+  border-right: 1px solid rgb(89, 89, 89);
+  width:35%;
+  vertical-align: top;
+}
+
+#taxFlex, #priceFlex{
+  width:100%;
+  height:100%;
+  display:flex;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+}
+.tflex{
+  flex:1;
+}
+.pp1{
+  margin-left:3px;
+}
+.pp2{
+  float:right;
+  margin-right: 3px;
+}
+
+.taxflex1{
+  background-color:yellow;
+}
+.taxflex2{
+  background-color:green;
+}
+#priceFlex1{
+  background-color:red;
+}
+#priceFlex2{
+  background-color:blue;
+}
+
+#tpriceButtons{
+  vertical-align: top;
 }

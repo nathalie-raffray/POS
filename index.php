@@ -244,7 +244,7 @@
 														<td class="col6"></td>
 														<td class="col7">VG+/VG+</td>
 														<td class="col8">Heartbeat Records</td>
-												</tr> --> 
+												</tr> -->
 
 											<!-- <div id="scrollTable">
 												 <table id="table">
@@ -353,6 +353,7 @@
 <script src="smartFindShared/onSubmitSF.js"></script>
 <script src="smartFindShared/plusMinus.js"></script>
 <script src="Transaction/slidedown.js"></script>
+<script src="Transaction/transaction.js"></script>
 
 </script>
 <script src="navBar.js"></script>
