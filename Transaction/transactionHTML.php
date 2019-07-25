@@ -319,28 +319,43 @@
           <th> Total Sell</th>
         </tr>
 
-        <tr>
-          <td><input class="qty" type="text" name="qty" value="1"></td>
-          <td>
-            <span class="productName">Mf Doom - MmFood</span><br>
-            <span class="productId">LN00003953</span>
-          </td>
-          <td><input type="text" class="sell" name="sell" value="5.99"></td>
-          <td><input type="text" class="discount" name="discount" value="0"></td>
-          <td><input type="text" class="totalsell" name="totalsell" value="5.99"></td>
-        </tr>
+        <div id="transactionTableBox">
+          <tr>
+            <td><input class="qty" type="text" name="qty" value="1"></td>
+            <td>
+              <span class="productName">Mf Doom - MmFood</span><br>
+              <span class="productId">LN00003953</span>
+            </td>
+            <td><input type="text" class="sell" name="sell" value="5.99"></td>
+            <td><input type="text" class="discount" name="discount" value="0"></td>
+            <td><input type="text" class="totalsell" name="totalsell" value="5.99"></td>
+          </tr>
 
 
-        <tr>
-          <td><input class="qty" type="text" name="qty" value="1"></td>
-          <td>
-            <span class="productName">Genesis - A Trick of the Tail</span><br>
-            <span class="productId">CD00009328</span>
-          </td>
-          <td><input type="text" class="sell" name="sell" value="5.99"></td>
-          <td><input type="text" class="discount" name="discount" value="0"></td>
-          <td><input type="text" class="totalsell" name="totalsell" value="5.99"></td>
-        </tr>
+          <tr>
+            <td><input class="qty" type="text" name="qty" value="1"></td>
+            <td>
+              <span class="productName">Genesis - A Trick of the Tail</span><br>
+              <span class="productId">CD00009328</span>
+            </td>
+            <td><input type="text" class="sell" name="sell" value="5.99"></td>
+            <td><input type="text" class="discount" name="discount" value="0"></td>
+            <td><input type="text" class="totalsell" name="totalsell" value="5.99"></td>
+          </tr>
+
+          <tr id="transactionSampleRow" style="display:none">
+            <td><input class="qty" type="text" name="qty" value="1"></td>
+            <td>
+              <span class="productName"></span><br>
+              <span class="productId"></span>
+            </td>
+            <td><input type="text" class="sell" name="sell" value=""></td>
+            <td><input type="text" class="discount" name="discount" value="0"></td>
+            <td><input type="text" class="totalsell" name="totalsell" value=""></td>
+          </tr>
+        </div>
+
+
       </table>
     </div>
     <!-- <div id="tRightBox">
@@ -361,16 +376,16 @@
       </div><div id="tpriceTax">
         <div id="taxFlex">
           <div class="taxflex1 tflex">
-            <span class="pp1">TAX CODE</span><span class="pp2">TPSTVQ2019</span>
+            <span class="pp1">TAX CODE</span><span id="taxcode" class="pp2">TPSTVQ2019</span>
           </div>
           <div class="taxflex2 tflex">
-            <span class="pp1">TAX TOTAL</span><span class="pp2">0.90</span>
+            <span class="pp1">TAX TOTAL</span><span id="taxtotal" class="pp2">0.90</span>
           </div>
         </div>
       </div><div class="tflex" id="tpricePrice">
         <div id="priceFlex">
           <div class="tflex" id="priceFlex1">
-            <span class="pp1">SUBTOTAL</span><span class="pp2">5.99</span>
+            <span class="pp1">SUBTOTAL</span><span id="subtotal" class="pp2">11.98</span>
           </div>
           <div class="tflex" id="priceFlex2">
             <span class="pp1">TOTAL</span><span id="bigPrice" class="pp2">6.89</span>
