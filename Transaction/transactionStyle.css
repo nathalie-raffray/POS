@@ -456,6 +456,7 @@
   /* background-size:50%; */
 }
 
+
 #transactionTable th:first-child, #transactionTable th:nth-child(4){
   width:10%;
 }
@@ -467,6 +468,60 @@
 #transactionTable td{
   padding-top: 8px;
   padding-bottom:8px;
+}
+
+/*THIS IS THE TABLE FOR SEARCHING FOR MULTIPLE ITEMS*/
+
+#tsearchTable tr td{
+  font-size:10px;
+  height: 24px;
+  border-right: 1px solid rgb(42,42,42);
+  padding-left: 4px;
+}
+
+#tsearchTable tr td:hover{
+  cursor: pointer;
+}
+
+#tsearchTable th{
+  color:black;
+  padding-left: 4px;
+  height: 20px;
+  background-color:grey;
+  text-align: left;
+  background-image: none;
+}
+#tsearchTable th:nth-child(1){
+  width: 11%;
+}
+#tsearchTable th:nth-child(2){
+  width: 65%;
+}
+#tsearchTable th:nth-child(4){
+  width: 18%;
+}
+
+#tsearchTable tr:nth-child(odd){
+   background-color: rgb(23, 23, 23);
+}
+#tsearchTable tr:nth-child(even){
+  background-color: rgb(27, 27, 27);
+}
+#tsearchTable tr th{
+  border-right: 1px solid rgb(42,42,42);
+}
+
+.tinventorybutt{
+  border-radius: 10px;
+  width: 90%;
+}
+.tinventorybutt span:first-child{
+  float: left;
+  margin-left: 3px;
+}
+.tinventorybutt span:last-child{
+  float: right;
+  margin-right: 3px;
 }
 
 .qty{

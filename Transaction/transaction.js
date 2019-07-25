@@ -35,11 +35,11 @@ $('.tbeep').click(function(e){
 
 //THESE NEXT TWO ARE FOR THE SEARCH BAR
 $('#tsearchCustomer').click(function(){
-  document.getElementById('tsearch').placeholder = ' Search Customers';
+  document.getElementById('tsearch').placeholder = 'Search Customers';
 });
 
 $('#tsearchProduct').click(function(){
-  document.getElementById('tsearch').placeholder = ' Search Products';
+  document.getElementById('tsearch').placeholder = 'Search Products';
 });
 
 //WHEN YOU SELECT A ROW IT TURNS GREEN
@@ -58,6 +58,49 @@ $('#transactionScreen').on('click', '#transactionTable tr:not(first-child)', fun
 
   previousTransactionRowSelected = this;
 
+});
+
+var previousTSearchRowSelected;
+var prevBC;
+$(document.body).on('click', '#tsearchTable tr:not(first-child)', function(e){
+  if(this.style.backgroundColor != 'green'){
+    var bodyStyle = window.getComputedStyle(this, null);
+    bgColor = bodyStyle.backgroundColor;
+
+    $(this).css('background-image', 'linear-gradient(rgb(208, 227, 141), rgb(168, 205, 112))');
+    $(this).css('border-top', '1px solid rgb(221, 238, 164)');
+    $(this).css('color', 'black');
+
+    if(previousTSearchRowSelected != undefined){
+      $(previousTSearchRowSelected).css('background-color', prevBC);
+      $(previousTSearchRowSelected).css('background-image', 'none');
+      $(previousTSearchRowSelected).css('border-top', 'none');
+      $(previousTSearchRowSelected).css('color', 'white');
+    }
+
+    prevBC = bgColor;
+    previousTSearchRowSelected = this;
+  }
+
+});
+
+$(document.body).on('dblclick', '#tsearchTable tr:not(first-child)', function(e){
+  var e = new CustomEvent('keyup');
+  e.which = 13;
+  var database = 'Products';
+  //console.log($('#tsearchTable .marker')[0].innerHTML);
+
+  if($('#tsearchTable .marker')[0].innerHTML != 'Code'){
+    database = 'Customers';
+  }
+
+  console.log(this.children[0].innerHTML);
+  document.getElementById('tsearch').value = this.children[0].innerHTML;
+
+  document.getElementById('tsearchTable').style.display = 'none';
+  document.getElementById('transactionTable').style.display = 'table';
+
+  getTransactionRow(e, database);
 });
 
 //TO DELETE A ROW ON TRANSACTION SCREEN USING DELETE BUTTON
@@ -113,56 +156,19 @@ $("#transactionScreen").on('keyup', '.discount', function (e) {
   }
 
 $("#transactionScreen").on('keyup', '#tsearch', function(e){
-  getTransactionRow(e);
-}
-//function (e) {
-    // if(e.keyCode == 13) { //if enter is pressed
-    //   var search = document.getElementById('tsearch').value;
-    //   var filter = '';
-    //   if(((search[0] == 'L' || search[0] == 'l') && ((search[1] == 'P' || search[1] == 'p') || (search[1] == 'N' || search[1] == 'n')))
-    //   || ((search[0] == 'C' || search[0] == 'c') && (search[1] == 'D' || search[1] == 'd'))){
-    //     filter = 'Product Code';
-    //   }else{
-    //     filter = 'All';
-    //   }
-    //
-    //   if(input !== ''){
-    //     search = {
-    //       entered: search,
-    //       filter: filter,
-    //       //searchIndex: searchIndex,
-    //       //database: dbArray,
-    //     };
-    //
-    //     $.ajax({
-    //       type: 'POST',
-    //       url: 'Products/searchProducts.php',
-    //       data: search,
-    //       success: function(response){
-    //         console.log(response);
-    //         if(noErrors(response)){
-    //
-    //           console.log('HI!');
-    //           response = JSON.parse(response);
-    //
-    //           if(response.length == undefined){ //if only one result is returned
-    //             makeTransactionRow(JSON.parse(response.data)[0]);
-    //           }
-    //           console.log(response.length);
-    //
-    //           //displayResults(response, makeRow);
-    //         }
-    //        }
-    //     });
-    //   }
-    // }
-//}
-);
+  var database = 'Products';
+  if(document.getElementById('tsearch').placeholder == 'Search Customers'){
+    database = 'Customers';
+  }
+  getTransactionRow(e, database);
+});
 
 function getTransactionRow(e, database){
-  if(e.keyCode == 13) { //if enter is pressed
+  console.log(database);
+  if(e.which == 13) { //if enter is pressed
 
     var input = document.getElementById('tsearch').value;
+    console.log(input);
     var filter = '';
     var search;
 
@@ -180,6 +186,8 @@ function getTransactionRow(e, database){
           filter: filter,
         };
 
+        //console.log(search);
+
         $.ajax({
           type: 'POST',
           url: 'Products/searchProducts.php',
@@ -190,9 +198,12 @@ function getTransactionRow(e, database){
 
               console.log('HI!');
               response = JSON.parse(response);
+              response = JSON.parse(response.data)
+              console.log(response);
+              console.log(response.length);
 
-              if(response.length == undefined){ //if only one result is returned
-                makeTransactionRow(JSON.parse(response.data)[0]);
+              if(response.length == 1){ //if only one result is returned
+                makeTransactionRow(response[0]);
               }
               console.log(response.length);
 
@@ -218,34 +229,24 @@ function getTransactionRow(e, database){
           success: function(response){
             console.log(response);
             if(noErrors(response)){
-
               console.log('HI!');
               response = JSON.parse(response);
               response = JSON.parse(response.data);
 
-              if(response.length == undefined){ //if only one result is returned
-                response = JSON.parse(response.data)[0];
+
+              if(response.length == 1){ //if only one result is returned
+              //  response = JSON.parse(response.data);
                 console.log("only one");
-                //showCustomer(response);
+                console.log(response[0]);
+                showCustomer(response[0]);
+              }else{
+                console.log("more than one");
               }
-              console.log("more than one");
-
-              // if(response.length == undefined){ //if only one result is returned
-              //   makeTransactionRow(JSON.parse(response.data)[0]);
-              // }
-              // console.log(response.length);
-
-              //displayResults(response, makeRow);
             }
            }
         });
       }
-
-
     }
-
-
-
   }
 }
 
@@ -256,8 +257,6 @@ function makeTransactionRow(response){
   var clone = document.getElementById('transactionSampleRow').cloneNode(true);
   clone.style.display = 'table-row';
 
-  //clone.find('.productName')
-  //clone.css('display', 'none');
   $(clone).find('.productName')[0].innerHTML = response.description;
   var code;
   if(response.type == 1){
@@ -270,10 +269,9 @@ function makeTransactionRow(response){
 
   $(clone).find('.productId')[0].innerHTML = code;
 
-  console.log($(clone).find('.productName'));
+  //console.log($(clone).find('.productName'));
   $(clone).find('.sell')[0].value = response.sell;
   $(clone).find('.totalsell')[0].value = response.sell;
-  //console.log($(clone).find('.productName'));
   table.appendChild(clone);
 
   //CHANGE SUBTOTAL
@@ -285,12 +283,12 @@ function makeTransactionRow(response){
 }
 
 function showCustomer(response){
-  document.getElementById('tcustomername').innerHTML = response.firstname + response.lastname;
+  document.getElementById('tcustomername').innerHTML = response.firstname+' '+response.lastname;
   document.getElementById('tphone').innerHTML = response.mainphone;
   document.getElementById('temail').innerHTML = response.email;
   document.getElementById('taddress1').innerHTML = response.address1;
   document.getElementById('taddress2').innerHTML = response.address2;
-  document.getElementById('taddress3').innerHTML = response.city+', '+response.province+', '+reponse.postalcode;
+  document.getElementById('taddress3').innerHTML = response.city+', '+response.province+', '+response.postalcode;
   document.getElementById('tcountry').innerHTML = response.country;
 
   if(response.discount == 'Employee'){
@@ -316,9 +314,12 @@ $('#tsearch').scannerDetection({
     //console.log("barcode: " + barcode);
     var e = new CustomEvent('keyup');
     e.which = 13;
-    getTransactionRow(e);
+    var database = 'Products';
+    if(document.getElementById('tsearch').placeholder == 'Search Customers'){
+      database = 'Customers';
+    }
+    getTransactionRow(e, database);
 
-    //	$('#scannerInput').val (barcode);
 
     } // main callback function	,
 	,

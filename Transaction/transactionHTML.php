@@ -7,7 +7,7 @@
 
   <div id="ttopBar">
     <div id="ttopButtons">
-      <input id="tsearch" type="search" name="search" placeholder=" Search Products" autofocus>
+      <input id="tsearch" type="search" name="search" placeholder="Search Products" autofocus>
       <button id="tsearchProduct" type="button" name="button"><img width="100%" height="32" src="pics/littlevinyl.png"></button>
       <button id="tsearchCustomer" type="button" name="button"><img width="100%" height="32" src="pics/littlecustomer.jpg"></button>
     </div>
@@ -309,7 +309,7 @@
     </div>
     <div id="tMiddleBox">
 
-      <table id="transactionTable">
+      <table id="transactionTable" style="display:none">
         <tr>
           <th> Qty</th>
           <th> Product</th>
@@ -354,6 +354,40 @@
           </tr>
         <!-- </div> -->
 
+
+      </table>
+
+      <table id="tsearchTable">
+
+        <tr>
+          <th class="marker">Code</th>
+          <th>Description</th>
+          <th>Price</th>
+          <th>Inventory</th>
+        </tr>
+
+        <tr>
+          <td>CD00002635</td>
+          <td>Hiroshi Yoshimura - Music For Nine Postcards</td>
+          <td>10.99</td>
+          <td>
+            <button type="button" name="button" class="tinventorybutt">
+              <span id="tbuttAvailable">Available</span>
+              <span id="tbuttQty">1</span>
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td>CD00002635</td>
+          <td>Hiroshi Yoshimura - Music For Nine Postcards</td>
+          <td>10.99</td>
+          <td>
+            <button type="button" name="button" class="tinventorybutt">
+              <span id="tbuttAvailable">Available</span>
+              <span id="tbuttQty">1</span>
+            </button>
+          </td>
+        </tr>
 
       </table>
     </div>

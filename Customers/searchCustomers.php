@@ -112,13 +112,13 @@ if(isset($_POST['entered']) && isset($_POST['filter'])){
 
     case "All":
       $searcharr = explode(' ', $search);
-      $string="(firstname LIKE '%{$searcharr[0]}%' OR lastname LIKE '%{$searcharr[0]}%
+      $string="(firstname LIKE '%{$searcharr[0]}%' OR lastname LIKE '%{$searcharr[0]}%'
                 OR phone1 LIKE '%{$searcharr[0]}%' OR phone2 LIKE '%{$searcharr[0]}%'
                 OR phone3 LIKE '%{$searcharr[0]}%' OR email LIKE '%{$searcharr[0]}%'
                 OR city LIKE '%{$searcharr[0]}%' or postalcode LIKE '%{$searcharr[0]}%'
                 OR discount LIKE '%{$searcharr[0]}%')";
       for($i=1; $i<sizeof($searcharr); $i++){
-        $string = $string."AND (firstname LIKE '%{$searcharr[$i]}%' OR lastname LIKE '%{$searcharr[$i]}%
+        $string = $string."AND (firstname LIKE '%{$searcharr[$i]}%' OR lastname LIKE '%{$searcharr[$i]}%'
                   OR phone1 LIKE '%{$searcharr[$i]}%' OR phone2 LIKE '%{$searcharr[$i]}%'
                   OR phone3 LIKE '%{$searcharr[$i]}%' OR email LIKE '%{$searcharr[$i]}%'
                   OR city LIKE '%{$searcharr[$i]}%' or postalcode LIKE '%{$searcharr[$i]}%'
@@ -138,11 +138,11 @@ if(isset($_POST['entered']) && isset($_POST['filter'])){
 
 
 function doCustomerQuery($string, $sendBack, $orderClause, $conn){
-  $query = "SELECT id, firstname, lastname, mainphone, points, email, discount, postalcode, city FROM `customers`
+  $query = "SELECT id, firstname, lastname, mainphone, address1, address2, province, country, points, email, discount, postalcode, city FROM `customers`
           WHERE $string $orderClause";
   $result = mysqli_query($conn, $query);
   // $responseClient=array();
-
+//  echo $query;
   if($result == false){ //if query failed
     $sendBack->error = 'Invalid Query.';
     $sendBack->data = '';
