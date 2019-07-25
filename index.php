@@ -8,6 +8,8 @@
 	<link rel="stylesheet" type="text/css" href="light.css">
 	<link rel="stylesheet" type="text/css" href="Transaction/transactionStyle.css">
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script src="JQueryScannerDetection/jquery.scannerdetection.js"></script>
+	<script src="JQueryScannerDetection/scannerdetection.jquery.json"></script>
 	<script src="colResizable/colResizable-1.6.min.js"></script>
 	<!-- <script src='mousestop-3.0.1/mousestop.js' type="text/javascript"></script> -->
 	<!-- <script src='./mousestop-3.0.1/mousestop.jquery.json' type="text/javascript"></script>

@@ -112,23 +112,72 @@ $("#transactionScreen").on('keyup', '.discount', function (e) {
     document.getElementById('subtotal').innerHTML = parseFloat(currSubTotal - temp + newTotalSell).toFixed(2);
   }
 
-$("#transactionScreen").on('keyup', '#tsearch', function (e) {
-    if(e.keyCode == 13) { //if enter is pressed
-      var search = document.getElementById('tsearch').value;
-      var filter = '';
-      if(((search[0] == 'L' || search[0] == 'l') && ((search[1] == 'P' || search[1] == 'p') || (search[1] == 'N' || search[1] == 'n')))
-      || ((search[0] == 'C' || search[0] == 'c') && (search[1] == 'D' || search[1] == 'd'))){
+$("#transactionScreen").on('keyup', '#tsearch', function(e){
+  getTransactionRow(e);
+}
+//function (e) {
+    // if(e.keyCode == 13) { //if enter is pressed
+    //   var search = document.getElementById('tsearch').value;
+    //   var filter = '';
+    //   if(((search[0] == 'L' || search[0] == 'l') && ((search[1] == 'P' || search[1] == 'p') || (search[1] == 'N' || search[1] == 'n')))
+    //   || ((search[0] == 'C' || search[0] == 'c') && (search[1] == 'D' || search[1] == 'd'))){
+    //     filter = 'Product Code';
+    //   }else{
+    //     filter = 'All';
+    //   }
+    //
+    //   if(input !== ''){
+    //     search = {
+    //       entered: search,
+    //       filter: filter,
+    //       //searchIndex: searchIndex,
+    //       //database: dbArray,
+    //     };
+    //
+    //     $.ajax({
+    //       type: 'POST',
+    //       url: 'Products/searchProducts.php',
+    //       data: search,
+    //       success: function(response){
+    //         console.log(response);
+    //         if(noErrors(response)){
+    //
+    //           console.log('HI!');
+    //           response = JSON.parse(response);
+    //
+    //           if(response.length == undefined){ //if only one result is returned
+    //             makeTransactionRow(JSON.parse(response.data)[0]);
+    //           }
+    //           console.log(response.length);
+    //
+    //           //displayResults(response, makeRow);
+    //         }
+    //        }
+    //     });
+    //   }
+    // }
+//}
+);
+
+function getTransactionRow(e, database){
+  if(e.keyCode == 13) { //if enter is pressed
+
+    var input = document.getElementById('tsearch').value;
+    var filter = '';
+    var search;
+
+    if(database == 'Products'){
+      if(((input[0] == 'L' || input[0] == 'l') && ((input[1] == 'P' || input[1] == 'p') || (input[1] == 'N' || input[1] == 'n')))
+      || ((input[0] == 'C' || input[0] == 'c') && (input[1] == 'D' || input[1] == 'd'))){
         filter = 'Product Code';
       }else{
         filter = 'All';
       }
 
-      if(input !== ''){
+      if(input.trim() != ''){
         search = {
-          entered: search,
+          entered: input,
           filter: filter,
-          //searchIndex: searchIndex,
-          //database: dbArray,
         };
 
         $.ajax({
@@ -152,12 +201,57 @@ $("#transactionScreen").on('keyup', '#tsearch', function (e) {
            }
         });
       }
+
+    }else if(database == 'Customers'){
+      if(input.trim() != ''){
+        filter = 'All';
+
+        search = {
+          entered: input,
+          filter: filter,
+        };
+
+        $.ajax({
+          type: 'POST',
+          url: 'Customers/searchCustomers.php',
+          data: search,
+          success: function(response){
+            console.log(response);
+            if(noErrors(response)){
+
+              console.log('HI!');
+              response = JSON.parse(response);
+              response = JSON.parse(response.data);
+
+              if(response.length == undefined){ //if only one result is returned
+                response = JSON.parse(response.data)[0];
+                console.log("only one");
+                //showCustomer(response);
+              }
+              console.log("more than one");
+
+              // if(response.length == undefined){ //if only one result is returned
+              //   makeTransactionRow(JSON.parse(response.data)[0]);
+              // }
+              // console.log(response.length);
+
+              //displayResults(response, makeRow);
+            }
+           }
+        });
+      }
+
+
     }
-});
+
+
+
+  }
+}
 
 function makeTransactionRow(response){
   console.log(response);
-  var table = document.getElementById('transactionTableBox');
+  var table = document.getElementById('transactionTable');
 
   var clone = document.getElementById('transactionSampleRow').cloneNode(true);
   clone.style.display = 'table-row';
@@ -165,7 +259,16 @@ function makeTransactionRow(response){
   //clone.find('.productName')
   //clone.css('display', 'none');
   $(clone).find('.productName')[0].innerHTML = response.description;
-  $(clone).find('.productId')[0].innerHTML = response.id;
+  var code;
+  if(response.type == 1){
+    code = 'LP' + response.id;
+  }else if(response.type == 2){
+    code = 'LN' + response.id;
+  }else if(response.type == 3){
+    code = 'CD' + response.id;
+  }
+
+  $(clone).find('.productId')[0].innerHTML = code;
 
   console.log($(clone).find('.productName'));
   $(clone).find('.sell')[0].value = response.sell;
@@ -177,5 +280,54 @@ function makeTransactionRow(response){
   var currSubTotal = parseFloat(document.getElementById('subtotal').innerHTML);
   document.getElementById('subtotal').innerHTML = parseFloat(currSubTotal + parseFloat(response.sell)).toFixed(2);
 
+  document.getElementById('tsearch').value = '';
 
 }
+
+function showCustomer(response){
+  document.getElementById('tcustomername').innerHTML = response.firstname + response.lastname;
+  document.getElementById('tphone').innerHTML = response.mainphone;
+  document.getElementById('temail').innerHTML = response.email;
+  document.getElementById('taddress1').innerHTML = response.address1;
+  document.getElementById('taddress2').innerHTML = response.address2;
+  document.getElementById('taddress3').innerHTML = response.city+', '+response.province+', '+reponse.postalcode;
+  document.getElementById('tcountry').innerHTML = response.country;
+
+  if(response.discount == 'Employee'){
+
+  }else if(response.discount == '5' || response.discount == '10' || response.discount == '15'){
+    var discount = parseInt(response.discount) * 0.01;
+    //fore
+  }
+}
+
+$('#tsearch').scannerDetection({
+  //https://github.com/kabachello/jQuery-Scanner-Detection
+
+	timeBeforeScanTest: 200, // wait for the next character for upto 200ms
+	avgTimeByChar: 40, // it's not a barcode if a character takes longer than 100ms
+	preventDefault: false,
+
+	endChar: [13],
+		onComplete: function(barcode, qty){
+   validScan = true;
+
+    $('#tsearch').val(barcode);
+    //console.log("barcode: " + barcode);
+    var e = new CustomEvent('keyup');
+    e.which = 13;
+    getTransactionRow(e);
+
+    //	$('#scannerInput').val (barcode);
+
+    } // main callback function	,
+	,
+	onError: function(string, qty) {
+  //  $('#tsearch').val($('#tsearch').val() + string);
+  //  console.log("written manually: " + string);
+
+//	$('#userInput').val ($('#userInput').val()  + string);
+
+
+	}
+});

@@ -7,7 +7,7 @@
 
   <div id="ttopBar">
     <div id="ttopButtons">
-      <input id="tsearch" type="search" name="search" placeholder=" Search Products">
+      <input id="tsearch" type="search" name="search" placeholder=" Search Products" autofocus>
       <button id="tsearchProduct" type="button" name="button"><img width="100%" height="32" src="pics/littlevinyl.png"></button>
       <button id="tsearchCustomer" type="button" name="button"><img width="100%" height="32" src="pics/littlecustomer.jpg"></button>
     </div>
@@ -36,7 +36,6 @@
               <span class="bold" id="temailtitle">Email</span><span class="notbold" id="temail">nathalie.raffray9@gmail.com</span><br>
               <span class="bold" id="tshippingtitle">Shipping</span><div class="notbold" id="tshipping">
                 <span id="taddress1">555 dead dog lane</span><br>
-                <span id="taddress2">Penthouse</span><br>
                 <span id="taddress2">Penthouse</span><br>
                 <span id="taddress3">St Tropez, QC, 92009</span><br>
                 <span id="tcountry">Monaco</span><br>
@@ -319,7 +318,7 @@
           <th> Total Sell</th>
         </tr>
 
-        <div id="transactionTableBox">
+        <!-- <div id="transactionTableBox"> -->
           <tr>
             <td><input class="qty" type="text" name="qty" value="1"></td>
             <td>
@@ -353,7 +352,7 @@
             <td><input type="text" class="discount" name="discount" value="0"></td>
             <td><input type="text" class="totalsell" name="totalsell" value=""></td>
           </tr>
-        </div>
+        <!-- </div> -->
 
 
       </table>

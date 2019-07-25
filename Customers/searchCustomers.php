@@ -2,7 +2,7 @@
 require('../config/config.php');
 require('../config/db.php');
 
-if(isset($_POST['entered']) && isset($_POST['filter']) && isset($_POST['offset'])&& isset($_POST['count'])){
+if(isset($_POST['entered']) && isset($_POST['filter'])){
   ini_set('memory_limit','125M');
 
   $search = mysqli_real_escape_string($conn, $_POST['entered']);
@@ -11,6 +11,7 @@ if(isset($_POST['entered']) && isset($_POST['filter']) && isset($_POST['offset']
 
 
   $orderClause = '';
+  $orderby = '';
   if(isset($_POST['orderby']) && isset($_POST['ascdesc'])){
     $orderby = $_POST['orderby'];
     $ascdesc = $_POST['ascdesc'];
