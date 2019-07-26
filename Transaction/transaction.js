@@ -21,6 +21,11 @@ $('#twalkintitleBox').click(function(e){
   $('#twalkinInfo').show();
 });
 
+$('#transactionScreen').on('click', '#teditCustomer', function(e){
+  popupWindow = window.open('./popUps/popUpCustomers/customersPopUp.html',
+  'popUpCustomer', 'height=600, width=700, position=fixed, top=50%, left=50%, resizable=yes,scrollbars=yes, toolbar=no, menubar=no, location=no, directories=no, status=yes');
+});
+
 //WHEN YOU CLICK POCHETTES/GEAR/DRANKS/OTHER
 $('.tbeep').click(function(e){
   console.log(this);
@@ -265,7 +270,8 @@ function getTransactionRow(e, database, getByID){
               if(response.length == 1){ //if only one result is returned
               //  response = JSON.parse(response.data);
                 console.log("only one");
-                console.log(response[0]);
+                console.log(response[0].id);
+                document.getElementById('productOpened').innerHTML = response[0].id;
                 showCustomer(response[0]);
               }else{
                 $('#tsearchTable tr:not(.dontclear)').remove();

@@ -309,7 +309,7 @@
     </div>
     <div id="tMiddleBox">
 
-      <table id="transactionTable">
+      <table id="transactionTable" style="display:none">
         <tr>
           <th> Qty</th>
           <th> Product</th>
@@ -373,17 +373,6 @@
           </tr>
         </thead>
         <tbody>
-          <!-- <tr>
-            <td>CD00002635</td>
-            <td>Hiroshi Yoshimura - Music For Nine Postcards</td>
-            <td>10.99</td>
-            <td>
-              <button type="button" name="button" class="tinventorybutt">
-                <span id="tbuttAvailable">Available</span>
-                <span id="tbuttQty">1</span>
-              </button>
-            </td>
-          </tr> -->
           <tr class="dontclear" id="tsearchSampleRow" style="display:none">
             <td id="tsearchId"></td>
             <td id="tsearchDescription"></td>
@@ -402,8 +391,23 @@
             <td id="tsearchEmail"></td>
           </tr>
         </tbody>
-
       </table>
+
+      <div id="tpaymentMethodScreen" style="display:inline-block">
+        <button class="tpayment" type="button" name="button">Cash</button>
+        <button class="tpayment" type="button" name="button">Interac</button>
+        <button class="tpayment" type="button" name="button">Visa</button>
+        <button class="tpayment" type="button" name="button">Mastercard</button>
+        <button class="tpayment" type="button" name="button">Carte Cadeau</button>
+        <button class="tpayment" type="button" name="button">Paypal</button>
+        <button class="tpayment" type="button" name="button">Contrat Cash</button>
+        <button class="tpayment" type="button" name="button">Contrat Echange</button>
+        <!-- <button class="tpayment" type="button" name="button"></button>
+        <button class="tpayment" type="button" name="button"></button>
+        <button class="tpayment" type="button" name="button"></button> -->
+
+      </div>
+
     </div>
     <!-- <div id="tRightBox">
 
@@ -444,7 +448,9 @@
     </div>
   </div>
 
-
+  <div id="tpaymentPopUp">
+    PAY ME
+  </div>
 
 
 
