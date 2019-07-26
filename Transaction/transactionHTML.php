@@ -309,7 +309,7 @@
     </div>
     <div id="tMiddleBox">
 
-      <table id="transactionTable" style="display:none">
+      <table id="transactionTable">
         <tr>
           <th> Qty</th>
           <th> Product</th>
@@ -357,37 +357,51 @@
 
       </table>
 
-      <table id="tsearchTable">
-
-        <tr>
-          <th class="marker">Code</th>
-          <th>Description</th>
-          <th>Price</th>
-          <th>Inventory</th>
-        </tr>
-
-        <tr>
-          <td>CD00002635</td>
-          <td>Hiroshi Yoshimura - Music For Nine Postcards</td>
-          <td>10.99</td>
-          <td>
-            <button type="button" name="button" class="tinventorybutt">
-              <span id="tbuttAvailable">Available</span>
-              <span id="tbuttQty">1</span>
-            </button>
-          </td>
-        </tr>
-        <tr>
-          <td>CD00002635</td>
-          <td>Hiroshi Yoshimura - Music For Nine Postcards</td>
-          <td>10.99</td>
-          <td>
-            <button type="button" name="button" class="tinventorybutt">
-              <span id="tbuttAvailable">Available</span>
-              <span id="tbuttQty">1</span>
-            </button>
-          </td>
-        </tr>
+      <table id="tsearchTable" style="display:none">
+        <thead>
+          <tr class="dontclear" id="tsearchHeader">
+            <th class="marker">Code</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Inventory</th>
+          </tr>
+          <tr class="dontclear" id="tsearchHeaderCustomer" style="display:none">
+            <th class="marker">Customer ID</th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- <tr>
+            <td>CD00002635</td>
+            <td>Hiroshi Yoshimura - Music For Nine Postcards</td>
+            <td>10.99</td>
+            <td>
+              <button type="button" name="button" class="tinventorybutt">
+                <span id="tbuttAvailable">Available</span>
+                <span id="tbuttQty">1</span>
+              </button>
+            </td>
+          </tr> -->
+          <tr class="dontclear" id="tsearchSampleRow" style="display:none">
+            <td id="tsearchId"></td>
+            <td id="tsearchDescription"></td>
+            <td id="tsearchPrice"></td>
+            <td>
+              <button type="button" name="button" class="tinventorybutt">
+                <span id="tbuttAvailable">Available</span>
+                <span id="tbuttQty"></span>
+              </button>
+            </td>
+          </tr>
+          <tr class="dontclear" id="tsearchSampleCustRow" style="display:none">
+            <td id="tsearchCid"></td>
+            <td id="tsearchName"></td>
+            <td id="tsearchPhone"></td>
+            <td id="tsearchEmail"></td>
+          </tr>
+        </tbody>
 
       </table>
     </div>

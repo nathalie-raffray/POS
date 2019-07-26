@@ -110,15 +110,20 @@ if(isset($_POST['entered']) && isset($_POST['filter'])){
       doCustomerQuery($string, $sendBack, $orderClause, $conn);
       break;
 
+    case "id":
+      $string = "id = '{$search}'";
+      doCustomerQuery($string, $sendBack, $orderClause, $conn);
+      break;
+
     case "All":
       $searcharr = explode(' ', $search);
-      $string="(firstname LIKE '%{$searcharr[0]}%' OR lastname LIKE '%{$searcharr[0]}%'
+      $string="(id = '{$searcharr[0]}' OR firstname LIKE '%{$searcharr[0]}%' OR lastname LIKE '%{$searcharr[0]}%'
                 OR phone1 LIKE '%{$searcharr[0]}%' OR phone2 LIKE '%{$searcharr[0]}%'
                 OR phone3 LIKE '%{$searcharr[0]}%' OR email LIKE '%{$searcharr[0]}%'
                 OR city LIKE '%{$searcharr[0]}%' or postalcode LIKE '%{$searcharr[0]}%'
                 OR discount LIKE '%{$searcharr[0]}%')";
       for($i=1; $i<sizeof($searcharr); $i++){
-        $string = $string."AND (firstname LIKE '%{$searcharr[$i]}%' OR lastname LIKE '%{$searcharr[$i]}%'
+        $string = $string."AND (id = '{$searcharr[$i]}' OR firstname LIKE '%{$searcharr[$i]}%' OR lastname LIKE '%{$searcharr[$i]}%'
                   OR phone1 LIKE '%{$searcharr[$i]}%' OR phone2 LIKE '%{$searcharr[$i]}%'
                   OR phone3 LIKE '%{$searcharr[$i]}%' OR email LIKE '%{$searcharr[$i]}%'
                   OR city LIKE '%{$searcharr[$i]}%' or postalcode LIKE '%{$searcharr[$i]}%'

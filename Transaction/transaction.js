@@ -88,10 +88,13 @@ $(document.body).on('dblclick', '#tsearchTable tr:not(first-child)', function(e)
   var e = new CustomEvent('keyup');
   e.which = 13;
   var database = 'Products';
+
+  var getbyID = false;
   //console.log($('#tsearchTable .marker')[0].innerHTML);
 
-  if($('#tsearchTable .marker')[0].innerHTML != 'Code'){
+  if($('#tsearchTable thead tr:first-child').css('display') == 'none'){
     database = 'Customers';
+    getbyID = true;
   }
 
   console.log(this.children[0].innerHTML);
@@ -100,7 +103,10 @@ $(document.body).on('dblclick', '#tsearchTable tr:not(first-child)', function(e)
   document.getElementById('tsearchTable').style.display = 'none';
   document.getElementById('transactionTable').style.display = 'table';
 
-  getTransactionRow(e, database);
+  getTransactionRow(e, database, getbyID);
+  document.getElementById('tsearch').value = '';
+  document.getElementById('tsearch').placeholder = 'Search Products';
+  $('#tsearch').focus();
 });
 
 //TO DELETE A ROW ON TRANSACTION SCREEN USING DELETE BUTTON
@@ -160,19 +166,23 @@ $("#transactionScreen").on('keyup', '#tsearch', function(e){
   if(document.getElementById('tsearch').placeholder == 'Search Customers'){
     database = 'Customers';
   }
-  getTransactionRow(e, database);
+  getTransactionRow(e, database, false);
 });
 
-function getTransactionRow(e, database){
-  console.log(database);
+function getTransactionRow(e, database, getByID){
+  //console.log(database);
   if(e.which == 13) { //if enter is pressed
 
     var input = document.getElementById('tsearch').value;
     console.log(input);
     var filter = '';
     var search;
+    var orderby;
+    var ascdesc;
 
     if(database == 'Products'){
+      orderby = 'inv_floor';
+      ascdesc = 'DESC';
       if(((input[0] == 'L' || input[0] == 'l') && ((input[1] == 'P' || input[1] == 'p') || (input[1] == 'N' || input[1] == 'n')))
       || ((input[0] == 'C' || input[0] == 'c') && (input[1] == 'D' || input[1] == 'd'))){
         filter = 'Product Code';
@@ -184,6 +194,8 @@ function getTransactionRow(e, database){
         search = {
           entered: input,
           filter: filter,
+          orderby: orderby,
+          ascdesc: ascdesc
         };
 
         //console.log(search);
@@ -203,9 +215,21 @@ function getTransactionRow(e, database){
               console.log(response.length);
 
               if(response.length == 1){ //if only one result is returned
+                document.getElementById('transactionTable').style.display = 'table';
+                document.getElementById('tsearchTable').style.display = 'none';
                 makeTransactionRow(response[0]);
+              }else{
+                $('#tsearchTable tr:not(.dontclear)').remove();
+                document.getElementById('transactionTable').style.display = 'none';
+                document.getElementById('tsearchTable').style.display = 'table';
+                document.getElementById('tsearchHeader').style.display = 'table-row';
+                document.getElementById('tsearchHeaderCustomer').style.display = 'none';
+                for(var i = 0; i<response.length; i++){
+                  maketSearchRow(response[i]);
+                }
+
               }
-              console.log(response.length);
+            //  console.log(response.length);
 
               //displayResults(response, makeRow);
             }
@@ -215,7 +239,11 @@ function getTransactionRow(e, database){
 
     }else if(database == 'Customers'){
       if(input.trim() != ''){
-        filter = 'All';
+        if(getByID){
+          filter = 'id'
+        }else{
+          filter = 'All';
+        }
 
         search = {
           entered: input,
@@ -240,6 +268,14 @@ function getTransactionRow(e, database){
                 console.log(response[0]);
                 showCustomer(response[0]);
               }else{
+                $('#tsearchTable tr:not(.dontclear)').remove();
+                document.getElementById('transactionTable').style.display = 'none';
+                document.getElementById('tsearchTable').style.display = 'table';
+                document.getElementById('tsearchHeader').style.display = 'none';
+                document.getElementById('tsearchHeaderCustomer').style.display = 'table-row';
+                for(var i = 0; i<response.length; i++){
+                  maketSearchCustomerRow(response[i]);
+                }
                 console.log("more than one");
               }
             }
@@ -250,6 +286,52 @@ function getTransactionRow(e, database){
   }
 }
 
+function maketSearchRow(response){
+  var table = document.getElementById('tsearchTable');
+  var clone = document.getElementById('tsearchSampleRow').cloneNode(true);
+  clone.style.display = 'table-row';
+
+  $(clone).find('#tsearchDescription')[0].innerHTML = response.description;
+
+  for(var i = response.id.length; i<8; i++){
+    response.id = '0' + response.id;
+  }
+  console.log(response.id.length);
+
+  var code;
+  if(response.type == 1){
+    code = 'LP' + response.id;
+  }else if(response.type == 2){
+    code = 'LN' + response.id;
+  }else if(response.type == 3){
+    code = 'CD' + response.id;
+  }
+
+  $(clone).find('#tsearchId')[0].innerHTML = code;
+  $(clone).find('#tsearchPrice')[0].innerHTML = response.sell;
+  $(clone).attr('id', '');
+  $(clone).attr('class', '');
+  $(clone).find('#tbuttQty')[0].innerHTML = response.inv_floor;
+  table.appendChild(clone);
+//  console.log($(clone).find('#tsearchId'));
+}
+
+function maketSearchCustomerRow(response){
+  var table = document.getElementById('tsearchTable');
+  var clone = document.getElementById('tsearchSampleCustRow').cloneNode(true);
+  clone.style.display = 'table-row';
+  $(clone).find('#tsearchCid')[0].innerHTML = response.id;
+  $(clone).find('#tsearchName')[0].innerHTML = response.firstname+' '+response.lastname;
+
+  $(clone).find('#tsearchPhone')[0].innerHTML = response.mainphone;
+  $(clone).attr('id', '');
+  $(clone).attr('class', '');
+  $(clone).find('#tsearchEmail')[0].innerHTML = response.email;
+  table.appendChild(clone);
+  //console.log($(clone).find('#tsearchId'));
+
+}
+
 function makeTransactionRow(response){
   console.log(response);
   var table = document.getElementById('transactionTable');
@@ -258,6 +340,12 @@ function makeTransactionRow(response){
   clone.style.display = 'table-row';
 
   $(clone).find('.productName')[0].innerHTML = response.description;
+
+  for(var i = response.id.length; i<8; i++){
+    response.id = '0' + response.id;
+  }
+  console.log(response.id.length);
+
   var code;
   if(response.type == 1){
     code = 'LP' + response.id;
@@ -281,6 +369,7 @@ function makeTransactionRow(response){
   document.getElementById('tsearch').value = '';
 
 }
+
 
 function showCustomer(response){
   document.getElementById('tcustomername').innerHTML = response.firstname+' '+response.lastname;
@@ -318,7 +407,7 @@ $('#tsearch').scannerDetection({
     if(document.getElementById('tsearch').placeholder == 'Search Customers'){
       database = 'Customers';
     }
-    getTransactionRow(e, database);
+    getTransactionRow(e, database, false);
 
 
     } // main callback function	,

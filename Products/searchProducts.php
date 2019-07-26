@@ -165,26 +165,51 @@ if(isset($_POST['offset']) && isset($_POST['count'])){
       break;
 
     case "Description":
-      doQuery($search, 'description', $orderClause, $sendBack, $database, $conn);
+      doQuery($search, 'description', $orderClause, $sendBack, $database, $conn, false);
       break;
 
     case "Artist":
-      doQuery($search, 'artiste', $orderClause, $sendBack, $database, $conn);
+      doQuery($search, 'artiste', $orderClause, $sendBack, $database, $conn, false);
       break;
 
     case "Album":
-      doQuery($search, 'album', $orderClause, $sendBack, $database, $conn);
+      doQuery($search, 'album', $orderClause, $sendBack, $database, $conn, false);
       break;
 
     case "Genre":
-      doQuery($search, 'class', $orderClause, $sendBack, $database, $conn);
+      doQuery($search, 'class', $orderClause, $sendBack, $database, $conn, false);
       break;
 
     case "Label":
-      doQuery($search, 'family', $orderClause, $sendBack, $database, $conn);
+      doQuery($search, 'family', $orderClause, $sendBack, $database, $conn, false);
       break;
 
     case "All":
+    // id, type, description, sell, qty,
+    //                    class, fileunder, vcond, scond, family, inv_floor, inv_basement
+      $searcharr = explode(' ', $search);
+      $string="(id LIKE '%{$searcharr[0]}%' OR description LIKE '%{$searcharr[0]}%'
+                OR fileunder LIKE '%{$searcharr[0]}%' OR class LIKE '%{$searcharr[0]}%'
+                OR family LIKE '%{$searcharr[0]}%' OR pressinfo LIKE '%{$searcharr[0]}%'
+                OR country LIKE '%{$searcharr[0]}%' or catno LIKE '%{$searcharr[0]}%'
+                OR altcatno LIKE '%{$searcharr[0]}%')";
+      for($i=1; $i<sizeof($searcharr); $i++){
+        $string = $string."AND (id LIKE '%{$searcharr[$i]}%' OR description LIKE '%{$searcharr[$i]}%'
+                  OR fileunder LIKE '%{$searcharr[$i]}%' OR class LIKE '%{$searcharr[$i]}%'
+                  OR family LIKE '%{$searcharr[$i]}%' OR pressinfo LIKE '%{$searcharr[$i]}%'
+                  OR country LIKE '%{$searcharr[$i]}%' or catno LIKE '%{$searcharr[$i]}%'
+                  OR altcatno LIKE '%{$searcharr[$i]}%')";
+      }
+      $query = "SELECT id, type, description, sell, qty,
+                         class, fileunder, vcond, scond, family, inv_floor, inv_basement
+                FROM `lp` WHERE {$string}
+                UNION ALL
+                SELECT id, type, description, sell, qty,
+                                   class, fileunder, vcond, scond, family, inv_floor, inv_basement
+                FROM `cd`  WHERE {$string}
+                ".$orderClause;  //will have to add ln, etc, when those databases are made
+    //  doCustomerQuery($string, $sendBack, $orderClause, $conn);
+      doQuery($search, $query, $orderClause, $sendBack, $database, $conn, true);
       break;
   }
 }
@@ -197,34 +222,40 @@ function powerTo($x, $n){ //returns x*(10^n) recursively
 }
 
 
-function doQuery($search, $col, $orderClause, $sendBack, $database, $conn){
-  $searcharr = explode(' ', $search);
-  $string='';
-  for($i=1; $i<sizeof($searcharr); $i++){
-    $string = $string."AND $col LIKE '%{$searcharr[$i]}%'";
+function doQuery($search, $col, $orderClause, $sendBack, $database, $conn, $bypass){
+
+  if($bypass == false){
+    $searcharr = explode(' ', $search);
+    $string='';
+    for($i=1; $i<sizeof($searcharr); $i++){
+      $string = $string."AND $col LIKE '%{$searcharr[$i]}%'";
+    }
+
+    $query = '';
+    //var_dump($database);
+    if(!isset($_POST['database'])){
+      $query = "SELECT id, type, description, sell, qty,
+                         class, fileunder, vcond, scond, family, inv_floor, inv_basement
+                FROM `lp` WHERE $col LIKE '%{$searcharr[0]}%' {$string}
+                UNION ALL
+                SELECT id, type, description, sell, qty,
+                                   class, fileunder, vcond, scond, family, inv_floor, inv_basement
+                FROM `cd`  WHERE $col LIKE '%{$searcharr[0]}%' {$string}
+                ".$orderClause; //will have to add ln, etc, when those databases are made
+    }else{
+      for($i = 0; $i < sizeof($database); $i++){
+        if($i!=0){
+          $query .= 'UNION ALL ';
+        }
+        $query .= "SELECT id, type, description, sell, qty,
+                           class, fileunder, vcond, scond, family, inv_floor, inv_basement
+                  FROM `{$database[$i]}` WHERE $col LIKE '%{$searcharr[0]}%' {$string} ";
+      }
+    }
+  }else{
+    $query = $col;
   }
 
-  $query = '';
-  //var_dump($database);
-  if(!isset($_POST['database'])){
-    $query = "SELECT id, type, description, sell, qty,
-                       class, fileunder, vcond, scond, family, inv_floor, inv_basement
-              FROM `lp` WHERE $col LIKE '%{$searcharr[0]}%' {$string}
-              UNION ALL
-              SELECT id, type, description, sell, qty,
-                                 class, fileunder, vcond, scond, family, inv_floor, inv_basement
-              FROM `cd`  WHERE $col LIKE '%{$searcharr[0]}%' {$string}
-              ".$orderClause; //will have to add ln, etc, when those databases are made
-  }else{
-    for($i = 0; $i < sizeof($database); $i++){
-      if($i!=0){
-        $query .= 'UNION ALL ';
-      }
-      $query .= "SELECT id, type, description, sell, qty,
-                         class, fileunder, vcond, scond, family, inv_floor, inv_basement
-                FROM `{$database[$i]}` WHERE $col LIKE '%{$searcharr[0]}%' {$string} ";
-    }
-  }
 
   //echo $query;
 
