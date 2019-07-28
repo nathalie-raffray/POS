@@ -2,6 +2,6 @@
   define('ROOT_URL', 'http://localhost/pos');
 
   define('DB_HOST', 'localhost');
-  define('DB_USER', 'root');
-  define('DB_PASS', 'asdfgh');
+  define('DB_USER', 'aux33');
+  define('DB_PASS', '80808080');
  ?>
