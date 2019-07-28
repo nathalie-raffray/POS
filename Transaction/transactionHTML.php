@@ -393,7 +393,7 @@
         </tbody>
       </table>
 
-      <div id="tpaymentMethodScreen" style="display:inline-block">
+      <div id="tpaymentMethodScreen" style="display:none">
         <button class="tpayment" type="button" name="button">Cash</button>
         <button class="tpayment" type="button" name="button">Interac</button>
         <button class="tpayment" type="button" name="button">Visa</button>
@@ -448,9 +448,9 @@
     </div>
   </div>
 
-  <div id="tpaymentPopUp">
+  <!-- <div id="tpaymentPopUp">
     PAY ME
-  </div>
+  </div> -->
 
 
 

@@ -581,9 +581,9 @@
   right:35%;
 }
 
-#transactionScreen div:not(#tpaymentPopUp){
+/* #transactionScreen div:not(#tpaymentPopUp){
   opacity:0.5;
-}
+} */
 
 .qty{
   height:20px;
