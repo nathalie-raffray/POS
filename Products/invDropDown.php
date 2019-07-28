@@ -25,5 +25,8 @@
   <span class="dot ccstockDot"></span>
   <span class="dotNum numCStock">0</span>
   <span class="dotWhere">COMING FOR STOCK</span>
+
+<span class="dotWhere">COMINGdflsmfsdfdsm FOR STOCK</span>
+
 </div>
 </script>
